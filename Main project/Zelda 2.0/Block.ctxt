@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Block
+comment1.params=b\ e\ k
+comment1.target=Block(boolean,\ int,\ int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ collisionDetection()
+comment4.params=
+comment4.target=void\ negateMoving()
+comment5.params=
+comment5.target=void\ key()
+numComments=6

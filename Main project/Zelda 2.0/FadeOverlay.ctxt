@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=FadeOverlay
+comment1.params=world
+comment1.target=void\ addedToWorld(greenfoot.World)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ nextRoom()
+comment4.params=
+comment4.target=void\ darkRoom()
+comment5.params=
+comment5.target=void\ resetBooleans()
+comment6.params=
+comment6.target=void\ fadeIn()
+comment7.params=
+comment7.target=void\ fadeOut()
+comment8.params=
+comment8.target=void\ slowFadeIn()
+comment9.params=
+comment9.target=void\ slowFadeOut()
+numComments=10
