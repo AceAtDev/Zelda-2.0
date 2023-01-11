@@ -1,0 +1,40 @@
+Class documentation
+<---- javadoc command: ---->
+E:\Greenfoot\jdk\bin\javadoc.exe
+-author
+-version
+-nodeprecated
+-protected
+-Xdoclint:none
+-noindex
+-notree
+-nohelp
+-nonavbar
+-source
+11
+-classpath
+E:\Greenfoot\lib\greenfoot.jar;E:\Greenfoot\lib\bluejcore.jar;E:\Greenfoot\lib\bluejeditor.jar;E:\Greenfoot\lib\bluejext2.jar;E:\Greenfoot\lib\junit-jupiter-5.5.2.jar;E:\Greenfoot\lib\junit-jupiter-api-5.5.2.jar;E:\Greenfoot\lib\junit-jupiter-engine-5.5.2.jar;E:\Greenfoot\lib\junit-jupiter-migrationsupport-5.5.2.jar;E:\Greenfoot\lib\junit-jupiter-params-5.5.2.jar;E:\Greenfoot\lib\junit-platform-commons-1.5.2.jar;E:\Greenfoot\lib\junit-platform-console-1.5.2.jar;E:\Greenfoot\lib\junit-platform-console-standalone-1.5.2.jar;E:\Greenfoot\lib\junit-platform-engine-1.5.2.jar;E:\Greenfoot\lib\junit-platform-launcher-1.5.2.jar;E:\Greenfoot\lib\junit-platform-reporting-1.5.2.jar;E:\Greenfoot\lib\junit-platform-runner-1.5.2.jar;E:\Greenfoot\lib\junit-platform-suite-api-1.5.2.jar;E:\Greenfoot\lib\junit-platform-testkit-1.5.2.jar;E:\Greenfoot\lib\junit-quickcheck-core-0.9.jar;E:\Greenfoot\lib\junit-vintage-engine-5.5.2.jar;E:\Greenfoot\lib\hamcrest-core-1.3.jar;E:\Greenfoot\lib\bluej.jar;E:\Greenfoot\lib\classgraph-4.8.90.jar;E:\Greenfoot\lib\diffutils-1.2.1.jar;E:\Greenfoot\lib\commons-logging-api-1.1.2.jar;E:\Greenfoot\lib\jl1.0.1.jar;E:\Greenfoot\lib\opencsv-2.3.jar;E:\Greenfoot\lib\xom-1.3.7.jar;E:\Greenfoot\lib\lang-stride.jar;E:\Greenfoot\lib\nsmenufx-2.1.8.jar;E:\Greenfoot\lib\wellbehavedfx-0.3.3.jar;E:\Greenfoot\lib\guava-17.0.jar;E:\Greenfoot\lib\httpclient-4.1.1.jar;E:\Greenfoot\lib\httpcore-4.1.jar;E:\Greenfoot\lib\httpmime-4.1.1.jar;E:\Greenfoot\lib\javafx\lib\javafx.base.jar;E:\Greenfoot\lib\javafx\lib\javafx.controls.jar;E:\Greenfoot\lib\javafx\lib\javafx.fxml.jar;E:\Greenfoot\lib\javafx\lib\javafx.graphics.jar;E:\Greenfoot\lib\javafx\lib\javafx.media.jar;E:\Greenfoot\lib\javafx\lib\javafx.properties.jar;E:\Greenfoot\lib\javafx\lib\javafx.swing.jar;E:\Greenfoot\lib\javafx\lib\javafx.web.jar;E:\Git hub Projects\Back to Back\Zelda-2.0\Main project\Zelda 2.0
+-d
+E:\Git hub Projects\Back to Back\Zelda-2.0\Main project\Zelda 2.0\doc
+-encoding
+UTF-8
+-charset
+UTF-8
+E:\Git hub Projects\Back to Back\Zelda-2.0\Main project\Zelda 2.0\Link.java
+<---- end of javadoc command ---->
+Loading source file E:\Git hub Projects\Back to Back\Zelda-2.0\Main project\Zelda 2.0\Link.java...
+Constructing Javadoc information...
+warning: unknown enum constant Tag.Any
+  reason: class file for threadchecker.Tag not found
+warning: unknown enum constant Tag.Any
+Standard Doclet version 11.0.14.1
+Building tree for all the packages and classes...
+Generating E:\Git hub Projects\Back to Back\Zelda-2.0\Main project\Zelda 2.0\doc\Link.html...
+Generating E:\Git hub Projects\Back to Back\Zelda-2.0\Main project\Zelda 2.0\doc\package-summary.html...
+Generating E:\Git hub Projects\Back to Back\Zelda-2.0\Main project\Zelda 2.0\doc\constant-values.html...
+Building index for all the packages and classes...
+Building index for all classes...
+Generating E:\Git hub Projects\Back to Back\Zelda-2.0\Main project\Zelda 2.0\doc\allclasses.html...
+Generating E:\Git hub Projects\Back to Back\Zelda-2.0\Main project\Zelda 2.0\doc\allclasses.html...
+Generating E:\Git hub Projects\Back to Back\Zelda-2.0\Main project\Zelda 2.0\doc\index.html...
+2 warnings
