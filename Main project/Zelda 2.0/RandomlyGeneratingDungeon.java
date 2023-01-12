@@ -10,7 +10,7 @@ public class RandomlyGeneratingDungeon extends World
     public RandomlyGeneratingDungeon()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(800, 640, 1, false); 
+        super(680, 480, 1, false); 
         addObject(new Link(),getWidth()/2,getHeight()/2+20);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
         addObject(new Wall(getWidth()*2,40),getWidth(),20);

@@ -1,4 +1,5 @@
 import greenfoot.*;
+import java.awt.Rectangle;
 
 public class Link extends Actor
 {
@@ -16,7 +17,7 @@ public class Link extends Actor
         }catch(IndexOutOfBoundsException e){}
         if (scroll==0){
             basicMoving();
-            //graphics();
+            graphics();
             collisionDetection();
             if (getX()>=getWorld().getWidth()-1){scroll=1;}
             if (getX()<=0){scroll=2;}
@@ -42,7 +43,7 @@ public class Link extends Actor
             if (scroll==0){scrollTimer=0; ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeIn();}
         }
     }
-    int Speed = 3; 
+    private int speed = 3;
     public void basicMoving()
     {
         if (scroll!=0)return;
@@ -51,17 +52,12 @@ public class Link extends Actor
         //System.out.println("X: " + xmove + ", Y: " + ymove);
         
         
-        if (Greenfoot.isKeyDown("a")){xmove=-Speed; setRotation(270);}
-        if (Greenfoot.isKeyDown("d")){xmove=Speed; setRotation(90);}
-        if (Greenfoot.isKeyDown("w")){ymove=-Speed; setRotation(0);}
-        if (Greenfoot.isKeyDown("s")){ymove=Speed; setRotation(180);}
+        if (Greenfoot.isKeyDown("a")){xmove=-speed; setRotation(270);}
+        if (Greenfoot.isKeyDown("d")){xmove=speed; setRotation(90);}
+        if (Greenfoot.isKeyDown("w")){ymove=-speed; setRotation(0);}
+        if (Greenfoot.isKeyDown("s")){ymove=speed; setRotation(180);}
         if (! Greenfoot.isKeyDown("a")&&! Greenfoot.isKeyDown("d")){xmove=0;}
         if (! Greenfoot.isKeyDown("w")&&! Greenfoot.isKeyDown("s")){ymove=0;}
-        rotationHundler();
-    }
-    
-    private void rotationHundler(){
-        
     }
     
     static String direction="up";
@@ -71,8 +67,9 @@ public class Link extends Actor
     }
     Class[] objects = {Wall.class,Block.class,Lava.class,Water.class};
     int collisionAmount=0;
-    int upperOffset = 4; // The smaller the value the higher the offset.
-    int horizontalOffset = 4; //
+    int horizontalCollisionOffset = 2;
+    
+    public Rectangle solidArea = new Rectangle(5,10,30,30);
     public void collisionDetection()
     {
         while (collisionAmount<objects.length){
@@ -82,44 +79,53 @@ public class Link extends Actor
                 if (object!=null&&ymove>0)
                 {
                     i=-getImage().getWidth()/2+2; 
-                    ymove=0; 
-                    setLocation(getX(),
-                                object.getY()-object.getImage().getHeight()/2-getImage().getHeight()/2);
+                    ymove -= ymove; 
+                    //setLocation(getX(),
+                                //object.getY()-object.getImage().getHeight()/2-getImage().getHeight()/2);
                 }
             }
+            System.out.println("Down: " + 20);
+
             //Up check
             for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i+=4){
                 Actor object = getOneObjectAtOffset(i, -getImage().getHeight()/2-3,objects[collisionAmount]);
+                
                 if (object!=null&&ymove<0)
                 {
                     i=-getImage().getWidth()/2+2; 
-                    ymove=0; 
-                    setLocation(getX(), 
-                                object.getY()+object.getImage().getHeight()/2+getImage().getHeight()/2);
+                    ymove -= ymove; 
+                    //setLocation(getX(), 
+                                //object.getY()+object.getImage().getHeight()/2+getImage().getHeight()/2);
                 }
             }
+            //System.out.println("Up: " + 20);
             //Left check
             for (int i=-getImage().getHeight()/2+2; i<getImage().getHeight()/2-2; i+=4){
                 Actor object = getOneObjectAtOffset(0-getImage().getWidth()/2-3, i,objects[collisionAmount]);
                 if (object!=null&&xmove<0)
                 {
                     i=-getImage().getHeight()/2+2; 
-                    xmove=0; 
-                    setLocation(object.getX()+object.getImage().getWidth()/2+getImage().getWidth()/2, 
-                                getY());
+                    xmove -= xmove; // -3 - -3 ; don't move 
+                    //setLocation(object.getX()+object.getImage().getWidth()/2+getImage().getWidth()/2, 
+                                //getY());
+                    
                 }
             }
+            //System.out.println("Left: " + -getImage().getWidth()/horizontalCollisionOffset);
+
             //Right check
             for (int i=-getImage().getHeight()/2+2; i<getImage().getHeight()/2-3; i+=4){
                 Actor object = getOneObjectAtOffset(getImage().getWidth()/2+2, i,objects[collisionAmount]);
                 if (object!=null&&xmove>0)
                 {
                     i=-getImage().getHeight()/2+2;
-                    xmove=0; 
-                    setLocation(object.getX()-object.getImage().getWidth()/2-getImage().getWidth()/2,
-                                getY());
+                    xmove -= xmove; 
+                    //setLocation(object.getX()-object.getImage().getWidth()/2-getImage().getWidth()/2,
+                                //getY());
                 }
             }
+            //System.out.println("Right: " + getImage().getWidth()/horizontalCollisionOffset);
+
             collisionAmount++;
         }
             collisionAmount=0;
