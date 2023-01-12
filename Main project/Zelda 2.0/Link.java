@@ -84,7 +84,7 @@ public class Link extends Actor
                                 //object.getY()-object.getImage().getHeight()/2-getImage().getHeight()/2);
                 }
             }
-            System.out.println("Down: " + 20);
+            //System.out.println("Down: " + 20);
 
             //Up check
             for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i+=4){
