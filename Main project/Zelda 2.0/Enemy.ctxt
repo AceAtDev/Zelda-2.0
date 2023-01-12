@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Enemy
+comment0.text=\r\n\ The\ idea\ of\ this\ is\ that\ the\ enemy\ will\ move\ around\ the\ wrold\ to\ try\ and\ find\ the\ player.\r\n\ Once\ the\ player\ in\ range,\ the\ enemy\ will\ start\ chessing\ him.\r\n\ When\ the\ enemy\ catchs\ the\ player,\ the\ enemy\ and\ the\ player\ to\ get\ transformed\ to\ another\ room\ to\ fight\ with\r\n\ an\ RPG\ style\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=hp\ damage\ speed
+comment1.target=Enemy(int,\ int,\ int)
+comment2.params=name\ hp\ damage\ speed
+comment2.target=Enemy(java.lang.String,\ int,\ int,\ int)
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ patrol()
+comment5.params=
+comment5.target=void\ inRange()
+comment6.params=
+comment6.target=void\ challenagePlayer()
+comment7.params=
+comment7.target=void\ dectectCollision()
+numComments=8
