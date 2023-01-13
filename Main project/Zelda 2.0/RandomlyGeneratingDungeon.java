@@ -14,11 +14,8 @@ public class RandomlyGeneratingDungeon extends World
         super(680, 480, 1, false); 
         addObject(new Link(),getWidth()/2,getHeight()/2+20);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
-        // Wall Constructors ( Used for Generating the Dungeon Layout)
-       addObject(new Wall(getWidth(),40),340,20);
-       addObject(new Wall(getWidth(),40),340,460);
-       addObject(new Wall(40,getHeight()-80),20,230);
-        testDungeon();
+        generateDungeon();
+        dungeonObjects();
         paintOrder();
     }
     Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class};
@@ -41,7 +38,20 @@ public class RandomlyGeneratingDungeon extends World
             a++;
         }
     }
-    
+    public void generateDungeon(){ // Generates the Dungeon's Layout  
+        // Wall Constructors (Used for Generating the Dungeon Layout)
+        // Room 1 Walls
+        // Top Wall 
+       addObject(new Wall(getWidth(),40),340,20);
+        // Bottom Wall
+       addObject(new Wall(getWidth(),40),340,460);
+        // Left Wall
+       addObject(new Wall(40,getHeight()-65),20,245);
+       // Right Wall (Top Half) -> Used as a Doorway Exit
+       addObject(new Wall(40,(getHeight()/2)-40),660,100);
+        // Right Wall (Bottom Half)
+        addObject(new Wall(40,(getHeight()/2)-40),660,380);
+    }
     public void paintOrder(){
         setPaintOrder(Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
     }
@@ -55,16 +65,18 @@ public class RandomlyGeneratingDungeon extends World
         if (tileset==4)setBackground(new GreenfootImage("GreyTile.png"));
     }
     
-    public void testDungeon(){
-        
+    public void dungeonObjects(){
+        // Room One Objects
         block(4,6,true,-1);
         block(3,6,true,1,2);
         block(5,6);
         block(4,7);
         block(4,5);
         
+        // Door Blocks
+        block(16,5,true,-1,2);
+        block(16,6,true,-1,2);
         lava(12,9);
-        lava(15,9);
         lava(14,10);
         lava(13,10);
         lava(13,8);
@@ -72,14 +84,7 @@ public class RandomlyGeneratingDungeon extends World
         
        
         
-        water(1,1);
-        water(1,2);
-        water(2,1);
-        water(3,1);
-        water(3,2);
-        water(3,3);
-        water(2,3);
-        water(1,3);
+        
     }
     
     /**
