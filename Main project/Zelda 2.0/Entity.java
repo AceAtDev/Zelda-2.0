@@ -15,10 +15,11 @@ public class Entity extends Actor
     public void act()
     {
         // Add your action code here.
+        
+        
     }
     
-    
-    //Getters
+    //Getters//
     public int xPos()
     {
         return getX();
@@ -28,4 +29,11 @@ public class Entity extends Actor
     {
         return getY();
     }
+    
+    
+    
+    
+    
 }
+
+

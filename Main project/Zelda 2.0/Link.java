@@ -1,5 +1,6 @@
 import greenfoot.*;
 import java.awt.Rectangle;
+import java.util.Vector;
 
 public class Link extends Player
 {
@@ -9,6 +10,7 @@ public class Link extends Player
     int ymove2=0;
     int scroll=0;
     int scrollTimer=0;
+    
     public void act() // Void Update
     {
         //Methods
@@ -26,8 +28,8 @@ public class Link extends Player
         }
         if (scroll==0){setLocation(getX()+xmove+xmove2,getY()+ymove+ymove2);}else{scroll();}
         
-        System.out.println("X: " + getX());
-        System.out.println("Y: " + getY());
+        //System.out.println("X: " + getX());
+        //System.out.println("Y: " + getY());
     }
     public void scroll(){ //The Camera\Room transformer
         if (scrollTimer==0){((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeOut();}

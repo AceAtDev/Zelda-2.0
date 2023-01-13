@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=RayRange
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ RayRange\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=x1\ y1\ x2\ y2\ Dir
+comment1.target=RayRange(double,\ double,\ double,\ double,\ Vector2D)
+numComments=2
