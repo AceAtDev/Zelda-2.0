@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author (Mohamed E) 
  * @version (1/12/23)
  */
-public class Player extends Actor
+public class Player extends Entity
 {
     // instance variables - replace the example below with your own
     private int x;

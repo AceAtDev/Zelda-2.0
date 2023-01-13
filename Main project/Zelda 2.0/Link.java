@@ -1,6 +1,5 @@
 import greenfoot.*;
 import java.awt.Rectangle;
-//import BattleManger;
 
 public class Link extends Player
 {
@@ -52,7 +51,6 @@ public class Link extends Player
         //Change movement
         //System.out.println("X: " + xmove + ", Y: " + ymove);
         
-        
         if (Greenfoot.isKeyDown("a")){xmove=-speed; setRotation(270);}
         if (Greenfoot.isKeyDown("d")){xmove=speed; setRotation(90);}
         if (Greenfoot.isKeyDown("w")){ymove=-speed; setRotation(0);}
@@ -81,6 +79,7 @@ public class Link extends Player
                 {
                     i=-getImage().getWidth()/2+2; 
                     ymove -= ymove; 
+                    
                     //setLocation(getX(),
                                 //object.getY()-object.getImage().getHeight()/2-getImage().getHeight()/2);
                 }
@@ -130,6 +129,8 @@ public class Link extends Player
             collisionAmount++;
         }
             collisionAmount=0;
+            
+            
     }
     
     

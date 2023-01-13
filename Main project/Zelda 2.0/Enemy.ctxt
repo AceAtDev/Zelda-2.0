@@ -14,5 +14,5 @@ comment5.target=void\ inRange()
 comment6.params=
 comment6.target=void\ challenagePlayer()
 comment7.params=
-comment7.target=void\ dectectCollision()
+comment7.target=void\ collisionDetection()
 numComments=8
