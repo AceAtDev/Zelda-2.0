@@ -14,14 +14,10 @@ public class RandomlyGeneratingDungeon extends World
         super(680, 480, 1, false); 
         addObject(new Link(),getWidth()/2,getHeight()/2+20);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
-        /*
-        addObject(new Wall(getWidth()*2,40),getWidth(),20);
-        addObject(new Wall(getWidth()*2,40),getWidth(),getHeight()-20);
-        addObject(new Wall(40,getHeight()),20,getHeight()/2);
-        addObject(new Wall(40,getHeight()),getWidth()*2-20,getHeight()/2);
-        
-        */
+        // Wall Constructors ( Used for Generating the Dungeon Layout)
        addObject(new Wall(getWidth(),40),340,20);
+       addObject(new Wall(getWidth(),40),340,460);
+       addObject(new Wall(40,getHeight()-80),20,230);
         testDungeon();
         paintOrder();
     }
@@ -60,12 +56,12 @@ public class RandomlyGeneratingDungeon extends World
     }
     
     public void testDungeon(){
-        block(0,0);
+        
         block(4,6,true,-1);
         block(3,6,true,1,2);
         block(5,6);
-        block(4,8);
-        block(4,4);
+        block(4,7);
+        block(4,5);
         
         lava(12,9);
         lava(15,9);
@@ -74,17 +70,7 @@ public class RandomlyGeneratingDungeon extends World
         lava(13,8);
         lava(14,8);
         
-        block(15,4);
-        block(14,4);
-        block(13,4);
-        block(12,4,true,1,4);
-        block(12,3,true);
-        block(12,2,true, -1);
-        block(12,1,true);
-        block(16,1);
-        block(16,2);
-        block(16,3);
-        block(16,4);
+       
         
         water(1,1);
         water(1,2);
