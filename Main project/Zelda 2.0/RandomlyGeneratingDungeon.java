@@ -18,6 +18,7 @@ public class RandomlyGeneratingDungeon extends World
         dungeonObjects();
         paintOrder();
     }
+    
     Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class};
     public void scroll(String direction){
         int v=0;
@@ -55,9 +56,9 @@ public class RandomlyGeneratingDungeon extends World
        addObject(new Wall(40,(getHeight()/2)-40),660,380);
         
        // Room 2 Walls
-       // Top Wall (Left - Half) -> Door Way to Room 3
+       // Top Wall (Left Half) -> Door Way to Room 3
        addObject(new Wall((getWidth()/2)-60,40),820,20);
-       // Top Wall (Right - Half) 
+       // Top Wall (Right Half) 
        addObject(new Wall((getWidth()/2)-60,40),1220,20);
        // Bottom Wall
        addObject(new Wall(getWidth(),40),1020,460);
@@ -65,10 +66,25 @@ public class RandomlyGeneratingDungeon extends World
        addObject(new Wall(40,(getHeight()/2)-40),700,100);
        // Left Wall (Bottom Half) 
        addObject(new Wall(40,(getHeight()/2)-40),700,380);
-       // Right Wall
+       // Right Wall 
        addObject(new Wall(40,getHeight()-65),1340,245);
        
        // Room 3 Walls
+       // Top Wall
+       addObject(new Wall(getWidth(),40),1020,-460);
+       // Bottom Wall (Left Half) -> Door Way From Room 2
+       addObject(new Wall((getWidth()/2)-60,40),820,-20);
+       // Bottom Wall (Right Half) 
+       addObject(new Wall((getWidth()/2)-60,40),1220,-20);
+       // Left Wall (Top Half)
+       addObject(new Wall(40,(getHeight()/2)-40),700,-380);
+       // Left Wall (Bottom Half)
+       addObject(new Wall(40,(getHeight()/2)-40),700,-100);
+       // Right Wall (Top Half)
+        addObject(new Wall(40,(getHeight()/2)-40),1340,-380);
+        addObject(new Wall(40,(getHeight()/2)-40),1340,-100);
+        
+        // Room 4 Walls
     }
     public void paintOrder(){
         setPaintOrder(Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
