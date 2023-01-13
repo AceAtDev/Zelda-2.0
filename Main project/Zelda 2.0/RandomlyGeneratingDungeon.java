@@ -21,7 +21,7 @@ public class RandomlyGeneratingDungeon extends World
         addObject(new Wall(40,getHeight()),getWidth()*2-20,getHeight()/2);
         
         */
-       addObject(new Wall(getWidth(),40),10,20);
+       addObject(new Wall(getWidth(),40),340,20);
         testDungeon();
         paintOrder();
     }

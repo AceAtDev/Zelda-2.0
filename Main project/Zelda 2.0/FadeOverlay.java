@@ -25,9 +25,7 @@ public class FadeOverlay extends Actor
         getImage().setTransparency(opacity);
     }
     
-    public void nextRoom(){
-        
-    }
+    
     public void darkRoom(){
         resetBooleans();
         darkRoom=true;
