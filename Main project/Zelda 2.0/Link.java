@@ -1,7 +1,8 @@
 import greenfoot.*;
 import java.awt.Rectangle;
+//import BattleManger;
 
-public class Link extends Actor
+public class Link extends Player
 {
     int xmove=0;
     int xmove2=0;
@@ -33,10 +34,10 @@ public class Link extends Actor
         if (scrollTimer==0){((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeOut();}
         scrollTimer++;
         if(scrollTimer==15){
-            if (scroll==1){xmove=-9; ymove=0; ((RandomlyGeneratingDungeon)getWorld()).scroll("right");}
-            if (scroll==2){xmove=9; ymove=0; ((RandomlyGeneratingDungeon)getWorld()).scroll("left");}
-            if (scroll==3){xmove=0; ymove=-9; ((RandomlyGeneratingDungeon)getWorld()).scroll("down");}
-            if (scroll==4){xmove=0; ymove=9; ((RandomlyGeneratingDungeon)getWorld()).scroll("up");}
+            if (scroll==1){xmove=-12; ymove=0; ((RandomlyGeneratingDungeon)getWorld()).scroll("right");}
+            if (scroll==2){xmove=12; ymove=0; ((RandomlyGeneratingDungeon)getWorld()).scroll("left");}
+            if (scroll==3){xmove=0; ymove=-12; ((RandomlyGeneratingDungeon)getWorld()).scroll("down");}
+            if (scroll==4){xmove=0; ymove=12; ((RandomlyGeneratingDungeon)getWorld()).scroll("up");}
         }else if(scrollTimer>30){
             setLocation(getX()+xmove,getY()+ymove);
             if (scroll==1&&getX()<=30){scroll=0;}
@@ -69,11 +70,11 @@ public class Link extends Actor
     {
         
     }
-    Class[] objects = {Wall.class,Block.class,Lava.class,Water.class};
+    Class[] objects = {Wall.class,Block.class,Lava.class,Water.class, Enemy.class};
     int collisionAmount=0;
-    int horizontalCollisionOffset = 2;
+    //int horizontalCollisionOffset = 2;
     
-    public Rectangle solidArea = new Rectangle(5,10,30,30);
+    //public Rectangle solidArea = new Rectangle(5,10,30,30);
     public void collisionDetection()
     {
         while (collisionAmount<objects.length){
@@ -134,4 +135,6 @@ public class Link extends Actor
         }
             collisionAmount=0;
     }
+    
+    
 }
