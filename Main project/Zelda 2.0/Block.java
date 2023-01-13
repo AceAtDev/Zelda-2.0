@@ -65,7 +65,7 @@ public class Block extends Actor
         
         /**This checks if there is an object in the blocks way when it moves*/
         
-        Class[] blocks = {Wall.class,Block.class,Lava.class,Water.class,Water.class}; //All classes in this array can prevent the block from moving
+        Class[] blocks = {Wall.class,Block.class,Lava.class,Water.class,Water.class, Enemy.class}; //All classes in this array can prevent the block from moving
         while (collisionAmount<blocks.length){
             //Down check
             for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i++){

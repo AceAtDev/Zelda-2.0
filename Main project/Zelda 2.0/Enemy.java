@@ -1,4 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.Random;
+import java.awt.Rectangle;
 
 /**
  * The idea of this is that the enemy will move around the wrold to try and find the player.
@@ -9,16 +11,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy extends Actor
+public class Enemy extends Entity
 {
     protected String name = "";
     protected int hp = 3;
     protected int damage = 1;
-    //public int Range = 3;
-    protected int speed = 3;
+    protected int speed = 1;
     
-    private int xmove = 0;
-    private int ymove = 0;
+    private int xmove = 1;
+    private int ymove = 1;
     
     
     public Enemy(int hp, int damage, int speed){
@@ -36,21 +37,63 @@ public class Enemy extends Actor
     
     public void act()
     {
-        dectectCollision();
+        collisionDetection();
+        patrol();
     }
     
     
+    
+    boolean ispatrolling = true;
+    boolean isPlayerInRange = false;
+    
+    //boolean isColliding = false;
+    
+    Random rand = new Random();
+    private double movingTimer = 0;
     // Looking for the player
     public void patrol() 
-    {
-        // move around to look for the player and fight him
+    {   
+        if(isPlayerInRange) // Move to catch the player
+        {
+            inRange();
+            System.out.println("player is in range of the enemy");
+            return;
+        }
+        
+        if(movingTimer <= 0)
+        {
+            speed = -speed;
+            movingTimer += 2/*rand.nextInt(3)*/;
+        }
+        if(isColliding)
+        {
+            speed = -speed;
+            return;
+        }
+        else
+        {
+            movingTimer -= 0.04;
+            if(!isColliding)
+            {
+                move((xmove*speed)/*+ymove*/);
+            }
+            
+        }
         
     }
     
+    
+    boolean caughtPlayer = false;
+    double losingRange = 5; // the limit range that the enemy can follow the player while in range
     // Call this when 
     public void inRange()
     {
-    
+        
+        
+        if(caughtPlayer) // Enemy knows if caught player by colliding with the player; check enemy collisions!
+        {
+            System.out.println("Enemy caught the player");
+        }
     }
     
     // Call this to TP the player to the fight room
@@ -59,10 +102,12 @@ public class Enemy extends Actor
         
     }
     
-    Class[] objects = {Wall.class,Block.class,Lava.class,Water.class, Link.class};
+    Class[] objects = {Wall.class,Block.class,Lava.class,Water.class, Entity.class};
     int collisionAmount=0;
     
-    public void dectectCollision()
+    boolean isColliding = false;
+    Rectangle hitBox = new Rectangle();
+    public void collisionDetection()
     {
         while (collisionAmount<objects.length){
             //Down check
@@ -71,7 +116,8 @@ public class Enemy extends Actor
                 if (object!=null&&ymove>0)
                 {
                     i=-getImage().getWidth()/2+2; 
-                    ymove -= ymove; 
+                    //ymove -= ymove; 
+                    isColliding = true;
                     //setLocation(getX(),
                                 //object.getY()-object.getImage().getHeight()/2-getImage().getHeight()/2);
                 }
@@ -85,7 +131,8 @@ public class Enemy extends Actor
                 if (object!=null&&ymove<0)
                 {
                     i=-getImage().getWidth()/2+2; 
-                    ymove -= ymove; 
+                    //ymove = -ymove; 
+                    isColliding = true;
                     //setLocation(getX(), 
                                 //object.getY()+object.getImage().getHeight()/2+getImage().getHeight()/2);
                 }
@@ -97,7 +144,8 @@ public class Enemy extends Actor
                 if (object!=null&&xmove<0)
                 {
                     i=-getImage().getHeight()/2+2; 
-                    xmove -= xmove; // -3 - -3 ; don't move 
+                    //xmove = -xmove; // -3 - -3 ; don't move
+                    isColliding = true;
                     //setLocation(object.getX()+object.getImage().getWidth()/2+getImage().getWidth()/2, 
                                 //getY());
                     
@@ -111,7 +159,8 @@ public class Enemy extends Actor
                 if (object!=null&&xmove>0)
                 {
                     i=-getImage().getHeight()/2+2;
-                    xmove -= xmove; 
+                    //xmove = -xmove; 
+                    isColliding = true;
                     //setLocation(object.getX()-object.getImage().getWidth()/2-getImage().getWidth()/2,
                                 //getY());
                 }
@@ -121,6 +170,8 @@ public class Enemy extends Actor
             collisionAmount++;
         }
             collisionAmount=0;
+            
+            
     }
-    }
-
+     
+}

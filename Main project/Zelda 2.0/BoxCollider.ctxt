@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=BoxCollider
-comment0.text=\r\n\ A\ Box\ collider\ that\ will\ allow\ us\ to\ use\ it\ in\ other\ sprites.\r\n\ CLASS\ NOT\ READY\ FOR\ USE\r\n\ \r\n\ @author\ (Mohamed\ E)\ \r\n\ @version\ (1/12/23)\r\n
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ BoxCollider\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=2
