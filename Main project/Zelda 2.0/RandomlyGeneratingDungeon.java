@@ -7,19 +7,21 @@ public class RandomlyGeneratingDungeon extends World
      * Constructor for objects of class RandomlyGeneratingDungeon.
      * 
      */
+    //final int DistanceBetweenBlocks = 40;
     public RandomlyGeneratingDungeon()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(680, 480, 1, false); 
-        addObject(new Link(),getWidth()/2,getHeight()/2 - 60);
+        addObject(new Link(),getWidth()/2,getHeight()/2+20);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
+        /*
         addObject(new Wall(getWidth()*2,40),getWidth(),20);
         addObject(new Wall(getWidth()*2,40),getWidth(),getHeight()-20);
         addObject(new Wall(40,getHeight()),20,getHeight()/2);
         addObject(new Wall(40,getHeight()),getWidth()*2-20,getHeight()/2);
         
-        addObject(new Enemy(1,2,2), getWidth()/2 + 40, getHeight()/2 + 60);
-        
+        */
+       addObject(new Wall(getWidth(),40),10,20);
         testDungeon();
         paintOrder();
     }
@@ -45,14 +47,7 @@ public class RandomlyGeneratingDungeon extends World
     }
     
     public void paintOrder(){
-        setPaintOrder(Link.class,
-                      FadeOverlay.class,
-                      Wall.class, 
-                      Enemy.class,
-                      Key.class,
-                      Block.class,
-                      Lava.class,
-                      Water.class);
+        setPaintOrder(Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
     }
     
     public void act(){
@@ -117,7 +112,7 @@ public class RandomlyGeneratingDungeon extends World
     
     //Dungeon Manipulation methods
     
-    public void nextRoom(){
+    public void nextRoom(int roomID){
         
     }
     public void generateDungeonRoom(){

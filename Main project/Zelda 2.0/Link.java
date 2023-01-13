@@ -25,6 +25,9 @@ public class Link extends Player
             if (getY()<=0){scroll=4;}
         }
         if (scroll==0){setLocation(getX()+xmove+xmove2,getY()+ymove+ymove2);}else{scroll();}
+        
+        System.out.println("X: " + getX());
+        System.out.println("Y: " + getY());
     }
     public void scroll(){ //The Camera\Room transformer
         if (scrollTimer==0){((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeOut();}
@@ -57,6 +60,7 @@ public class Link extends Player
         if (Greenfoot.isKeyDown("s")){ymove=speed; setRotation(180);}
         if (! Greenfoot.isKeyDown("a")&&! Greenfoot.isKeyDown("d")){xmove=0;}
         if (! Greenfoot.isKeyDown("w")&&! Greenfoot.isKeyDown("s")){ymove=0;}
+       
     }
     
     static String direction="up";

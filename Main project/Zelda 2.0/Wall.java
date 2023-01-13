@@ -11,5 +11,6 @@ public class Wall extends Actor
         for(int offset=0; offset<width; offset+=w) image.drawImage(ground, offset, 0);
         for(int offset=0; offset<height; offset+=h) image.drawImage(ground, 0, offset);
         setImage(image);
+       
     }
 }
