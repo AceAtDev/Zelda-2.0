@@ -40,7 +40,9 @@ public class RandomlyGeneratingDungeon extends World
     }
     public void generateDungeon(){ // Generates the Dungeon's Layout  
         // Wall Constructors (Used for Generating the Dungeon Layout)
+        
         // Room 1 Walls
+        
         // Top Wall 
        addObject(new Wall(getWidth(),40),340,20);
         // Bottom Wall
@@ -49,8 +51,24 @@ public class RandomlyGeneratingDungeon extends World
        addObject(new Wall(40,getHeight()-65),20,245);
        // Right Wall (Top Half) -> Used as a Doorway Exit
        addObject(new Wall(40,(getHeight()/2)-40),660,100);
-        // Right Wall (Bottom Half)
-        addObject(new Wall(40,(getHeight()/2)-40),660,380);
+       // Right Wall (Bottom Half)
+       addObject(new Wall(40,(getHeight()/2)-40),660,380);
+        
+       // Room 2 Walls
+       // Top Wall (Left - Half) -> Door Way to Room 3
+       addObject(new Wall((getWidth()/2)-60,40),820,20);
+       // Top Wall (Right - Half) 
+       addObject(new Wall((getWidth()/2)-60,40),1220,20);
+       // Bottom Wall
+       addObject(new Wall(getWidth(),40),1020,460);
+       // Left Wall (Top Half) -> Entry from Room 1
+       addObject(new Wall(40,(getHeight()/2)-40),700,100);
+       // Left Wall (Bottom Half) 
+       addObject(new Wall(40,(getHeight()/2)-40),700,380);
+       // Right Wall
+       addObject(new Wall(40,getHeight()-65),1340,245);
+       
+       // Room 3 Walls
     }
     public void paintOrder(){
         setPaintOrder(Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
@@ -73,9 +91,9 @@ public class RandomlyGeneratingDungeon extends World
         block(4,7);
         block(4,5);
         
-        // Door Blocks
-        block(16,5,true,-1,2);
-        block(16,6,true,-1,2);
+        
+    
+        
         lava(12,9);
         lava(14,10);
         lava(13,10);
