@@ -14,10 +14,9 @@ public class RandomlyGeneratingDungeon extends World
         super(680, 480, 1, false); 
         addObject(new Link(),getWidth()/2,getHeight()/2+20);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
-        
+        paintOrder();
         generateDungeon();
         dungeonObjects();
-        paintOrder();
     }
     
     Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class};
@@ -83,21 +82,34 @@ public class RandomlyGeneratingDungeon extends World
        addObject(new Wall(40,(getHeight()/2)-40),700,-100);
        // Right Wall (Top Half)
        addObject(new Wall(40,(getHeight()/2)-40),1340,-380);
+       // Right Wall (Bottom Half)
        addObject(new Wall(40,(getHeight()/2)-40),1340,-100);
         
         // Room 4 Walls
         // Top Wall
-         addObject(new Wall(getWidth(),40),340,-460);
+       addObject(new Wall(getWidth(),40),340,-460);
         // Bottom Wall
-         addObject(new Wall(getWidth(),40),340,-20);
+       addObject(new Wall(getWidth(),40),340,-20);
         // Left Wall
-        addObject(new Wall(40,getHeight()-40),20,-260);
+       addObject(new Wall(40,getHeight()-40),20,-260);
         // Right Wall (Top Half)
-        addObject(new Wall(40,(getHeight()/2)-40),660,-380);
+       addObject(new Wall(40,(getHeight()/2)-40),660,-380);
         // Right Wall (Bottom Half)
-        addObject(new Wall(40,(getHeight()/2)-40),660,-100);
+       addObject(new Wall(40,(getHeight()/2)-40),660,-100);
+        
+        // Room 5 Walls 
+        // Top Wall
+        addObject(new Wall((getWidth()*2)-40,40),2060,-460);
+        // Bottom Wall
+        addObject(new Wall((getWidth()*2)-40,40),2060,-20);
+        // Left Wall (Top Half) -> Entrance From Room 3
+        addObject(new Wall(40,(getHeight()/2)-40),1380,-380);
+        // Left Wall (Bottom Half) 
+        addObject(new Wall(40,(getHeight()/2)-40),1380,-100);
+        // Right Wall
+        addObject(new Wall(40,getHeight()-40),2700,-260);
     }
-    public void paintOrder(){
+    public void paintOrder(){ // Order of displaying classes ( Makes the Transition from room to room smoother
         setPaintOrder(Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
     }
     
