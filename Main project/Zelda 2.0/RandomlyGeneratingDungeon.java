@@ -14,6 +14,7 @@ public class RandomlyGeneratingDungeon extends World
         super(680, 480, 1, false); 
         addObject(new Link(),getWidth()/2,getHeight()/2+20);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
+        
         generateDungeon();
         dungeonObjects();
         paintOrder();
@@ -81,10 +82,20 @@ public class RandomlyGeneratingDungeon extends World
        // Left Wall (Bottom Half)
        addObject(new Wall(40,(getHeight()/2)-40),700,-100);
        // Right Wall (Top Half)
-        addObject(new Wall(40,(getHeight()/2)-40),1340,-380);
-        addObject(new Wall(40,(getHeight()/2)-40),1340,-100);
+       addObject(new Wall(40,(getHeight()/2)-40),1340,-380);
+       addObject(new Wall(40,(getHeight()/2)-40),1340,-100);
         
         // Room 4 Walls
+        // Top Wall
+         addObject(new Wall(getWidth(),40),340,-460);
+        // Bottom Wall
+         addObject(new Wall(getWidth(),40),340,-20);
+        // Left Wall
+        addObject(new Wall(40,getHeight()-40),20,-260);
+        // Right Wall (Top Half)
+        addObject(new Wall(40,(getHeight()/2)-40),660,-380);
+        // Right Wall (Bottom Half)
+        addObject(new Wall(40,(getHeight()/2)-40),660,-100);
     }
     public void paintOrder(){
         setPaintOrder(Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
