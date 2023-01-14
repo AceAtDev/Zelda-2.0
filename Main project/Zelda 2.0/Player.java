@@ -9,22 +9,14 @@ import greenfoot.*;
 public class Player extends Entity
 {
     // instance variables - replace the example below with your own
-    private int x;
+    //private int x;
 
     /**
      * Constructor for objects of class Player
      */
     public Player()
     {
+        super(10,10);
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
 }

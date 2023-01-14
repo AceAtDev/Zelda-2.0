@@ -22,13 +22,16 @@ public class Enemy extends Entity
     private int ymove = 1;
     
     
-    public Enemy(int hp, int damage, int speed){
+    public Enemy(int hp, int damage, int speed)
+    {
+        super(10,10);
         this.hp = hp;
         this.damage = damage;
         this.speed = speed;
     }
     
     public Enemy(String name ,int hp, int damage, int speed){ 
+        super(10,10);
         this.name = name;
         this.hp = hp;
         this.damage = damage;

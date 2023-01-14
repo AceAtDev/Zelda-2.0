@@ -18,19 +18,27 @@ public class Link extends Player
             ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).setLocation(getX(),getY());
         }catch(IndexOutOfBoundsException e){}
         if (scroll==0){
+            
             basicMoving();
+            
+            //System.out.println(currentHori);
             graphics();
-            collisionDetection();
+            //collisionDetection();
+            
             if (getX()>=getWorld().getWidth()-1){scroll=1;}
             if (getX()<=0){scroll=2;}
             if (getY()>=getWorld().getHeight()-1){scroll=3;}
             if (getY()<=0){scroll=4;}
         }
-        if (scroll==0){setLocation(getX()+xmove+xmove2,getY()+ymove+ymove2);}else{scroll();}
+        if (scroll==0){setLocation(getX()+((int)movementRaw.x()),getY()+((int)movementRaw.y()));}
+        else{scroll();}
+        
         
         //System.out.println("X: " + getX());
         //System.out.println("Y: " + getY());
     }
+    
+    
     public void scroll(){ //The Camera\Room transformer
         if (scrollTimer==0){((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeOut();}
         scrollTimer++;
@@ -56,13 +64,25 @@ public class Link extends Player
         //Change movement
         //System.out.println("X: " + xmove + ", Y: " + ymove);
         
-        if (Greenfoot.isKeyDown("a")){xmove=-speed; setRotation(270);}
-        if (Greenfoot.isKeyDown("d")){xmove=speed; setRotation(90);}
-        if (Greenfoot.isKeyDown("w")){ymove=-speed; setRotation(0);}
-        if (Greenfoot.isKeyDown("s")){ymove=speed; setRotation(180);}
-        if (! Greenfoot.isKeyDown("a")&&! Greenfoot.isKeyDown("d")){xmove=0;}
-        if (! Greenfoot.isKeyDown("w")&&! Greenfoot.isKeyDown("s")){ymove=0;}
-       
+        if (Greenfoot.isKeyDown("a")){currentHori = -speed; setRotation(270);}
+        if (Greenfoot.isKeyDown("d")){currentHori = speed; setRotation(90);}
+        if (Greenfoot.isKeyDown("w")){currentVert = -speed; setRotation(0);}
+        if (Greenfoot.isKeyDown("s")){currentVert = speed; setRotation(180);}
+        if (! Greenfoot.isKeyDown("a")&&! Greenfoot.isKeyDown("d")){currentHori = 0;}
+        if (! Greenfoot.isKeyDown("w")&&! Greenfoot.isKeyDown("s")){currentVert = 0;}
+        collisions();
+        
+        /*
+        Bounds b = new Bounds(getX(), getY(), 20, 25);
+        int t = 100;
+        getWorld().getBackground().drawLine(b.minX() + t, b.minY() + t, b.maxX() + t, b.minY() + t);
+        getWorld().getBackground().drawLine(b.minX() + t, b.maxY() + t, b.maxX() + t, b.maxY() + t);
+        getWorld().getBackground().drawLine(b.minX() + t, b.minY() + t, b.minX() + t, b.maxY() + t);
+        getWorld().getBackground().drawLine(b.maxX() + t, b.minY() + t, b.maxX() + t, b.maxY() + t);
+        */
+        
+        movementRaw = new Vector2D(currentHori, currentVert);
+        //System.out.println(movementRaw.x() + "," + movementRaw.y());
     }
     
     static String direction="up";
