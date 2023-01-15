@@ -2,6 +2,8 @@ import greenfoot.*;
 import java.awt.Rectangle;
 //import java.util.Vector;
 
+//import java.util.Vector;
+
 public class Link extends WorldEntity
 {
     int xmove=0;
@@ -12,10 +14,11 @@ public class Link extends WorldEntity
     int scrollTimer=0;
     
     private static Class[] blockers = {Wall.class,Block.class,Lava.class,Water.class};
+    private static Class[] toBattle = {Enemy.class};
     
     public Link()
     {
-        super(40,40, blockers);
+        super(40,40, blockers, true, toBattle);
     }
     
     public void act() // Void Update
@@ -81,17 +84,7 @@ public class Link extends WorldEntity
         collisions();
         
         
-        b = new Bounds(getX(), getY(), 40,40);
-        
-        int t = 100;
-        getWorld().getBackground().drawLine(b.minX() + t, b.minY() + t, b.maxX() + t, b.minY() + t);
-        getWorld().getBackground().drawLine(b.minX() + t, b.maxY() + t, b.maxX() + t, b.maxY() + t);
-        getWorld().getBackground().drawLine(b.minX() + t, b.minY() + t, b.minX() + t, b.maxY() + t);
-        getWorld().getBackground().drawLine(b.maxX() + t, b.minY() + t, b.maxX() + t, b.maxY() + t);
-        
-        
         movementRaw = new Vector2D(currentHori, currentVert);
-        System.out.println(movementRaw.x() + "," + movementRaw.y());
     }
     
     static String direction="up";
@@ -167,6 +160,5 @@ public class Link extends WorldEntity
             
             
     }
-    
     
 }

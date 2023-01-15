@@ -11,13 +11,17 @@ public class RandomlyGeneratingDungeon extends World
     public RandomlyGeneratingDungeon()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        
         super(680, 480, 1, false); 
+        addObject(new BattleManager(),1,1);
         addObject(new Link(),getWidth()/2,getHeight()/2+20);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
+        addObject(new Enemy(1,2,2), getWidth()/2, getHeight()/2 - 50);
         paintOrder();
         generateDungeon();
         dungeonObjects();
-        clearDungeonRoom();
+        //clearDungeonRoom();
+        
 
     }
     
@@ -146,11 +150,13 @@ public class RandomlyGeneratingDungeon extends World
         
     }
     
+    
+    
     // if one of the object collides with other, then the battle will start
     Class[] battleStarters = {Link.class, Enemy.class};
-    private void detectedBattle()
+    private void prepareBattle()
     {
-        //if(){}
+        
     }
     
     

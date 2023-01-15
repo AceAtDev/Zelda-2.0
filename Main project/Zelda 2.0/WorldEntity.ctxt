@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.target=WorldEntity
 comment0.text=\r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=width\ height\ blockers
-comment1.target=WorldEntity(int,\ int,\ java.lang.Class[])
+comment1.params=width\ height\ blockers\ isPlayer\ toBattle
+comment1.target=WorldEntity(int,\ int,\ java.lang.Class[],\ boolean,\ java.lang.Class[])
 comment10.params=
 comment10.target=Vector2D\ movement()
 comment11.params=x\ y
 comment11.target=Vector2D\ setMovement(double,\ double)
-comment2.params=
-comment2.target=void\ collisions()
+comment2.params=width\ height\ blockers
+comment2.target=WorldEntity(int,\ int,\ java.lang.Class[])
 comment3.params=
-comment3.target=void\ calculateRayRanged()
+comment3.target=void\ collisions()
 comment4.params=
 comment4.target=boolean\ runDetectionDown()
 comment5.params=

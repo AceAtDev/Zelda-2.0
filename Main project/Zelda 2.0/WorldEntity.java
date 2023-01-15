@@ -11,15 +11,26 @@ public class WorldEntity extends Actor
     
     private int width = 5;
     private int height = 5;
+    boolean isPlayer = false;
     
     protected Vector2D movementRaw = new Vector2D(); // Used externally
     protected double currentHori = 0;
     protected double currentVert = 0;
     
     private static Class[] blockers = null;
+    private static Class[] toBattle = null;
     
     private RayRange raysUp, raysRight, raysDown, raysLeft;
     private boolean colUp, colRight, colDown, colLeft;
+    
+    public WorldEntity(int width, int height, Class[] blockers, boolean isPlayer, Class[] toBattle)
+    {
+        this.width = width;
+        this.height = height;
+        this.blockers = blockers;
+        this.isPlayer = isPlayer;
+        this.toBattle = toBattle;
+    }
     
     public WorldEntity(int width, int height, Class[] blockers)
     {
@@ -32,7 +43,6 @@ public class WorldEntity extends Actor
     
     public void collisions()
     {
-        calculateRayRanged();
         
         colUp = runDetectionUp();
         colDown = runDetectionDown();
@@ -47,7 +57,7 @@ public class WorldEntity extends Actor
         }
         // Vertical movement
         // FOR SOME REASON THE UP VALUE IS NEGTIVE AND DOWN IS POSITIVE, 
-        // I ASSUME THIS WORLD IS RUNNING ON A 2D ARRAY WHCIH EXPLINES THIS NON-SANCE
+        // I ASSUME THIS WORLD IS RUNNING ON A 2D ARRAY WHCIH EXPLINES A LOT >:(
         if(currentVert < 0 && colUp || currentVert > 0 && colDown)
         { 
             currentVert = 0; 
@@ -58,17 +68,7 @@ public class WorldEntity extends Actor
         
     }
     
-    private void calculateRayRanged()
-    {
-        Bounds b = new Bounds(getX(), getY(), width, height);
-        
-        raysUp = new RayRange(b.minX() , b.minY() - 5, b.maxX(), b.minY() - 5, new Vector2D(0,1));
-        raysDown = new RayRange(b.minX(), b.maxY(), b.maxX(), b.maxY(), new Vector2D(0,-1));
-        raysLeft = new RayRange(b.minX(), b.minY(), b.minX(), b.maxY(), new Vector2D(-1,0));
-        raysRight = new RayRange(b.maxX(), b.minY(), b.maxX(), b.maxY(), new Vector2D(1,0));
-    }
     
-    //Class[] objects = {Wall.class,Block.class,Lava.class,Water.class};
     private boolean runDetectionDown()
     {
         for(Class checker: blockers)
@@ -85,7 +85,7 @@ public class WorldEntity extends Actor
     {
         for(Class checker: blockers)
         {
-            Actor object = getOneObjectAtOffset(0, getImage().getHeight()/2 - 4, checker);
+            Actor object = getOneObjectAtOffset(0, -getImage().getHeight()/2 - 2, checker);
             if(object != null)
             {
                 return true;
@@ -95,30 +95,30 @@ public class WorldEntity extends Actor
     }
     private boolean runDetectionRight()
     {
-        for(Class c: blockers)
+        for(Class checker: blockers)
         {
-            List<Actor> bs = getIntersectingObjects(c);
-            for(Actor b: bs)
+            Actor object = getOneObjectAtOffset(getImage().getWidth()/2+2, 0, checker);
+            if(object != null)
             {
-                if(b.getX() > this.getX())
-                    return true;
+                return true;
             }
         }
         return false;
     }
     private boolean runDetectionLeft()
     {
-        for(Class c: blockers)
+        for(Class checker: blockers)
         {
-            List<Actor> bs = getIntersectingObjects(c);
-            for(Actor b: bs)
+            Actor object = getOneObjectAtOffset(-getImage().getWidth()/2-3, 0, checker);
+            if(object != null)
             {
-                if(b.getX() < this.getX())
-                    return true;
+                return true;
             }
         }
         return false;
     }
+    
+    
     
     //Getters//
     public int xPos()

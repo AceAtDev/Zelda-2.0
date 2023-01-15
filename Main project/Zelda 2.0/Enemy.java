@@ -106,7 +106,7 @@ public class Enemy extends WorldEntity
         
     }
     
-    Class[] objects = {Wall.class,Block.class,Lava.class,Water.class,WorldEntity.class};
+    Class[] objects = {Wall.class,Block.class,Lava.class,Water.class};
     int collisionAmount=0;
     
     boolean isColliding = false;
