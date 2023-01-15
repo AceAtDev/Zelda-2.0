@@ -1,4 +1,10 @@
 #BlueJ class context
 comment0.target=BattleManager
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ BattleManager\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-numComments=1
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ BattleManager\ here.\r\n\ \r\n\ System\ limit\ is\ that\ it\ will\ only\ work\ with\ and\ only\ two\ worlds\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ BattleStart()
+comment3.params=
+comment3.target=void\ BattleEnd()
+numComments=4

@@ -17,7 +17,8 @@ public class RandomlyGeneratingDungeon extends World
         paintOrder();
         generateDungeon();
         dungeonObjects();
-        //clearDungeonRoom();
+        clearDungeonRoom();
+
     }
     
     Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class};
@@ -113,7 +114,7 @@ public class RandomlyGeneratingDungeon extends World
     public void paintOrder(){ // Order of displaying classes ( Makes the Transition from room to room smoother
         setPaintOrder(Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
     }
-    
+
     public void act(){
         paintOrder();
         if (tileset==0)setBackground(new GreenfootImage("GreenTile.png"));
@@ -144,6 +145,14 @@ public class RandomlyGeneratingDungeon extends World
         
         
     }
+    
+    // if one of the object collides with other, then the battle will start
+    Class[] battleStarters = {Link.class, Enemy.class};
+    private void detectedBattle()
+    {
+        //if(){}
+    }
+    
     
     /**
     Tile Sets
