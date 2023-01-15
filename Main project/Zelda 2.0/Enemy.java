@@ -11,7 +11,7 @@ import java.awt.Rectangle;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy extends Entity
+public class Enemy extends WorldEntity
 {
     protected String name = "";
     protected int hp = 3;
@@ -22,16 +22,17 @@ public class Enemy extends Entity
     private int ymove = 1;
     
     
+    static Class[] blocks = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
     public Enemy(int hp, int damage, int speed)
     {
-        super(10,10);
+        super(10,10, blocks);
         this.hp = hp;
         this.damage = damage;
         this.speed = speed;
     }
     
     public Enemy(String name ,int hp, int damage, int speed){ 
-        super(10,10);
+        super(10,10, blocks);
         this.name = name;
         this.hp = hp;
         this.damage = damage;
@@ -105,7 +106,7 @@ public class Enemy extends Entity
         
     }
     
-    Class[] objects = {Wall.class,Block.class,Lava.class,Water.class, Entity.class};
+    Class[] objects = {Wall.class,Block.class,Lava.class,Water.class,WorldEntity.class};
     int collisionAmount=0;
     
     boolean isColliding = false;

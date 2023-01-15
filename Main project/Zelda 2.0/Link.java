@@ -1,8 +1,8 @@
 import greenfoot.*;
 import java.awt.Rectangle;
-import java.util.Vector;
+//import java.util.Vector;
 
-public class Link extends Player
+public class Link extends WorldEntity
 {
     int xmove=0;
     int xmove2=0;
@@ -10,6 +10,13 @@ public class Link extends Player
     int ymove2=0;
     int scroll=0;
     int scrollTimer=0;
+    
+    private static Class[] blockers = {Wall.class,Block.class,Lava.class,Water.class};
+    
+    public Link()
+    {
+        super(40,40, blockers);
+    }
     
     public void act() // Void Update
     {
@@ -57,6 +64,7 @@ public class Link extends Player
         }
     }
     private int speed = 3;
+    Bounds b = new Bounds();
     public void basicMoving()
     {
         if (scroll!=0)return;
@@ -72,17 +80,18 @@ public class Link extends Player
         if (! Greenfoot.isKeyDown("w")&&! Greenfoot.isKeyDown("s")){currentVert = 0;}
         collisions();
         
-        /*
-        Bounds b = new Bounds(getX(), getY(), 20, 25);
+        
+        b = new Bounds(getX(), getY(), 40,40);
+        
         int t = 100;
         getWorld().getBackground().drawLine(b.minX() + t, b.minY() + t, b.maxX() + t, b.minY() + t);
         getWorld().getBackground().drawLine(b.minX() + t, b.maxY() + t, b.maxX() + t, b.maxY() + t);
         getWorld().getBackground().drawLine(b.minX() + t, b.minY() + t, b.minX() + t, b.maxY() + t);
         getWorld().getBackground().drawLine(b.maxX() + t, b.minY() + t, b.maxX() + t, b.maxY() + t);
-        */
+        
         
         movementRaw = new Vector2D(currentHori, currentVert);
-        //System.out.println(movementRaw.x() + "," + movementRaw.y());
+        System.out.println(movementRaw.x() + "," + movementRaw.y());
     }
     
     static String direction="up";

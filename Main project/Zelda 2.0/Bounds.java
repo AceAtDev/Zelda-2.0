@@ -23,6 +23,14 @@ public class Bounds
         rect.height = height;
     }
     
+    public Bounds()
+    {
+        rect.x = 5;
+        rect.y = 5;
+        rect.width = 5;
+        rect.height = 5;
+    }
+    
     
     
     public Vector2D center()

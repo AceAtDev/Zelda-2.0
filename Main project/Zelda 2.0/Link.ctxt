@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=Link
 comment1.params=
-comment1.target=void\ act()
+comment1.target=Link()
 comment2.params=
-comment2.target=void\ scroll()
+comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ basicMoving()
+comment3.target=void\ scroll()
 comment4.params=
-comment4.target=void\ graphics()
+comment4.target=void\ basicMoving()
 comment5.params=
-comment5.target=void\ collisionDetection()
-numComments=6
+comment5.target=void\ graphics()
+comment6.params=
+comment6.target=void\ collisionDetection()
+numComments=7

@@ -17,6 +17,7 @@ public class RandomlyGeneratingDungeon extends World
         paintOrder();
         generateDungeon();
         dungeonObjects();
+        clearDungeonRoom();
     }
     
     Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class};

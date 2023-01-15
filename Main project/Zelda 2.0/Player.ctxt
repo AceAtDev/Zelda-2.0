@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Player
-comment0.text=\r\n\ This\ class\ will\ hold\ the\ player\ info,\ such\ as\ states\ (HP,\ Movement\ Speed,\ ETC...)\r\n\ \r\n\ \r\n\ @author\ (Mohamed\ E)\ \r\n\ @version\ (1/12/23)\r\n
-comment1.params=
-comment1.target=Player()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Player\r\n
-numComments=2
