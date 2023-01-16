@@ -108,4 +108,5 @@ public class Block extends Actor
         getWorld().addObject(new Key(),x*40+20,getWorld().getHeight()-y*40-20);
         event=0;
     }
+    
 }
