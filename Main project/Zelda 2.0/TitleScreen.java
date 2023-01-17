@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitleScreen extends World
 {
-int gameState = 0;
+
     /**
      * Constructor for objects of class TitleScreen.
      * 
@@ -18,17 +18,17 @@ int gameState = 0;
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         
         super(680, 480, 1); 
-        Greenfoot.start();
+       prepareTitleScreen();
         
     }
-    public void Act(){
-        if(gameState == 0){
-            Greenfoot.setWorld(new TitleScreen());
-        }
-           
-        if(Greenfoot.mouseClicked(this)){
-            Greenfoot.setWorld(new RandomlyGeneratingDungeon());
-        }
+    private void prepareTitleScreen(){
+        TitleLetters titleFont = new TitleLetters(); 
+        addObject(titleFont,340,240);
+    }
+    public void Actor(){
+      if(Greenfoot.isKeyDown("space")){ 
+          Greenfoot.setWorld(new RandomlyGeneratingDungeon());
+      }
         
     }
 }
