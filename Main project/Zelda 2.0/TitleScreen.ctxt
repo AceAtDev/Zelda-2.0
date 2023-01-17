@@ -7,5 +7,5 @@ comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ TitleScreen.\r\n\ \r\n
 comment2.params=
 comment2.target=void\ prepareTitleScreen()
 comment3.params=
-comment3.target=void\ Actor()
+comment3.target=void\ act()
 numComments=4
