@@ -8,10 +8,10 @@ public class Vector2D
 {
     // instance variables - replace the example below with your own
 
-    private double x = 0;
-    private double y = 0;
+    private int x = 0;
+    private int y = 0;
     
-    public Vector2D(double x, double y)
+    public Vector2D(int x, int y)
     {
         this.x = x;
         this.y = y;
@@ -24,12 +24,12 @@ public class Vector2D
     }
     
     
-    public double x()// getter; returns x
+    public int x()// getter; returns x
     {
         return x;
     }
     
-    public double y() // getter; returns y
+    public int y() // getter; returns y
     {
         return y;
     }

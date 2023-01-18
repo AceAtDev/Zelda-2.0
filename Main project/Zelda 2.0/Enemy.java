@@ -11,6 +11,8 @@ import java.awt.Rectangle;
  * @author (your name) 
  * @version (a version number or a date)
  */
+
+
 public class Enemy extends WorldEntity
 {
     protected String name = "";
@@ -23,9 +25,11 @@ public class Enemy extends WorldEntity
     
     
     static Class[] blocks = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
+    static Class[] opponent = new Class[]{Link.class};
+
     public Enemy(int hp, int damage, int speed)
     {
-        super(10,10, blocks);
+        super(10,10, blocks, true, opponent);
         this.hp = hp;
         this.damage = damage;
         this.speed = speed;
@@ -41,7 +45,8 @@ public class Enemy extends WorldEntity
     
     public void act()
     {
-        collisionDetection();
+        //collisionDetection();
+        collisions();
         patrol();
     }
     
@@ -69,18 +74,16 @@ public class Enemy extends WorldEntity
             speed = -speed;
             movingTimer += 2/*rand.nextInt(3)*/;
         }
-        if(isColliding)
+        if(getCollidingWithEnemy())
         {
-            speed = -speed;
-            return;
+            
         }
         else
         {
             movingTimer -= 0.04;
-            if(!isColliding)
-            {
-                move((xmove*speed)/*+ymove*/);
-            }
+            
+            setLocation(getX()+speed, getY());
+            
             
         }
         
@@ -92,7 +95,6 @@ public class Enemy extends WorldEntity
     // Call this when 
     public void inRange()
     {
-        
         
         if(caughtPlayer) // Enemy knows if caught player by colliding with the player; check enemy collisions!
         {
@@ -107,75 +109,8 @@ public class Enemy extends WorldEntity
     }
     
     Class[] objects = {Wall.class,Block.class,Lava.class,Water.class};
-    int collisionAmount=0;
+    int collisionAmount=0;    
     
-    boolean isColliding = false;
-    Rectangle hitBox = new Rectangle();
-    public void collisionDetection()
-    {
-        while (collisionAmount<objects.length){
-            //Down check
-            for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i+=4){
-                Actor object = getOneObjectAtOffset(i, getImage().getHeight()/2+3,objects[collisionAmount]);
-                if (object!=null&&ymove>0)
-                {
-                    i=-getImage().getWidth()/2+2; 
-                    //ymove -= ymove; 
-                    isColliding = true;
-                    //setLocation(getX(),
-                                //object.getY()-object.getImage().getHeight()/2-getImage().getHeight()/2);
-                }
-            }
-            //System.out.println("Down: " + 20);
-
-            //Up check
-            for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i+=4){
-                Actor object = getOneObjectAtOffset(i, -getImage().getHeight()/2-3,objects[collisionAmount]);
-                
-                if (object!=null&&ymove<0)
-                {
-                    i=-getImage().getWidth()/2+2; 
-                    //ymove = -ymove; 
-                    isColliding = true;
-                    //setLocation(getX(), 
-                                //object.getY()+object.getImage().getHeight()/2+getImage().getHeight()/2);
-                }
-            }
-            //System.out.println("Up: " + 20);
-            //Left check
-            for (int i=-getImage().getHeight()/2+2; i<getImage().getHeight()/2-2; i+=4){
-                Actor object = getOneObjectAtOffset(0-getImage().getWidth()/2-3, i,objects[collisionAmount]);
-                if (object!=null&&xmove<0)
-                {
-                    i=-getImage().getHeight()/2+2; 
-                    //xmove = -xmove; // -3 - -3 ; don't move
-                    isColliding = true;
-                    //setLocation(object.getX()+object.getImage().getWidth()/2+getImage().getWidth()/2, 
-                                //getY());
-                    
-                }
-            }
-            //System.out.println("Left: " + -getImage().getWidth()/horizontalCollisionOffset);
-
-            //Right check
-            for (int i=-getImage().getHeight()/2+2; i<getImage().getHeight()/2-3; i+=4){
-                Actor object = getOneObjectAtOffset(getImage().getWidth()/2+2, i,objects[collisionAmount]);
-                if (object!=null&&xmove>0)
-                {
-                    i=-getImage().getHeight()/2+2;
-                    //xmove = -xmove; 
-                    isColliding = true;
-                    //setLocation(object.getX()-object.getImage().getWidth()/2-getImage().getWidth()/2,
-                                //getY());
-                }
-            }
-            //System.out.println("Right: " + getImage().getWidth()/horizontalCollisionOffset);
-
-            collisionAmount++;
-        }
-            collisionAmount=0;
-            
-            
-    }
+    
      
 }

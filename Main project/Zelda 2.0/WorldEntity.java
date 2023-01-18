@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
+import greenfoot.Actor;
 
 /**
  * @author (your name) 
@@ -11,24 +12,27 @@ public class WorldEntity extends Actor
     
     private int width = 5;
     private int height = 5;
-    boolean isPlayer = false;
+    
+    private boolean canBattle = false;
+    private boolean isCollWithEnemy = false; // Is the player colliding with an enemy
     
     protected Vector2D movementRaw = new Vector2D(); // Used externally
-    protected double currentHori = 0;
-    protected double currentVert = 0;
+    protected int currentHori = 0;
+    protected int currentVert = 0;
     
     private static Class[] blockers = null;
     private static Class[] toBattle = null;
     
-    private RayRange raysUp, raysRight, raysDown, raysLeft;
+    private Actor hitEnemy = null;
+    //private RayRange raysUp, raysRight, raysDown, raysLeft;
     private boolean colUp, colRight, colDown, colLeft;
     
-    public WorldEntity(int width, int height, Class[] blockers, boolean isPlayer, Class[] toBattle)
+    public WorldEntity(int width, int height, Class[] blockers, boolean canBattle, Class[] toBattle)
     {
         this.width = width;
         this.height = height;
         this.blockers = blockers;
-        this.isPlayer = isPlayer;
+        this.canBattle = canBattle;
         this.toBattle = toBattle;
     }
     
@@ -50,6 +54,9 @@ public class WorldEntity extends Actor
         colLeft = runDetectionLeft();
         
         
+        hitingAnEnemy();
+        
+        
         // Horizontal movement
         if(currentHori > 0 && colRight || currentHori < 0 && colLeft)
         {
@@ -66,6 +73,21 @@ public class WorldEntity extends Actor
         
         
         
+    }
+    
+    private void hitingAnEnemy()
+    {
+        if(canBattle)
+        {
+            if((checkEnemyDown() || checkEnemyUp() || checkEnemyRight() || checkEnemyLeft()))
+            {
+                isCollWithEnemy = true;
+            }
+        }
+        else
+        {
+            isCollWithEnemy = false;
+        }
     }
     
     
@@ -109,7 +131,7 @@ public class WorldEntity extends Actor
     {
         for(Class checker: blockers)
         {
-            Actor object = getOneObjectAtOffset(-getImage().getWidth()/2-3, 0, checker);
+            Actor object = getOneObjectAtOffset(-getImage().getWidth()/2-2, 0, checker);
             if(object != null)
             {
                 return true;
@@ -119,8 +141,74 @@ public class WorldEntity extends Actor
     }
     
     
+    ///////// For canBattle /////////
+    private boolean checkEnemyDown()
+    {
+        for(Class checker: toBattle)
+        {
+            Actor object = getOneObjectAtOffset(0, getImage().getHeight()/2 + 3, checker);
+            if(object != null)
+            {
+                hitEnemy = object;
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean checkEnemyUp()
+    {
+        for(Class checker: toBattle)
+        {
+            Actor object = getOneObjectAtOffset(0, -getImage().getHeight()/2 - 2, checker);
+            if(object != null)
+            {
+                hitEnemy = object;
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean checkEnemyRight()
+    {
+        for(Class checker: toBattle)
+        {
+            Actor object = getOneObjectAtOffset(getImage().getWidth()/2+2, 0, checker);
+            if(object != null)
+            {
+                hitEnemy = object;
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean checkEnemyLeft()
+    {
+        for(Class checker: toBattle)
+        {
+            Actor object = getOneObjectAtOffset(-getImage().getWidth()/2-2, 0, checker);
+            if(object != null)
+            {
+                hitEnemy = object;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public Actor getHitEnemy()
+    {
+        return hitEnemy;
+    }
+    
+    
     
     //Getters//
+    
+    public boolean getCollidingWithEnemy()
+    {
+        return isCollWithEnemy;
+    }
+    
     public int xPos()
     {
         return getX();
@@ -136,7 +224,7 @@ public class WorldEntity extends Actor
         return movementRaw;
     }
     
-    public Vector2D setMovement(double x, double y)
+    public Vector2D setMovement(int x, int y)
     {
         return new Vector2D(x,y);
     }
