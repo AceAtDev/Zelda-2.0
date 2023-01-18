@@ -11,6 +11,7 @@ import java.awt.Rectangle;
  * @author (your name) 
  * @version (a version number or a date)
  */
+
 public class Enemy extends WorldEntity
 {
     protected String name = "";
