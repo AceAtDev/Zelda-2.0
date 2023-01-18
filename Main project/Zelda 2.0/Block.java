@@ -37,7 +37,9 @@ public class Block extends Actor
         }
         //This will activate an event if one has been specified
         if (move==false&&moves==0&&event>0){
-            if (event==1){key();}
+            if (event==1){key();
+            
+                }if(event == 2){openDoor();}
         }
     }
     public void collisionDetection()
@@ -68,56 +70,44 @@ public class Block extends Actor
         Class[] blocks = {Link.class,Wall.class,Block.class,Enemy.class}; //All classes in this array can prevent the block from moving
         Class[] specialBlocks = {Lava.class,Water.class}; // These Classes can interact With Blocks or are special in Some Way
       
-        while (collisionAmount<blocks.length ){
+          while (collisionAmount<blocks.length){
             //Down check
             for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i++){
                 Actor object = getOneObjectAtOffset(i, getImage().getHeight()/2+20,blocks[collisionAmount]);
-                if (object!=null&&ymove<0){negateMoving();}
-               
+                if (object!=null&&ymove>0){negateMoving();}
             }
             //Up check
             for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i++){
                 Actor object = getOneObjectAtOffset(i, -getImage().getHeight()/2-20,blocks[collisionAmount]);
                 if (object!=null&&ymove<0){negateMoving();}
-                
             }
             //Left check
             for (int i=-getImage().getHeight()/2+2; i<getImage().getHeight()/2-2; i++){
                 Actor object = getOneObjectAtOffset(-getImage().getWidth()/2-20, i,blocks[collisionAmount]);
-                if (object!=null&&ymove<0){negateMoving();}
+                if (object!=null&&xmove<0){negateMoving();}
             }
             //Right check
             for (int i=-getImage().getHeight()/2+2; i<getImage().getHeight()/2-2; i++){
                 Actor object = getOneObjectAtOffset(getImage().getWidth()/2+20, i,blocks[collisionAmount]);
-               
-                if (object!=null&&ymove<0){negateMoving();}
-                
+                if (object!=null&&xmove>0){negateMoving();}
             }
             collisionAmount++;
         }
-          while(collisionAmount<specialBlocks.length){
-            // Down Check
-             for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i++){
-                 Actor specialObject = getOneObjectAtOffset(i, getImage().getHeight()/2+20,blocks[collisionAmount]);
-                  if(specialObject!=null&&ymove<0 ){ getWorld().removeObject(this); return;}
+         
+         // Collision for Blocks and Water/Lava
+                Actor lavaCollideBlock = getOneObjectAtOffset(0,0,Lava.class);
+                Actor waterCollideBlock = getOneObjectAtOffset(0,0,Water.class);
+                 if(lavaCollideBlock!= null){ // Collision for the Lava and Block
+                getWorld().removeObject(this);
+                getWorld().removeObject(lavaCollideBlock);
+                 return;
+                }if(waterCollideBlock!=null){ // Collision for the Water and Block
+                getWorld().removeObject(this);
+                getWorld().removeObject(waterCollideBlock);
+                 return;
                 }
-            // Up Check
-                 for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i++){
-                Actor specialObject = getOneObjectAtOffset(i, -getImage().getHeight()/2-20,blocks[collisionAmount]);
-                if(specialObject!=null&&ymove<0 ){ getWorld().removeObject(this); return;}
-                }
-            // Left Check
-                 for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i++){
-                 Actor specialObject = getOneObjectAtOffset( -getImage().getHeight()/2-20,i,blocks[collisionAmount]);
-                 if(specialObject!=null&&ymove<0 ){ getWorld().removeObject(this); return;}
-                }
-            // Right Check
-                 for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i++){
-                 Actor specialObject = getOneObjectAtOffset(getImage().getHeight()/2+20,i,blocks[collisionAmount]);
-                 if(specialObject!=null&&ymove<0 ){ getWorld().removeObject(this); return;}
-                }
-                collisionAmount++;
-        }
+                
+               
        
         if (xmove!=0||ymove!=0){move=false; moves=20;} //Moves is the amount of times the block will move before stopping
     }
@@ -126,7 +116,9 @@ public class Block extends Actor
         xmove=0;
         ymove=0;
     }
-    
+    public void openDoor(){
+       
+    }
     public void key(){
         int x=0;
         int y=0;

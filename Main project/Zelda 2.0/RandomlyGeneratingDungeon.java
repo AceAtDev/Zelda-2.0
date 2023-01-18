@@ -131,7 +131,7 @@ public class RandomlyGeneratingDungeon extends World
     public void dungeonObjects(){
         // Room One Objects
         block(4,6,true,-1);
-        block(3,6,true,1,2);
+        block(13,7,true,1,2);
         block(5,6,true,-1);
         block(4,7,true,-1);
         block(4,5,true,-1);
