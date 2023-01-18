@@ -1,5 +1,7 @@
 import greenfoot.*;
 import java.awt.Rectangle;
+import greenfoot.Actor;
+
 //import java.util.Vector;
 
 //import java.util.Vector;
@@ -13,8 +15,12 @@ public class Link extends WorldEntity
     int scroll=0;
     int scrollTimer=0;
     
-    private static Class[] blockers = {Wall.class,Block.class,Lava.class,Water.class};
-    private static Class[] toBattle = {Enemy.class};
+    
+    private static Class[] blockers = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
+    private static Class[] toBattle = new Class[]{Enemy.class};
+    
+    public Actor enemyTofight = null;
+    
     
     public Link()
     {
@@ -23,15 +29,18 @@ public class Link extends WorldEntity
     
     public void act() // Void Update
     {
+        
         //Methods
         try{
             ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).setLocation(getX(),getY());
         }catch(IndexOutOfBoundsException e){}
         if (scroll==0){
-            
             basicMoving();
             
-            //System.out.println(currentHori);
+            //System.out.println();
+            
+            
+            
             graphics();
             //collisionDetection();
             
@@ -59,21 +68,27 @@ public class Link extends WorldEntity
             if (scroll==4){xmove=0; ymove=12; ((RandomlyGeneratingDungeon)getWorld()).scroll("up");}
         }else if(scrollTimer>30){
             setLocation(getX()+xmove,getY()+ymove);
+            //if (scroll==5){scroll=0;}
             if (scroll==1&&getX()<=30){scroll=0;}
             if (scroll==2&&getX()>=getWorld().getWidth()-30){scroll=0;}
             if (scroll==3&&getY()<=30){scroll=0;}
             if (scroll==4&&getY()>=getWorld().getHeight()-30){scroll=0;}
-            if (scroll==0){scrollTimer=0; ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeIn();}
+            if (scroll==0){
+                scrollTimer=0;
+                ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeIn();
+            }
         }
     }
     private int speed = 3;
-    Bounds b = new Bounds();
+    //Bounds b = new Bounds();
     public void basicMoving()
     {
         if (scroll!=0)return;
          //Rate of cells that will be traveled; Player speed
         //Change movement
         //System.out.println("X: " + xmove + ", Y: " + ymove);
+        if(!canMove){ return; }
+        
         
         if (Greenfoot.isKeyDown("a")){currentHori = -speed; setRotation(270);}
         if (Greenfoot.isKeyDown("d")){currentHori = speed; setRotation(90);}
@@ -84,6 +99,16 @@ public class Link extends WorldEntity
         collisions();
         
         
+        
+        System.out.println(getCollidingWithEnemy());
+
+        
+        if(getCollidingWithEnemy()){// stop the player from moving
+            currentHori = 0; 
+            currentVert = 0;
+            ((BattleManager)getWorld().getObjects(BattleManager.class).get(0)).battleStart();
+        }
+        
         movementRaw = new Vector2D(currentHori, currentVert);
     }
     
@@ -92,73 +117,31 @@ public class Link extends WorldEntity
     {
         
     }
-    Class[] objects = {Wall.class,Block.class,Lava.class,Water.class, Enemy.class};
-    int collisionAmount=0;
-    //int horizontalCollisionOffset = 2;
     
-    //public Rectangle solidArea = new Rectangle(5,10,30,30);
-    public void collisionDetection()
+    public Enemy getHitEnemy()
     {
-        while (collisionAmount<objects.length){
-            //Down check
-            for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i+=4){
-                Actor object = getOneObjectAtOffset(i, getImage().getHeight()/2+3,objects[collisionAmount]);
-                if (object!=null&&ymove>0)
-                {
-                    i=-getImage().getWidth()/2+2; 
-                    ymove -= ymove; 
-                    
-                    //setLocation(getX(),
-                                //object.getY()-object.getImage().getHeight()/2-getImage().getHeight()/2);
-                }
-            }
-            //System.out.println("Down: " + 20);
-
-            //Up check
-            for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i+=4){
-                Actor object = getOneObjectAtOffset(i, -getImage().getHeight()/2-3,objects[collisionAmount]);
-                
-                if (object!=null&&ymove<0)
-                {
-                    i=-getImage().getWidth()/2+2; 
-                    ymove -= ymove; 
-                    //setLocation(getX(), 
-                                //object.getY()+object.getImage().getHeight()/2+getImage().getHeight()/2);
-                }
-            }
-            //System.out.println("Up: " + 20);
-            //Left check
-            for (int i=-getImage().getHeight()/2+2; i<getImage().getHeight()/2-2; i+=4){
-                Actor object = getOneObjectAtOffset(0-getImage().getWidth()/2-3, i,objects[collisionAmount]);
-                if (object!=null&&xmove<0)
-                {
-                    i=-getImage().getHeight()/2+2; 
-                    xmove -= xmove; // -3 - -3 ; don't move 
-                    //setLocation(object.getX()+object.getImage().getWidth()/2+getImage().getWidth()/2, 
-                                //getY());
-                    
-                }
-            }
-            //System.out.println("Left: " + -getImage().getWidth()/horizontalCollisionOffset);
-
-            //Right check
-            for (int i=-getImage().getHeight()/2+2; i<getImage().getHeight()/2-3; i+=4){
-                Actor object = getOneObjectAtOffset(getImage().getWidth()/2+2, i,objects[collisionAmount]);
-                if (object!=null&&xmove>0)
-                {
-                    i=-getImage().getHeight()/2+2;
-                    xmove -= xmove; 
-                    //setLocation(object.getX()-object.getImage().getWidth()/2-getImage().getWidth()/2,
-                                //getY());
-                }
-            }
-            //System.out.println("Right: " + getImage().getWidth()/horizontalCollisionOffset);
-
-            collisionAmount++;
-        }
-            collisionAmount=0;
-            
-            
+        return getHitEnemy();
     }
+    
+    
+    boolean canMove = true;
+    public void inBattle()
+    {
+        if(canMove)
+        {
+            canMove = false;
+        }
+    }
+    
+    public void endedBattle()
+    {
+        if(!canMove)
+        {
+            canMove = true;
+        }
+    }
+    
+    
+    
     
 }
