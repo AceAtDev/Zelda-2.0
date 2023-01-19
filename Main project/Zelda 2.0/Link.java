@@ -15,9 +15,11 @@ public class Link extends WorldEntity
     int scroll=0;
     int scrollTimer=0;
     
+    private BattleManager battleManager = null;
+    
     
     private static Class[] blockers = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
-    private static Class[] toBattle = new Class[]{Enemy.class};
+    private static Class toBattle = Enemy.class;
     
     public Actor enemyTofight = null;
     
@@ -36,10 +38,6 @@ public class Link extends WorldEntity
         }catch(IndexOutOfBoundsException e){}
         if (scroll==0){
             basicMoving();
-            
-            //System.out.println();
-            
-            
             
             graphics();
             //collisionDetection();
@@ -84,10 +82,9 @@ public class Link extends WorldEntity
     public void basicMoving()
     {
         if (scroll!=0)return;
-         //Rate of cells that will be traveled; Player speed
+        //Rate of cells that will be traveled; Player speed
         //Change movement
-        //System.out.println("X: " + xmove + ", Y: " + ymove);
-        if(!canMove){ return; }
+        if(!canMove){ return; } // Don't move the player
         
         
         if (Greenfoot.isKeyDown("a")){currentHori = -speed; setRotation(270);}
@@ -100,13 +97,24 @@ public class Link extends WorldEntity
         
         
         
-        System.out.println(getCollidingWithEnemy());
-
-        
-        if(getCollidingWithEnemy()){// stop the player from moving
+        if(isCollWithEnemy){// stop the player from moving
             currentHori = 0; 
             currentVert = 0;
-            ((BattleManager)getWorld().getObjects(BattleManager.class).get(0)).battleStart();
+            
+            if(battleManager == null)
+            {
+                battleManager = new BattleManager(
+                (((RandomlyGeneratingDungeon)getWorld()).getWidth()/2) - 100,
+                ((RandomlyGeneratingDungeon)getWorld()).getHeight()/2,
+                ((RandomlyGeneratingDungeon)getWorld()).getWidth()/2 + 200,
+                ((RandomlyGeneratingDungeon)getWorld()).getHeight()/2,
+                this
+                );
+            }
+            
+            setRotation(90);
+            battleManager.battleStart();
+            
         }
         
         movementRaw = new Vector2D(currentHori, currentVert);
@@ -120,28 +128,29 @@ public class Link extends WorldEntity
     
     public Enemy getHitEnemy()
     {
-        return getHitEnemy();
+        return hitEnemy;
     }
     
     
     boolean canMove = true;
     public void inBattle()
     {
-        if(canMove)
-        {
-            canMove = false;
-        }
+        
+        canMove = false;
+        
     }
     
     public void endedBattle()
     {
-        if(!canMove)
-        {
-            canMove = true;
-        }
+        
+        canMove = true;
+        
     }
     
     
+    public void attackEnemy()
+    {
     
+    }
     
 }

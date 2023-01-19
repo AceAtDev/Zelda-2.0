@@ -14,20 +14,20 @@ public class WorldEntity extends Actor
     private int height = 5;
     
     private boolean canBattle = false;
-    private boolean isCollWithEnemy = false; // Is the player colliding with an enemy
+    protected boolean isCollWithEnemy = false; // Is the player colliding with an enemy
     
     protected Vector2D movementRaw = new Vector2D(); // Used externally
     protected int currentHori = 0;
     protected int currentVert = 0;
     
     private static Class[] blockers = null;
-    private static Class[] toBattle = null;
+    private static Class toBattle = null;
     
-    private Actor hitEnemy = null;
+    protected Enemy hitEnemy = null;
     //private RayRange raysUp, raysRight, raysDown, raysLeft;
     private boolean colUp, colRight, colDown, colLeft;
     
-    public WorldEntity(int width, int height, Class[] blockers, boolean canBattle, Class[] toBattle)
+    public WorldEntity(int width, int height, Class[] blockers, boolean canBattle, Class toBattle)
     {
         this.width = width;
         this.height = height;
@@ -54,7 +54,7 @@ public class WorldEntity extends Actor
         colLeft = runDetectionLeft();
         
         
-        hitingAnEnemy();
+        hitEnemy = checkForHitEnemy();
         
         
         // Horizontal movement
@@ -77,17 +77,7 @@ public class WorldEntity extends Actor
     
     private void hitingAnEnemy()
     {
-        if(canBattle)
-        {
-            if((checkEnemyDown() || checkEnemyUp() || checkEnemyRight() || checkEnemyLeft()))
-            {
-                isCollWithEnemy = true;
-            }
-        }
-        else
-        {
-            isCollWithEnemy = false;
-        }
+        
     }
     
     
@@ -142,60 +132,30 @@ public class WorldEntity extends Actor
     
     
     ///////// For canBattle /////////
-    private boolean checkEnemyDown()
+    private Enemy checkForHitEnemy()
     {
-        for(Class checker: toBattle)
+        if(!canBattle){return null;} // don't check for the enemy
+        
+        
+        List<Enemy> enemies = getObjectsInRange(20, toBattle);
+
+        if(enemies.size() > 0)
         {
-            Actor object = getOneObjectAtOffset(0, getImage().getHeight()/2 + 3, checker);
-            if(object != null)
-            {
-                hitEnemy = object;
-                return true;
-            }
-        }
-        return false;
-    }
-    private boolean checkEnemyUp()
-    {
-        for(Class checker: toBattle)
+            isCollWithEnemy = isTouching(Enemy.class);
+            //System.out.println(enemies.get(0));
+            return enemies.get(0);
+
+        }else
         {
-            Actor object = getOneObjectAtOffset(0, -getImage().getHeight()/2 - 2, checker);
-            if(object != null)
-            {
-                hitEnemy = object;
-                return true;
-            }
+            isCollWithEnemy = false;
         }
-        return false;
-    }
-    private boolean checkEnemyRight()
-    {
-        for(Class checker: toBattle)
-        {
-            Actor object = getOneObjectAtOffset(getImage().getWidth()/2+2, 0, checker);
-            if(object != null)
-            {
-                hitEnemy = object;
-                return true;
-            }
-        }
-        return false;
-    }
-    private boolean checkEnemyLeft()
-    {
-        for(Class checker: toBattle)
-        {
-            Actor object = getOneObjectAtOffset(-getImage().getWidth()/2-2, 0, checker);
-            if(object != null)
-            {
-                hitEnemy = object;
-                return true;
-            }
-        }
-        return false;
+
+
+        return null;
     }
     
-    public Actor getHitEnemy()
+    
+    public Enemy getHitEnemy()
     {
         return hitEnemy;
     }

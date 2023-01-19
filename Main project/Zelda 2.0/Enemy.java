@@ -20,8 +20,7 @@ public class Enemy extends WorldEntity
     protected int damage = 1;
     protected int speed = 1;
     
-    private int xmove = 1;
-    private int ymove = 1;
+    
     
     
     static Class[] blocks = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
@@ -29,7 +28,7 @@ public class Enemy extends WorldEntity
 
     public Enemy(int hp, int damage, int speed)
     {
-        super(10,10, blocks, true, opponent);
+        super(10,10, blocks);
         this.hp = hp;
         this.damage = damage;
         this.speed = speed;
@@ -45,7 +44,8 @@ public class Enemy extends WorldEntity
     
     public void act()
     {
-        //collisionDetection();
+        
+        movementUpdater();
         collisions();
         patrol();
     }
@@ -74,32 +74,30 @@ public class Enemy extends WorldEntity
             speed = -speed;
             movingTimer += 2/*rand.nextInt(3)*/;
         }
-        if(getCollidingWithEnemy())
-        {
-            
-        }
         else
         {
             movingTimer -= 0.04;
             
             setLocation(getX()+speed, getY());
-            
-            
         }
         
     }
     
     
-    boolean caughtPlayer = false;
     double losingRange = 5; // the limit range that the enemy can follow the player while in range
     // Call this when 
     public void inRange()
     {
         
-        if(caughtPlayer) // Enemy knows if caught player by colliding with the player; check enemy collisions!
-        {
-            System.out.println("Enemy caught the player");
-        }
+         
+    }
+    
+    
+    private void movementUpdater()
+    {
+        currentHori = speed;
+        
+        collisions();
     }
     
     // Call this to TP the player to the fight room
@@ -107,10 +105,6 @@ public class Enemy extends WorldEntity
     {
         
     }
-    
-    Class[] objects = {Wall.class,Block.class,Lava.class,Water.class};
-    int collisionAmount=0;    
-    
     
      
 }
