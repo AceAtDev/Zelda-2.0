@@ -15,6 +15,7 @@ public class Lava extends Actor
      */
     public void act() 
     {
+        
        
     }    
 }
