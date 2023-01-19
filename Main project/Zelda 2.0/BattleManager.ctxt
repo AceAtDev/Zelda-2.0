@@ -1,18 +1,8 @@
 #BlueJ class context
 comment0.target=BattleManager
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ BattleManager\ here.\r\n\ \r\n\ \r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 comment1.params=playerX\ playerY\ enemyX\ enemyY\ player
 comment1.target=BattleManager(int,\ int,\ int,\ int,\ Link)
-=======
-comment1.params=playerX\ playerY\ enemyX\ enemyY
-comment1.target=BattleManager(int,\ int,\ int,\ int)
->>>>>>> Stashed changes
-=======
-comment1.params=playerX\ playerY\ enemyX\ enemyY
-comment1.target=BattleManager(int,\ int,\ int,\ int)
->>>>>>> Stashed changes
 comment10.params=
 comment10.target=Vector2D\ getLastPos()
 comment11.params=

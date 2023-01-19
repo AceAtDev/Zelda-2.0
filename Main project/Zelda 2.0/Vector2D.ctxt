@@ -10,5 +10,5 @@ comment3.target=int\ x()
 comment4.params=
 comment4.target=int\ y()
 comment5.params=start_value\ end_value\ time
-comment5.target=int\ Lerp(int,\ int,\ int)
+comment5.target=double\ Lerp(double,\ double,\ double)
 numComments=6

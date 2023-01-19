@@ -34,7 +34,7 @@ public class Vector2D
         return y;
     }
     
-    public static int Lerp(int start_value, int end_value, int time)
+    public static double Lerp(double start_value, double end_value, double time)
     {
     return (start_value + (end_value - start_value) * time);
     }
