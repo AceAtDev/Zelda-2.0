@@ -142,9 +142,6 @@ public class Link extends WorldEntity
     }
     
     
-    public void attackEnemy()
-    {
     
-    }
     
 }

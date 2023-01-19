@@ -45,8 +45,7 @@ public class Enemy extends WorldEntity
     
     public void act()
     {
-        
-        movementUpdater();
+        //collisionDetection();
         collisions();
         patrol();
     }
@@ -75,6 +74,10 @@ public class Enemy extends WorldEntity
             speed = -speed;
             movingTimer += 2/*rand.nextInt(3)*/;
         }
+        if(getCollidingWithEnemy())
+        {
+            
+        }
         else
         {
             movingTimer -= 0.04;
@@ -96,15 +99,10 @@ public class Enemy extends WorldEntity
     public void inRange()
     {
         
-         
-    }
-    
-    
-    private void movementUpdater()
-    {
-        currentHori = speed;
-        
-        collisions();
+        if(caughtPlayer) // Enemy knows if caught player by colliding with the player; check enemy collisions!
+        {
+            System.out.println("Enemy caught the player");
+        }
     }
     
     // Call this to TP the player to the fight room
@@ -112,10 +110,6 @@ public class Enemy extends WorldEntity
     {
         
     }
-
     
-
-    
-
      
 }

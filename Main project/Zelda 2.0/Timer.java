@@ -6,12 +6,15 @@
  */
 public class Timer  
 {
-    public static void threadTimer(long sec) throws InterruptedException {
+    public static void threadTimer(long sec) // WARNING: It completely stops the game
+    {
         sec *= 100;
-            //try {
+            try {
          Thread.currentThread().sleep(sec);
-        //}
-        
+        }
+        catch(InterruptedException ie) {
+            //ie.printStackTrace(); //only if you want the exception to be printet on the terminal;
+        }
     }
     
     public static void localTimer(long sec)
