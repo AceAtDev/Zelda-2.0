@@ -17,9 +17,13 @@ comment7.target=void\ inBattle()
 comment8.params=
 comment8.target=void\ endedBattle()
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 comment9.params=
 comment9.target=void\ attackEnemy()
 numComments=10
+=======
+numComments=9
+>>>>>>> Stashed changes
 =======
 numComments=9
 >>>>>>> Stashed changes

@@ -16,11 +16,17 @@ public class Link extends WorldEntity
     int scrollTimer=0;
     
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     private BattleManager battleManager = null;
     
     
     private static Class[] blockers = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
     private static Class toBattle = Enemy.class;
+=======
+    
+    private static Class[] blockers = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
+    private static Class[] toBattle = new Class[]{Enemy.class};
+>>>>>>> Stashed changes
 =======
     
     private static Class[] blockers = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
@@ -46,11 +52,17 @@ public class Link extends WorldEntity
             basicMoving();
             
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
             //System.out.println();
             
             
             
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             graphics();
             //collisionDetection();
@@ -102,6 +114,9 @@ public class Link extends WorldEntity
 =======
         //System.out.println("X: " + xmove + ", Y: " + ymove);
         if(!canMove){ return; }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         
         
@@ -115,6 +130,7 @@ public class Link extends WorldEntity
         
         
         
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         if(isCollWithEnemy){// stop the player from moving
             currentHori = 0; 
@@ -135,6 +151,8 @@ public class Link extends WorldEntity
             battleManager.battleStart();
             
 =======
+=======
+>>>>>>> Stashed changes
         System.out.println(getCollidingWithEnemy());
 
         
@@ -142,6 +160,9 @@ public class Link extends WorldEntity
             currentHori = 0; 
             currentVert = 0;
             ((BattleManager)getWorld().getObjects(BattleManager.class).get(0)).battleStart();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         }
         
@@ -157,7 +178,11 @@ public class Link extends WorldEntity
     public Enemy getHitEnemy()
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         return hitEnemy;
+=======
+        return getHitEnemy();
+>>>>>>> Stashed changes
 =======
         return getHitEnemy();
 >>>>>>> Stashed changes
@@ -167,6 +192,7 @@ public class Link extends WorldEntity
     boolean canMove = true;
     public void inBattle()
     {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         
         canMove = false;
@@ -185,10 +211,15 @@ public class Link extends WorldEntity
     {
     
 =======
+=======
+>>>>>>> Stashed changes
         if(canMove)
         {
             canMove = false;
         }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
     

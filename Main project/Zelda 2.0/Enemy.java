@@ -45,8 +45,12 @@ public class Enemy extends WorldEntity
     public void act()
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         
         movementUpdater();
+=======
+        //collisionDetection();
+>>>>>>> Stashed changes
 =======
         //collisionDetection();
 >>>>>>> Stashed changes
@@ -79,17 +83,28 @@ public class Enemy extends WorldEntity
             movingTimer += 2/*rand.nextInt(3)*/;
         }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         else
         {
             movingTimer -= 0.04;
 =======
         if(getCollidingWithEnemy())
         {
+=======
+        if(getCollidingWithEnemy())
+        {
+>>>>>>> Stashed changes
             
         }
         else
         {
             movingTimer -= 0.04;
+<<<<<<< Updated upstream
+=======
+            
+            setLocation(getX()+speed, getY());
+            
+>>>>>>> Stashed changes
             
             setLocation(getX()+speed, getY());
             
@@ -107,6 +122,7 @@ public class Enemy extends WorldEntity
     {
         
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
          
     }
     
@@ -117,6 +133,8 @@ public class Enemy extends WorldEntity
         
         collisions();
 =======
+=======
+>>>>>>> Stashed changes
         if(caughtPlayer) // Enemy knows if caught player by colliding with the player; check enemy collisions!
         {
             System.out.println("Enemy caught the player");
@@ -134,6 +152,11 @@ public class Enemy extends WorldEntity
 =======
     Class[] objects = {Wall.class,Block.class,Lava.class,Water.class};
     int collisionAmount=0;    
+<<<<<<< Updated upstream
+    
+    
+>>>>>>> Stashed changes
+=======
     
     
 >>>>>>> Stashed changes

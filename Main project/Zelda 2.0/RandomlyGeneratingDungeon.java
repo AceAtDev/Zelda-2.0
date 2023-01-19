@@ -14,12 +14,18 @@ public class RandomlyGeneratingDungeon extends World
         
         super(680, 480, 1, false); 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
         addObject(new BattleManager(
                     getWidth()/2 - 200,
                     getHeight()/2,
                     getWidth()/2 + 200,
                     getHeight()/2),1,1);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
         addObject(new Link(),getWidth()/2,getHeight()/2+20);

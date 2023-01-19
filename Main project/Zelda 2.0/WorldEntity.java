@@ -15,7 +15,11 @@ public class WorldEntity extends Actor
     
     private boolean canBattle = false;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     protected boolean isCollWithEnemy = false; // Is the player colliding with an enemy
+=======
+    private boolean isCollWithEnemy = false; // Is the player colliding with an enemy
+>>>>>>> Stashed changes
 =======
     private boolean isCollWithEnemy = false; // Is the player colliding with an enemy
 >>>>>>> Stashed changes
@@ -32,13 +36,19 @@ public class WorldEntity extends Actor
     //private RayRange raysUp, raysRight, raysDown, raysLeft;
     private boolean colUp, colRight, colDown, colLeft;
     
+<<<<<<< Updated upstream
     public WorldEntity(int width, int height, Class[] blockers, boolean canBattle, Class toBattle)
 =======
+=======
+>>>>>>> Stashed changes
     private Actor hitEnemy = null;
     //private RayRange raysUp, raysRight, raysDown, raysLeft;
     private boolean colUp, colRight, colDown, colLeft;
     
     public WorldEntity(int width, int height, Class[] blockers, boolean canBattle, Class[] toBattle)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     {
         this.width = width;
@@ -67,7 +77,11 @@ public class WorldEntity extends Actor
         
         
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         hitEnemy = checkForHitEnemy();
+=======
+        hitingAnEnemy();
+>>>>>>> Stashed changes
 =======
         hitingAnEnemy();
 >>>>>>> Stashed changes
@@ -94,8 +108,11 @@ public class WorldEntity extends Actor
     private void hitingAnEnemy()
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         
 =======
+=======
+>>>>>>> Stashed changes
         if(canBattle)
         {
             if((checkEnemyDown() || checkEnemyUp() || checkEnemyRight() || checkEnemyLeft()))
@@ -107,6 +124,9 @@ public class WorldEntity extends Actor
         {
             isCollWithEnemy = false;
         }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
     
@@ -153,7 +173,10 @@ public class WorldEntity extends Actor
         {
             Actor object = getOneObjectAtOffset(-getImage().getWidth()/2-2, 0, checker);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
             if(object != null)
             {
                 return true;
@@ -208,6 +231,9 @@ public class WorldEntity extends Actor
         for(Class checker: toBattle)
         {
             Actor object = getOneObjectAtOffset(-getImage().getWidth()/2-2, 0, checker);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             if(object != null)
             {
@@ -223,6 +249,7 @@ public class WorldEntity extends Actor
         return hitEnemy;
     }
     
+<<<<<<< Updated upstream
     
     ///////// For canBattle /////////
     private Enemy checkForHitEnemy()
@@ -253,6 +280,8 @@ public class WorldEntity extends Actor
         return hitEnemy;
     }
     
+=======
+>>>>>>> Stashed changes
     
     
     //Getters//

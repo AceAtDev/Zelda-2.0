@@ -21,6 +21,7 @@ public class BattleManager extends Actor
     private Vector2D enemyBattlePos = new Vector2D();
     
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     //private Vector2D playerLastPos = new Vector2
     
     boolean playerTurn = true;
@@ -38,6 +39,8 @@ public class BattleManager extends Actor
         this.enemyBattlePos = new Vector2D(enemyX, enemyY);
         this.player = player;
 =======
+=======
+>>>>>>> Stashed changes
     boolean playerTurn = true;
     boolean enemyTurn = false;
     
@@ -46,6 +49,9 @@ public class BattleManager extends Actor
     {
         this.playerBattlePos = new Vector2D(playerX, playerY);
         this.enemyBattlePos = new Vector2D(enemyX, enemyY);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
     
@@ -58,7 +64,11 @@ public class BattleManager extends Actor
     }
     
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public void battleUpdater()
+=======
+    private void battleUpdater()
+>>>>>>> Stashed changes
 =======
     private void battleUpdater()
 >>>>>>> Stashed changes
@@ -68,6 +78,7 @@ public class BattleManager extends Actor
     
     private void endBattle()
     {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         
         caughtEnemy.getWorld().removeObject(caughtEnemy); // Kill enemy
@@ -80,12 +91,19 @@ public class BattleManager extends Actor
                     );
                     
         
+=======
+        Link player = getWorld().getObjects(Link.class).get(0); // find the player
+        Enemy caughtEnemy = player.getHitEnemy(); // get the enemy that the player challenged
+        
+        caughtEnemy.getWorld().removeObject(this);
+>>>>>>> Stashed changes
         player.endedBattle();
     }
     
     public void battleStart() // called once/Used externally
     {
         
+<<<<<<< Updated upstream
         //Link player = getWorld().getObjects(Link.class).get(0); // find the player
         caughtEnemy = player.getHitEnemy(); // get the enemy that the player challenged
         System.out.println(caughtEnemy);
@@ -96,13 +114,27 @@ public class BattleManager extends Actor
         player.inBattle(); // Set states
         
         player.setLocation(enemyBattlePos.x() - 200*2 ,enemyBattlePos.y()); // Set Player in battle pos
+=======
+        Link player = getWorld().getObjects(Link.class).get(0); // find the player
+        Enemy caughtEnemy = player.getHitEnemy(); // get the enemy that the player challenged
+        
+        savePos(player.getX(), player.getY()); // Save Link pos
+        
+        player.inBattle();
+        
+        player.setLocation(enemyBattlePos.x() ,enemyBattlePos.y()); // Set Player in battle pos
+>>>>>>> Stashed changes
         caughtEnemy.setLocation(enemyBattlePos.x() ,enemyBattlePos.y()); // Set Enemy in battle pos
         
 
         
         battleUpdater();
+<<<<<<< Updated upstream
         
         //endBattle();
+=======
+        endBattle();
+>>>>>>> Stashed changes
     }
     
     public boolean playerAttacked()
@@ -117,6 +149,7 @@ public class BattleManager extends Actor
         return enemyTurn = false;
     }
     
+<<<<<<< Updated upstream
 =======
         Link player = getWorld().getObjects(Link.class).get(0); // find the player
         Enemy caughtEnemy = player.getHitEnemy(); // get the enemy that the player challenged
@@ -156,6 +189,8 @@ public class BattleManager extends Actor
         return enemyTurn = false;
     }
     
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     
     public void resetBooleans()
