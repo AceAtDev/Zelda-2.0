@@ -11,14 +11,8 @@ class.Water.image=Water.png
 dependency1.from=RandomlyGeneratingDungeon
 dependency1.to=BattleManager
 dependency1.type=UsesDependency
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 dependency10.from=TitleScreen
 dependency10.to=RandomlyGeneratingDungeon
-=======
-dependency10.from=ChallenageRoom
-dependency10.to=FadeOverlay
->>>>>>> parent of 3aa34ce (Battle manager)
 dependency10.type=UsesDependency
 dependency11.from=ChallenageRoom
 dependency11.to=Block
@@ -30,43 +24,13 @@ dependency13.from=BattleManager
 dependency13.to=Vector2D
 dependency13.type=UsesDependency
 dependency14.from=BattleManager
-<<<<<<< HEAD
 dependency14.to=Vector2D
-=======
-dependency10.from=ChallenageRoom
-dependency10.to=FadeOverlay
-dependency10.type=UsesDependency
-dependency11.from=ChallenageRoom
-dependency11.to=Block
-dependency11.type=UsesDependency
-dependency12.from=ChallenageRoom
-dependency12.to=Wall
-dependency12.type=UsesDependency
-dependency13.from=BattleManager
-dependency13.to=Vector2D
-dependency13.type=UsesDependency
-dependency14.from=BattleManager
-dependency14.to=RandomlyGeneratingDungeon
->>>>>>> Stashed changes
-=======
-dependency14.to=RandomlyGeneratingDungeon
->>>>>>> parent of 3aa34ce (Battle manager)
 dependency14.type=UsesDependency
 dependency15.from=BattleManager
 dependency15.to=Link
 dependency15.type=UsesDependency
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 dependency16.from=BattleManager
 dependency16.to=Enemy
-=======
-dependency16.from=WorldEntity
-dependency16.to=Vector2D
->>>>>>> Stashed changes
-=======
-dependency16.from=WorldEntity
-dependency16.to=Vector2D
->>>>>>> parent of 3aa34ce (Battle manager)
 dependency16.type=UsesDependency
 dependency17.from=Enemy
 dependency17.to=Wall
@@ -84,32 +48,13 @@ dependency20.from=Enemy
 dependency20.to=Water
 dependency20.type=UsesDependency
 dependency21.from=Enemy
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 dependency21.to=Lava
-=======
-dependency21.to=Link
->>>>>>> parent of 3aa34ce (Battle manager)
 dependency21.type=UsesDependency
 dependency22.from=Link
 dependency22.to=FadeOverlay
 dependency22.type=UsesDependency
-<<<<<<< HEAD
 dependency23.from=Enemy
 dependency23.to=Link
-=======
-dependency21.to=Link
-dependency21.type=UsesDependency
-dependency22.from=Link
-dependency22.to=FadeOverlay
-dependency22.type=UsesDependency
-dependency23.from=Link
-dependency23.to=RandomlyGeneratingDungeon
->>>>>>> Stashed changes
-=======
-dependency23.from=Link
-dependency23.to=RandomlyGeneratingDungeon
->>>>>>> parent of 3aa34ce (Battle manager)
 dependency23.type=UsesDependency
 dependency24.from=Link
 dependency24.to=Vector2D
@@ -130,15 +75,7 @@ dependency29.from=Link
 dependency29.to=Enemy
 dependency29.type=UsesDependency
 dependency3.from=RandomlyGeneratingDungeon
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 dependency3.to=Enemy
-=======
-dependency3.to=FadeOverlay
->>>>>>> Stashed changes
-=======
-dependency3.to=FadeOverlay
->>>>>>> parent of 3aa34ce (Battle manager)
 dependency3.type=UsesDependency
 dependency30.from=Block
 dependency30.to=Key
@@ -165,23 +102,10 @@ dependency37.from=RayRange
 dependency37.to=Vector2D
 dependency37.type=UsesDependency
 dependency4.from=RandomlyGeneratingDungeon
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 dependency4.to=Wall
-=======
-dependency4.to=Enemy
->>>>>>> Stashed changes
-=======
-dependency4.to=Enemy
->>>>>>> parent of 3aa34ce (Battle manager)
 dependency4.type=UsesDependency
 dependency5.from=RandomlyGeneratingDungeon
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 dependency5.to=Block
-=======
-dependency5.to=Wall
->>>>>>> parent of 3aa34ce (Battle manager)
 dependency5.type=UsesDependency
 dependency6.from=RandomlyGeneratingDungeon
 dependency6.to=Block
@@ -200,36 +124,8 @@ editor.fx.0.width=1081
 editor.fx.0.x=188
 editor.fx.0.y=36
 height=660
-<<<<<<< HEAD
 package.numDependencies=40
 package.numTargets=20
-=======
-dependency5.to=Wall
-dependency5.type=UsesDependency
-dependency6.from=RandomlyGeneratingDungeon
-dependency6.to=Block
-dependency6.type=UsesDependency
-dependency7.from=RandomlyGeneratingDungeon
-dependency7.to=Lava
-dependency7.type=UsesDependency
-dependency8.from=RandomlyGeneratingDungeon
-dependency8.to=Water
-dependency8.type=UsesDependency
-dependency9.from=RandomlyGeneratingDungeon
-dependency9.to=Key
-dependency9.type=UsesDependency
-editor.fx.0.height=752
-editor.fx.0.width=1081
-editor.fx.0.x=188
-editor.fx.0.y=36
-height=660
-package.numDependencies=37
-package.numTargets=17
->>>>>>> Stashed changes
-=======
-package.numDependencies=37
-package.numTargets=17
->>>>>>> parent of 3aa34ce (Battle manager)
 project.charset=UTF-8
 publish.hasSource=true
 publish.locked=true
@@ -253,115 +149,53 @@ target1.width=80
 target1.x=200
 target1.y=130
 target10.height=70
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 target10.name=TitleScreen
-=======
-target10.name=Timer
->>>>>>> Stashed changes
-=======
-target10.name=Timer
->>>>>>> parent of 3aa34ce (Battle manager)
 target10.showInterface=false
 target10.type=ClassTarget
 target10.width=120
 target10.x=0
 target10.y=0
 target11.height=70
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 target11.name=ChallenageRoom
-=======
-target11.name=Vector2D
->>>>>>> Stashed changes
-=======
-target11.name=Vector2D
->>>>>>> parent of 3aa34ce (Battle manager)
 target11.showInterface=false
 target11.type=ClassTarget
 target11.width=120
 target11.x=0
 target11.y=0
 target12.height=70
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 target12.name=Timer
-=======
-target12.name=Enemy
->>>>>>> Stashed changes
-=======
-target12.name=Enemy
->>>>>>> parent of 3aa34ce (Battle manager)
 target12.showInterface=false
 target12.type=ClassTarget
 target12.width=120
 target12.x=0
 target12.y=0
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 target13.height=70
 target13.name=Vector2D
-=======
-target13.height=50
-target13.name=Block
-target13.naviview.expanded=true
->>>>>>> Stashed changes
-=======
-target13.height=50
-target13.name=Block
-target13.naviview.expanded=true
->>>>>>> parent of 3aa34ce (Battle manager)
 target13.showInterface=false
 target13.type=ClassTarget
 target13.width=80
 target13.x=160
 target13.y=70
 target14.height=70
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 target14.name=TitleLetters
-=======
-target14.name=Interactables
->>>>>>> Stashed changes
-=======
-target14.name=Interactables
->>>>>>> parent of 3aa34ce (Battle manager)
 target14.showInterface=false
 target14.type=ClassTarget
 target14.width=120
 target14.x=0
 target14.y=0
 target15.height=70
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 target15.name=Enemy
-=======
-target15.name=RayRange
->>>>>>> Stashed changes
-=======
-target15.name=RayRange
->>>>>>> parent of 3aa34ce (Battle manager)
 target15.showInterface=false
 target15.type=ClassTarget
 target15.width=120
 target15.x=0
 target15.y=0
 target16.height=50
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 target16.name=Block
-=======
-target16.name=Key
->>>>>>> Stashed changes
-=======
-target16.name=Key
->>>>>>> parent of 3aa34ce (Battle manager)
 target16.naviview.expanded=true
 target16.showInterface=false
 target16.type=ClassTarget
 target16.width=80
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 target16.x=160
 target16.y=70
 target17.height=70
@@ -386,30 +220,6 @@ target19.type=ClassTarget
 target19.width=80
 target19.x=110
 target19.y=190
-=======
-target16.x=110
-target16.y=190
-target17.height=50
-target17.name=Link
-target17.naviview.expanded=true
-target17.showInterface=false
-target17.type=ClassTarget
-target17.width=80
-target17.x=180
-target17.y=10
->>>>>>> Stashed changes
-=======
-target16.x=110
-target16.y=190
-target17.height=50
-target17.name=Link
-target17.naviview.expanded=true
-target17.showInterface=false
-target17.type=ClassTarget
-target17.width=80
-target17.x=180
-target17.y=10
->>>>>>> parent of 3aa34ce (Battle manager)
 target2.height=70
 target2.name=BattleManager
 target2.showInterface=false
@@ -417,8 +227,6 @@ target2.type=ClassTarget
 target2.width=120
 target2.x=0
 target2.y=0
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 target20.height=50
 target20.name=Link
 target20.naviview.expanded=true
@@ -427,10 +235,6 @@ target20.type=ClassTarget
 target20.width=80
 target20.x=180
 target20.y=10
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> parent of 3aa34ce (Battle manager)
 target3.height=50
 target3.name=Wall
 target3.naviview.expanded=true
@@ -487,15 +291,5 @@ target9.y=130
 version=3.0.0
 width=1032
 world.lastInstantiated=RandomlyGeneratingDungeon
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 xPosition=255
 yPosition=72
-=======
-xPosition=220
-yPosition=88
->>>>>>> Stashed changes
-=======
-xPosition=220
-yPosition=88
->>>>>>> parent of 3aa34ce (Battle manager)
