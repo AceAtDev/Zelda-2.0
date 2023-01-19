@@ -20,6 +20,7 @@ public class BattleManager extends Actor
     private Vector2D playerBattlePos = new Vector2D();
     private Vector2D enemyBattlePos = new Vector2D();
     
+<<<<<<< Updated upstream
     //private Vector2D playerLastPos = new Vector2
     
     boolean playerTurn = true;
@@ -36,6 +37,16 @@ public class BattleManager extends Actor
         this.playerBattlePos = new Vector2D(playerX, playerY);
         this.enemyBattlePos = new Vector2D(enemyX, enemyY);
         this.player = player;
+=======
+    boolean playerTurn = true;
+    boolean enemyTurn = false;
+    
+    
+    public BattleManager(int playerX, int playerY, int enemyX, int enemyY) // Set up battle positions
+    {
+        this.playerBattlePos = new Vector2D(playerX, playerY);
+        this.enemyBattlePos = new Vector2D(enemyX, enemyY);
+>>>>>>> Stashed changes
     }
     
     
@@ -46,13 +57,18 @@ public class BattleManager extends Actor
         
     }
     
+<<<<<<< Updated upstream
     public void battleUpdater()
+=======
+    private void battleUpdater()
+>>>>>>> Stashed changes
     {
         
     }
     
     private void endBattle()
     {
+<<<<<<< Updated upstream
         
         caughtEnemy.getWorld().removeObject(caughtEnemy); // Kill enemy
               
@@ -101,6 +117,46 @@ public class BattleManager extends Actor
         return enemyTurn = false;
     }
     
+=======
+        Link player = getWorld().getObjects(Link.class).get(0); // find the player
+        Enemy caughtEnemy = player.getHitEnemy(); // get the enemy that the player challenged
+        
+        caughtEnemy.getWorld().removeObject(this);
+        player.endedBattle();
+    }
+    
+    public void battleStart() // called once/Used externally
+    {
+        
+        Link player = getWorld().getObjects(Link.class).get(0); // find the player
+        Enemy caughtEnemy = player.getHitEnemy(); // get the enemy that the player challenged
+        
+        savePos(player.getX(), player.getY()); // Save Link pos
+        
+        player.inBattle();
+        
+        player.setLocation(enemyBattlePos.x() ,enemyBattlePos.y()); // Set Player in battle pos
+        caughtEnemy.setLocation(enemyBattlePos.x() ,enemyBattlePos.y()); // Set Enemy in battle pos
+        
+
+        
+        battleUpdater();
+        endBattle();
+    }
+    
+    public boolean playerAttacked()
+    {
+        enemyTurn = true;
+        return playerTurn = false;
+    }
+    
+    public boolean enemyAttacked()
+    {
+        playerTurn = true;
+        return enemyTurn = false;
+    }
+    
+>>>>>>> Stashed changes
     
     public void resetBooleans()
     {

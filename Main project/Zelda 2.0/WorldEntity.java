@@ -14,7 +14,11 @@ public class WorldEntity extends Actor
     private int height = 5;
     
     private boolean canBattle = false;
+<<<<<<< Updated upstream
     protected boolean isCollWithEnemy = false; // Is the player colliding with an enemy
+=======
+    private boolean isCollWithEnemy = false; // Is the player colliding with an enemy
+>>>>>>> Stashed changes
     
     protected Vector2D movementRaw = new Vector2D(); // Used externally
     protected int currentHori = 0;
@@ -23,11 +27,19 @@ public class WorldEntity extends Actor
     private static Class[] blockers = null;
     private static Class toBattle = null;
     
+<<<<<<< Updated upstream
     protected Enemy hitEnemy = null;
     //private RayRange raysUp, raysRight, raysDown, raysLeft;
     private boolean colUp, colRight, colDown, colLeft;
     
     public WorldEntity(int width, int height, Class[] blockers, boolean canBattle, Class toBattle)
+=======
+    private Actor hitEnemy = null;
+    //private RayRange raysUp, raysRight, raysDown, raysLeft;
+    private boolean colUp, colRight, colDown, colLeft;
+    
+    public WorldEntity(int width, int height, Class[] blockers, boolean canBattle, Class[] toBattle)
+>>>>>>> Stashed changes
     {
         this.width = width;
         this.height = height;
@@ -54,7 +66,11 @@ public class WorldEntity extends Actor
         colLeft = runDetectionLeft();
         
         
+<<<<<<< Updated upstream
         hitEnemy = checkForHitEnemy();
+=======
+        hitingAnEnemy();
+>>>>>>> Stashed changes
         
         
         // Horizontal movement
@@ -77,7 +93,21 @@ public class WorldEntity extends Actor
     
     private void hitingAnEnemy()
     {
+<<<<<<< Updated upstream
         
+=======
+        if(canBattle)
+        {
+            if((checkEnemyDown() || checkEnemyUp() || checkEnemyRight() || checkEnemyLeft()))
+            {
+                isCollWithEnemy = true;
+            }
+        }
+        else
+        {
+            isCollWithEnemy = false;
+        }
+>>>>>>> Stashed changes
     }
     
     
@@ -122,12 +152,75 @@ public class WorldEntity extends Actor
         for(Class checker: blockers)
         {
             Actor object = getOneObjectAtOffset(-getImage().getWidth()/2-2, 0, checker);
+<<<<<<< Updated upstream
+=======
             if(object != null)
             {
                 return true;
             }
         }
         return false;
+    }
+    
+    
+    ///////// For canBattle /////////
+    private boolean checkEnemyDown()
+    {
+        for(Class checker: toBattle)
+        {
+            Actor object = getOneObjectAtOffset(0, getImage().getHeight()/2 + 3, checker);
+            if(object != null)
+            {
+                hitEnemy = object;
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean checkEnemyUp()
+    {
+        for(Class checker: toBattle)
+        {
+            Actor object = getOneObjectAtOffset(0, -getImage().getHeight()/2 - 2, checker);
+            if(object != null)
+            {
+                hitEnemy = object;
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean checkEnemyRight()
+    {
+        for(Class checker: toBattle)
+        {
+            Actor object = getOneObjectAtOffset(getImage().getWidth()/2+2, 0, checker);
+            if(object != null)
+            {
+                hitEnemy = object;
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean checkEnemyLeft()
+    {
+        for(Class checker: toBattle)
+        {
+            Actor object = getOneObjectAtOffset(-getImage().getWidth()/2-2, 0, checker);
+>>>>>>> Stashed changes
+            if(object != null)
+            {
+                hitEnemy = object;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public Actor getHitEnemy()
+    {
+        return hitEnemy;
     }
     
     

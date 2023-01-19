@@ -15,11 +15,17 @@ public class Link extends WorldEntity
     int scroll=0;
     int scrollTimer=0;
     
+<<<<<<< Updated upstream
     private BattleManager battleManager = null;
     
     
     private static Class[] blockers = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
     private static Class toBattle = Enemy.class;
+=======
+    
+    private static Class[] blockers = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
+    private static Class[] toBattle = new Class[]{Enemy.class};
+>>>>>>> Stashed changes
     
     public Actor enemyTofight = null;
     
@@ -39,6 +45,13 @@ public class Link extends WorldEntity
         if (scroll==0){
             basicMoving();
             
+<<<<<<< Updated upstream
+=======
+            //System.out.println();
+            
+            
+            
+>>>>>>> Stashed changes
             graphics();
             //collisionDetection();
             
@@ -84,7 +97,12 @@ public class Link extends WorldEntity
         if (scroll!=0)return;
         //Rate of cells that will be traveled; Player speed
         //Change movement
+<<<<<<< Updated upstream
         if(!canMove){ return; } // Don't move the player
+=======
+        //System.out.println("X: " + xmove + ", Y: " + ymove);
+        if(!canMove){ return; }
+>>>>>>> Stashed changes
         
         
         if (Greenfoot.isKeyDown("a")){currentHori = -speed; setRotation(270);}
@@ -97,6 +115,7 @@ public class Link extends WorldEntity
         
         
         
+<<<<<<< Updated upstream
         if(isCollWithEnemy){// stop the player from moving
             currentHori = 0; 
             currentVert = 0;
@@ -115,6 +134,15 @@ public class Link extends WorldEntity
             setRotation(90);
             battleManager.battleStart();
             
+=======
+        System.out.println(getCollidingWithEnemy());
+
+        
+        if(getCollidingWithEnemy()){// stop the player from moving
+            currentHori = 0; 
+            currentVert = 0;
+            ((BattleManager)getWorld().getObjects(BattleManager.class).get(0)).battleStart();
+>>>>>>> Stashed changes
         }
         
         movementRaw = new Vector2D(currentHori, currentVert);
@@ -128,13 +156,18 @@ public class Link extends WorldEntity
     
     public Enemy getHitEnemy()
     {
+<<<<<<< Updated upstream
         return hitEnemy;
+=======
+        return getHitEnemy();
+>>>>>>> Stashed changes
     }
     
     
     boolean canMove = true;
     public void inBattle()
     {
+<<<<<<< Updated upstream
         
         canMove = false;
         
@@ -151,6 +184,23 @@ public class Link extends WorldEntity
     public void attackEnemy()
     {
     
+=======
+        if(canMove)
+        {
+            canMove = false;
+        }
+>>>>>>> Stashed changes
     }
+    
+    public void endedBattle()
+    {
+        if(!canMove)
+        {
+            canMove = true;
+        }
+    }
+    
+    
+    
     
 }
