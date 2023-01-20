@@ -20,10 +20,10 @@ public class BattleManager extends Actor
     private Vector2D playerBattlePos = new Vector2D();
     private Vector2D enemyBattlePos = new Vector2D();
     
-    int playerXOffset = -120; //to the left
+    int playerXOffset = -110 * 5; //to the left
     int playerYOffset = 0;
     
-    int enemyXOffset = 120;
+    int enemyXOffset = -110;
     int enemyYOffset = 0;
     
     //private Vector2D playerLastPos = new Vector2
@@ -37,8 +37,8 @@ public class BattleManager extends Actor
     
     public BattleManager(int playerX, int playerY, int enemyX, int enemyY, Link player) // Set up battle positions
     {
-        this.playerBattlePos = new Vector2D(playerX, playerY);
-        this.enemyBattlePos = new Vector2D(enemyX, enemyY);
+        this.playerBattlePos = new Vector2D(playerX + playerXOffset, playerY);
+        this.enemyBattlePos = new Vector2D(enemyX + enemyXOffset, enemyY);
         this.player = player;
     }
     
@@ -84,8 +84,8 @@ public class BattleManager extends Actor
         
         player.inBattle();
         
-        player.setLocation(enemyBattlePos.x()  ,enemyBattlePos.y()); // Set Player in battle pos
-        caughtEnemy.setLocation(enemyBattlePos.x() ,enemyBattlePos.y()); // Set Enemy in battle pos
+        player.setLocation(playerBattlePos.x(),playerBattlePos.y()); // Set Player in battle pos
+        caughtEnemy.setLocation(enemyBattlePos.x(),enemyBattlePos.y()); // Set Enemy in battle pos
         
 
         

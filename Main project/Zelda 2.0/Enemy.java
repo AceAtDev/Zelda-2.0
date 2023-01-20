@@ -25,7 +25,7 @@ public class Enemy extends WorldEntity
     
     
     static Class[] blocks = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
-    static Class opponent = Link.class;
+    //static Class opponent = Link.class;
 
     public Enemy(int hp, int damage, int speed)
     {
@@ -78,9 +78,7 @@ public class Enemy extends WorldEntity
         else
         {
             movingTimer -= 0.04;
-            
-            //setLocation(getX()+speed, getY());
-            
+                        
             
             setLocation(getX()+speed, getY());
             

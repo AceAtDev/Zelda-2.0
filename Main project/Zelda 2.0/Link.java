@@ -112,10 +112,10 @@ public class Link extends WorldEntity
             if(battleManager == null)
             {
                 battleManager = new BattleManager(
-                                                getX(),
-                                                getY(),
-                                                hitEnemy.getX(),
-                                                hitEnemy.getY(),
+                                                ((RandomlyGeneratingDungeon)getWorld()).getWidth(),
+                                                ((RandomlyGeneratingDungeon)getWorld()).getHeight()/2,
+                                                ((RandomlyGeneratingDungeon)getWorld()).getWidth(),
+                                                ((RandomlyGeneratingDungeon)getWorld()).getHeight()/2,
                                                 this
                                                 );
             }
