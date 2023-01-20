@@ -20,13 +20,22 @@ public class BattleManager extends Actor
     private Vector2D playerBattlePos = new Vector2D();
     private Vector2D enemyBattlePos = new Vector2D();
     
+    int playerXOffset = -120; //to the left
+    int playerYOffset = 0;
+    
+    int enemyXOffset = 120;
+    int enemyYOffset = 0;
+    
     //private Vector2D playerLastPos = new Vector2
     
     boolean playerTurn = true;
     boolean enemyTurn = false;
     
+    Link player = null;
+    Enemy caughtEnemy = null;
     
-    public BattleManager(int playerX, int playerY, int enemyX, int enemyY) // Set up battle positions
+    
+    public BattleManager(int playerX, int playerY, int enemyX, int enemyY, Link player) // Set up battle positions
     {
         this.playerBattlePos = new Vector2D(playerX, playerY);
         this.enemyBattlePos = new Vector2D(enemyX, enemyY);
@@ -58,7 +67,7 @@ public class BattleManager extends Actor
                     savedPlayerY
                     );
                     
-        
+        resetBooleans();
         player.endedBattle();
     }
     
@@ -71,9 +80,11 @@ public class BattleManager extends Actor
         
         savePos(player.getX(), player.getY()); // Save Link pos
         
+        
+        
         player.inBattle();
         
-        player.setLocation(enemyBattlePos.x() - 200*2 ,enemyBattlePos.y()); // Set Player in battle pos
+        player.setLocation(enemyBattlePos.x()  ,enemyBattlePos.y()); // Set Player in battle pos
         caughtEnemy.setLocation(enemyBattlePos.x() ,enemyBattlePos.y()); // Set Enemy in battle pos
         
 
