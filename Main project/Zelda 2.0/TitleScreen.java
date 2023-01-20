@@ -24,11 +24,11 @@ public class TitleScreen extends World
     private void prepareTitleScreen(){
         TitleLetters titleFont = new TitleLetters(); 
         addObject(titleFont,340,240);
+        
     }
     public void act(){
-      if(Greenfoot.isKeyDown("space")){ // Switches to Game Mode 
-          Greenfoot.setWorld(new RandomlyGeneratingDungeon());
-      }
+        System.out.print(Greenfoot.Greenfoot.mouseClicked(_obj_));
+        
         
     }
 }
