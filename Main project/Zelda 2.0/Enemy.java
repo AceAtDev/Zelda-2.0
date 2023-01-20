@@ -25,11 +25,11 @@ public class Enemy extends WorldEntity
     
     
     static Class[] blocks = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
-    static Class[] opponent = new Class[]{Link.class};
+    static Class opponent = Link.class;
 
     public Enemy(int hp, int damage, int speed)
     {
-        super(10,10, blocks, true, opponent);
+        super(10,10, blocks);
         this.hp = hp;
         this.damage = damage;
         this.speed = speed;

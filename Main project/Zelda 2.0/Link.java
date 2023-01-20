@@ -17,9 +17,11 @@ public class Link extends WorldEntity
     
     
     private static Class[] blockers = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
-    private static Class[] toBattle = new Class[]{Enemy.class};
+    private static Class toBattle = Enemy.class;
     
     public Actor enemyTofight = null;
+    
+    private BattleManager battleManager = null;
     
     
     public Link()
@@ -106,7 +108,19 @@ public class Link extends WorldEntity
         if(getCollidingWithEnemy()){// stop the player from moving
             currentHori = 0; 
             currentVert = 0;
-            ((BattleManager)getWorld().getObjects(BattleManager.class).get(0)).battleStart();
+            
+            if(battleManager == null)
+            {
+                battleManager = new BattleManager(
+                                                getX(),
+                                                getY(),
+                                                hitEnemy.getX(),
+                                                hitEnemy.getY(),
+                                                this
+                                                );
+            }
+            
+            battleManager.battleStart();
         }
         
         movementRaw = new Vector2D(currentHori, currentVert);
@@ -120,7 +134,7 @@ public class Link extends WorldEntity
     
     public Enemy getHitEnemy()
     {
-        return getHitEnemy();
+        return hitEnemy;
     }
     
     
