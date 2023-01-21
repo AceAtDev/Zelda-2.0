@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Animation
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Animation\ here.\r\n\ \r\n\ \r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Animation()
+comment2.params=baseString\ nDirs\ nFrames
+comment2.target=greenfoot.GreenfootImage[][]\ importSprites(java.lang.String,\ int,\ int)
+comment3.params=w
+comment3.target=void\ addedToWorld(greenfoot.World)
+comment4.params=
+comment4.target=void\ act()
+comment4.text=\r\n\ Act\ -\ do\ whatever\ the\ Walker\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=5
