@@ -26,7 +26,7 @@ public class RandomlyGeneratingDungeon extends World
 
     }
     
-    Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class};
+    Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class, Enemy.class};
     public void scroll(String direction){
         int v=0;
         int h=0;
