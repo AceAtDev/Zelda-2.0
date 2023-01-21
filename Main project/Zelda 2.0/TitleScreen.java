@@ -27,7 +27,7 @@ public class TitleScreen extends World
         
     }
     public void act(){
-        System.out.print(Greenfoot.Greenfoot.mouseClicked(_obj_));
+        //System.out.print(Greenfoot.Greenfoot.mouseClicked(_obj_));
         
         
     }

@@ -31,4 +31,18 @@ public class Timer
         
     }
     
+    public static boolean delyer(int sec)
+    {
+        if(sec >= 0 )
+        {
+            sec--;
+            return false;
+        }
+        else if(sec <= 0)
+        {
+            return true;        
+        }
+        return false;
+    }
+    
 }

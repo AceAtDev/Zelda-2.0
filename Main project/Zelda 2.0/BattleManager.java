@@ -20,10 +20,10 @@ public class BattleManager extends Actor
     private Vector2D playerBattlePos = new Vector2D();
     private Vector2D enemyBattlePos = new Vector2D();
     
-    int playerXOffset = -110 * 5; //to the left
+    int playerXOffset = -115 * 5; //to the left
     int playerYOffset = 0;
     
-    int enemyXOffset = -110;
+    int enemyXOffset = -115;
     int enemyYOffset = 0;
     
     //private Vector2D playerLastPos = new Vector2
@@ -33,6 +33,11 @@ public class BattleManager extends Actor
     
     Link player = null;
     Enemy caughtEnemy = null;
+    
+    
+    
+    
+    GreenfootSound battleBackgroundMusic = new GreenfootSound("Violet Stars - battle.wav");// BattleMusic
     
     
     public BattleManager(int playerX, int playerY, int enemyX, int enemyY, Link player) // Set up battle positions
@@ -52,13 +57,51 @@ public class BattleManager extends Actor
     
     public void battleUpdater()
     {
+        // Start battle music
+        //Greenfoot.playSound("");
         
+        battleBackgroundMusic.playLoop();
+        
+        if(playerTurn)
+        {
+            if(Greenfoot.isKeyDown("e"))
+            {
+                Greenfoot.playSound("Normal Attack-HQ.wav");
+                //playerTurn = false;
+            }
+        }
+        else if(enemyTurn)
+        {
+        
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        if(caughtEnemy == null)
+        {
+            // turn off music one dead
+            battleBackgroundMusic.stop();
+            endBattle();
+        }
+        else if(player == null)
+        {
+            // turn off music one dead
+            battleBackgroundMusic.stop();
+            //Show lose screen
+        }
     }
     
     private void endBattle()
     {
         
-        caughtEnemy.getWorld().removeObject(caughtEnemy); // Kill enemy
+        //caughtEnemy.getWorld().removeObject(caughtEnemy); // Kill enemy
               
         
         //Return the player back to the last pos, OP: make a lerp animaiton
@@ -76,10 +119,8 @@ public class BattleManager extends Actor
         
         //Link player = getWorld().getObjects(Link.class).get(0); // find the player
         caughtEnemy = player.getHitEnemy(); // get the enemy that the player challenged
-        System.out.println(caughtEnemy);
         
         savePos(player.getX(), player.getY()); // Save Link pos
-        
         
         
         player.inBattle();
@@ -91,7 +132,7 @@ public class BattleManager extends Actor
         
         battleUpdater();
         
-        //endBattle();
+        
     }
     
     public boolean playerAttacked()
@@ -106,11 +147,15 @@ public class BattleManager extends Actor
         return enemyTurn = false;
     }
 
-    
     public void resetBooleans()
     {
         playerTurn = true;
         enemyTurn = false;
+    }
+    
+    public boolean getInBattle()
+    {
+        return inBattle;
     }
     
     

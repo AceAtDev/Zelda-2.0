@@ -5,4 +5,6 @@ comment1.params=sec
 comment1.target=void\ threadTimer(long)
 comment2.params=sec
 comment2.target=void\ localTimer(long)
-numComments=3
+comment3.params=sec
+comment3.target=boolean\ delyer(int)
+numComments=4

@@ -9,6 +9,10 @@ import greenfoot.Actor;
 public class WorldEntity extends Actor
 {
     
+    protected String name = "";
+    private int hp = 3;
+    protected int currentHp;
+    protected int damage = 1;
     
     private int width = 5;
     private int height = 5;
@@ -27,19 +31,26 @@ public class WorldEntity extends Actor
     //private RayRange raysUp, raysRight, raysDown, raysLeft;
     private boolean colUp, colRight, colDown, colLeft;
     
-    public WorldEntity(int width, int height, Class[] blockers, boolean canBattle, Class toBattle)
+    public WorldEntity(int width, int height,
+                       int hp, int damage, Class[] blockers, boolean canBattle, Class toBattle)
     {
         this.width = width;
         this.height = height;
         this.blockers = blockers;
         this.canBattle = canBattle;
         this.toBattle = toBattle;
+        this.hp = hp;
+        currentHp = hp;
     }
     
-    public WorldEntity(int width, int height, Class[] blockers)
+    public WorldEntity(int width, int height,
+                        int hp, int damage, Class[] blockers)
     {
         this.width = width;
         this.height = height;
+        this.hp = hp;
+        currentHp = hp;
+        this.damage = damage;
         this.blockers = blockers;
     }
     

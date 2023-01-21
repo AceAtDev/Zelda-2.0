@@ -15,10 +15,8 @@ import java.awt.Rectangle;
 
 public class Enemy extends WorldEntity
 {
-    protected String name = "";
-    protected int hp = 3;
-    protected int damage = 1;
     protected int speed = 1;
+
     
     private int xmove = 1;
     private int ymove = 1;
@@ -29,17 +27,7 @@ public class Enemy extends WorldEntity
 
     public Enemy(int hp, int damage, int speed)
     {
-        super(10,10, blocks);
-        this.hp = hp;
-        this.damage = damage;
-        this.speed = speed;
-    }
-    
-    public Enemy(String name ,int hp, int damage, int speed){ 
-        super(10,10, blocks);
-        this.name = name;
-        this.hp = hp;
-        this.damage = damage;
+        super(10,10,hp, damage, blocks);
         this.speed = speed;
     }
     

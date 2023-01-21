@@ -12,6 +12,7 @@ comment5.params=
 comment5.target=void\ graphics()
 comment6.params=
 comment6.target=Enemy\ getHitEnemy()
+comment6.text=\r\n\ \ \ \ private\ void\ preBattleEffects()\r\n\ \ \ \ {\ \ \ \r\n\ \ \ \ \ \ \ \ scroll\ \=\ 5;\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ \ if(firstFade\ >\=\ 0)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ System.out.println(firstFade\ +\ "\ "\ +\ getCollidingWithEnemy());\r\n\ \ \ \ \ \ \ \ \ \ \ \ firstFade\ -\=\ 0.2;\r\n\ \ \ \ \ \ \ \ \ \ \ \ if(firstFade\ <\=\ 0)\r\n\ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeOut();\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ else\ if(secondFade\ >\=\ 0)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ secondFade\ -\=\ 0.2;\r\n\ \ \ \ \ \ \ \ \ \ \ \ if(secondFade\ <\=\ 0)\r\n\ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeIn();\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ firstFade\ \=\ 3;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ secondFade\ \=\ 3;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scroll\ \=\ 0;\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ }\r\n
 comment7.params=
 comment7.target=void\ inBattle()
 comment8.params=

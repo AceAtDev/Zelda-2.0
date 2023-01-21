@@ -2,9 +2,6 @@ import greenfoot.*;
 import java.awt.Rectangle;
 import greenfoot.Actor;
 
-//import java.util.Vector;
-
-//import java.util.Vector;
 
 public class Link extends WorldEntity
 {
@@ -23,16 +20,31 @@ public class Link extends WorldEntity
     
     private BattleManager battleManager = null;
     
+    private int firstFade = 3;
+    private int secondFade = 3; // used to determine the durtion of the fade once the player make 
+                                        // make contact with the enemy
+    
     
     public Link()
     {
-        super(40,40, blockers, true, toBattle);
+        super(40,40, 3, 2, blockers, true, toBattle);
     }
     
     public void act() // Void Update
     {
-        
+        //System.out.println(firstFade + " " + getCollidingWithEnemy());
         //Methods
+        /*
+        if(battleManager != null)
+        {
+              if(battleManager.getInBattle())
+                {
+                    System.out.println("Update Battle in action");
+                    battleManager.battleUpdater();
+                }
+        }
+        */
+        
         try{
             ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).setLocation(getX(),getY());
         }catch(IndexOutOfBoundsException e){}
@@ -75,6 +87,7 @@ public class Link extends WorldEntity
             if (scroll==2&&getX()>=getWorld().getWidth()-30){scroll=0;}
             if (scroll==3&&getY()<=30){scroll=0;}
             if (scroll==4&&getY()>=getWorld().getHeight()-30){scroll=0;}
+            //if ()
             if (scroll==0){
                 scrollTimer=0;
                 ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeIn();
@@ -89,7 +102,12 @@ public class Link extends WorldEntity
          //Rate of cells that will be traveled; Player speed
         //Change movement
         //System.out.println("X: " + xmove + ", Y: " + ymove);
-        if(!canMove){ return; }
+        if(!canMove){ 
+            //System.out.println("Update Battle in action");
+
+            battleManager.battleUpdater();
+            return;
+        }
         
         
         if (Greenfoot.isKeyDown("a")){currentHori = -speed; setRotation(270);}
@@ -102,7 +120,7 @@ public class Link extends WorldEntity
         
         
         
-        System.out.println(getCollidingWithEnemy());
+        //System.out.println(getCollidingWithEnemy());
 
         
         if(getCollidingWithEnemy()){// stop the player from moving
@@ -120,7 +138,10 @@ public class Link extends WorldEntity
                                                 );
             }
             
-            battleManager.battleStart();
+            // Do effects
+            //preBattleEffects();
+            //if(scroll != 0){return;}
+            battleManager.battleStart();// Call out the battle
         }
         
         movementRaw = new Vector2D(currentHori, currentVert);
@@ -131,6 +152,37 @@ public class Link extends WorldEntity
     {
         
     }
+    
+    /*
+    private void preBattleEffects()
+    {   
+        scroll = 5;
+        
+        if(firstFade >= 0)
+        {
+            System.out.println(firstFade + " " + getCollidingWithEnemy());
+            firstFade -= 0.2;
+            if(firstFade <= 0)
+            {
+                ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeOut();
+            }
+        }
+        else if(secondFade >= 0)
+        {
+            secondFade -= 0.2;
+            if(secondFade <= 0)
+            {
+                ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeIn();
+                firstFade = 3;
+                secondFade = 3;
+                scroll = 0;
+            }
+        }
+        
+        
+    }
+    */
+    
     
     public Enemy getHitEnemy()
     {
