@@ -17,6 +17,7 @@ public class WorldEntity extends Actor
     private int width = 5;
     private int height = 5;
     
+    private boolean isAlive = true;
     private boolean canBattle = false;
     protected boolean isCollWithEnemy = false; // Is the player colliding with an enemy
     
@@ -58,6 +59,8 @@ public class WorldEntity extends Actor
     
     public void collisions()
     {
+        
+        if(this == null){return;}
         
         colUp = runDetectionUp();
         colDown = runDetectionDown();
@@ -171,6 +174,31 @@ public class WorldEntity extends Actor
         return hitEnemy;
     }
     
+    
+    public int getCurrentHp()
+    {
+        return currentHp;
+    }
+    
+    
+    public int attack()
+    {
+        return damage;
+    }
+    
+    public void takeDamage(int damage)
+    {
+         currentHp -= damage;
+         if(currentHp <= 0)
+         {
+             isAlive = false;
+         }
+    }
+    
+    public boolean getIsAlive()
+    {
+        return isAlive;
+    }
     
     
     //Getters//

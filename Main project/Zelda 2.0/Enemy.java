@@ -21,18 +21,30 @@ public class Enemy extends WorldEntity
     private int xmove = 1;
     private int ymove = 1;
     
+    private boolean inBattle = false; 
+    
+    
     
     static Class[] blocks = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
     //static Class opponent = Link.class;
 
     public Enemy(int hp, int damage, int speed)
     {
-        super(10,10,hp, damage, blocks);
+        super(10,10, hp, damage, blocks);
         this.speed = speed;
     }
     
     public void act()
     {
+        if(currentHp <= 0)
+        {
+            this.getWorld().removeObject(this); // destory this object
+        }
+        
+        if(inBattle == true)
+        {
+            return;
+        }
         
         movementUpdater();
         collisions();
@@ -93,11 +105,13 @@ public class Enemy extends WorldEntity
         collisions();
     }
     
-    // Call this to TP the player to the fight room
-    public static void challenagePlayer()
+    public void battleStarted()
     {
-        
+        inBattle = true;
     }
+    
+    
+    
 
     
 

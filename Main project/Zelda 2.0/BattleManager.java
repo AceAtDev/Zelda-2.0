@@ -60,37 +60,36 @@ public class BattleManager extends Actor
         // Start battle music
         //Greenfoot.playSound("");
         
-        battleBackgroundMusic.playLoop();
+        //battleBackgroundMusic.playLoop();
         
         if(playerTurn)
         {
             if(Greenfoot.isKeyDown("e"))
             {
                 Greenfoot.playSound("Normal Attack-HQ.wav");
+                caughtEnemy.takeDamage(player.attack());
+                System.out.println(caughtEnemy.getCurrentHp());
                 //playerTurn = false;
             }
         }
         else if(enemyTurn)
         {
-        
+            
         }
         
         
         
+                
         
         
         
-        
-        
-        
-        
-        if(caughtEnemy == null)
+        if(!caughtEnemy.getIsAlive())
         {
             // turn off music one dead
             battleBackgroundMusic.stop();
             endBattle();
         }
-        else if(player == null)
+        else if(!caughtEnemy.getIsAlive())
         {
             // turn off music one dead
             battleBackgroundMusic.stop();
@@ -111,6 +110,7 @@ public class BattleManager extends Actor
                     );
                     
         resetBooleans();
+        player.hitEnemy = null;
         player.endedBattle();
     }
     
@@ -124,6 +124,7 @@ public class BattleManager extends Actor
         
         
         player.inBattle();
+        caughtEnemy.battleStarted();
         
         player.setLocation(playerBattlePos.x(),playerBattlePos.y()); // Set Player in battle pos
         caughtEnemy.setLocation(enemyBattlePos.x(),enemyBattlePos.y()); // Set Enemy in battle pos

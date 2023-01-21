@@ -17,7 +17,7 @@ public class RandomlyGeneratingDungeon extends World
 
         addObject(new Link(),getWidth()/2,getHeight()/2+20);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
-        addObject(new Enemy(1,2,2), getWidth()/2, getHeight()/2 - 50);
+        addObject(new Enemy(12,2,2), getWidth()/2, getHeight()/2 - 50);
         paintOrder();
         generateDungeon();
         dungeonObjects();

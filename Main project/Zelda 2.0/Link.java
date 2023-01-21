@@ -1,6 +1,7 @@
 import greenfoot.*;
 import java.awt.Rectangle;
 import greenfoot.Actor;
+import java.util.Random;
 
 
 public class Link extends WorldEntity
@@ -27,11 +28,16 @@ public class Link extends WorldEntity
     
     public Link()
     {
-        super(40,40, 3, 2, blockers, true, toBattle);
+        super(40,40, 9, 2, blockers, true, toBattle);
     }
     
     public void act() // Void Update
     {
+        if(currentHp <= 0)
+        {
+            this.getWorld().removeObject(this); // destory this object
+        }
+        
         //System.out.println(firstFade + " " + getCollidingWithEnemy());
         //Methods
         /*
@@ -208,9 +214,5 @@ public class Link extends WorldEntity
     }
     
     
-    public void attackEnemy()
-    {
-    
-    }
     
 }
