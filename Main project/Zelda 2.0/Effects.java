@@ -9,6 +9,6 @@ public class Effects
 
     public static void damaged(int xPos, int yPos)
     {
-    
+        
     }
 }

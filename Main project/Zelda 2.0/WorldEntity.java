@@ -151,7 +151,7 @@ public class WorldEntity extends Actor
         if(!canBattle){return null;} // don't check for the enemy
         
         
-        List<Enemy> enemies = getObjectsInRange(20, toBattle);
+        List<Enemy> enemies = getObjectsInRange(40, toBattle);
 
         if(enemies.size() > 0)
         {

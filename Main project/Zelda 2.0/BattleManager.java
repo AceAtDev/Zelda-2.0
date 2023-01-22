@@ -77,7 +77,7 @@ public class BattleManager extends Actor
             //Greenfoot.delay(10);
             //((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).focusFade();
 
-            player.defendingAttack();
+            
             
             enemyTurn = false;
             playerTurn = true;

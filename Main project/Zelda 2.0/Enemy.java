@@ -37,7 +37,7 @@ public class Enemy extends WorldEntity
     private boolean changedDir = false;
     private double dirTimer = 0;
     
-    private int visionRange = 40 * 6; // the limit range that the enemy can follow the player while in range
+    private int visionRange = 40 * 3; // the limit range that the enemy can follow the player while in range
     
     
     static Class[] blocks = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
@@ -58,6 +58,7 @@ public class Enemy extends WorldEntity
         
         if(inBattle == true)
         {
+            setRotation(180);
             return;
         }
         
@@ -74,8 +75,12 @@ public class Enemy extends WorldEntity
         if(isPlayerInRange) // Move to catch the player
         {
             inRange();
-            System.out.println("player is in range of the enemy");
+            //System.out.println("player is in range of the enemy");
             return;
+        }
+        else
+        {
+            
         }
         
         if(movingTimer <= 0)
@@ -87,6 +92,7 @@ public class Enemy extends WorldEntity
         }
         else
         {
+            checkIfPlayerInRange();
             if(changedDir && !isPlayerInRange)
             {
                 if(dirTimer <= 0)
@@ -111,7 +117,14 @@ public class Enemy extends WorldEntity
     public void inRange()
     {
         
-         
+            turnTowards(
+                    ((Link)getWorld().getObjects(Link.class).get(0)).getX(),
+                    ((Link)getWorld().getObjects(Link.class).get(0)).getY()
+                    );
+        
+        
+        
+        System.out.println("facing");
     }
     
     private void checkIfPlayerInRange()
