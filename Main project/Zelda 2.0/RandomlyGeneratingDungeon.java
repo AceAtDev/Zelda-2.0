@@ -128,6 +128,8 @@ public class RandomlyGeneratingDungeon extends World
         if (tileset==2)setBackground(new GreenfootImage("AquaTile.png"));
         if (tileset==3)setBackground(new GreenfootImage("YellowTile.png"));
         if (tileset==4)setBackground(new GreenfootImage("GreyTile.png"));
+        
+        
     }
     
     public void dungeonObjects(){
@@ -205,7 +207,7 @@ public class RandomlyGeneratingDungeon extends World
         water(32,10);
         water(18,1);
         water(32,1);
-        // Room 3 Objects
+        
         
     
         
@@ -266,7 +268,13 @@ public class RandomlyGeneratingDungeon extends World
         }
     }
     public void generateDungeonEnemies(){
-        addObject(new Enemy(12,2,2), 550, 340);
+        // Room one tutorial Enemy
+        addObject(new Enemy(5,1,2), 550, 340);
+        // Room 3 Enemy Gauntlet
+        addObject(new Enemy(8,3,2),1020,-220);
+        addObject(new Enemy(10,5,0),750,- 240);
+        addObject(new Enemy(8,3,2),1240,-220);
+        addObject(new Enemy(6,6,3),1100,-400);
     }
     
     //Dungeon Tile Methods
