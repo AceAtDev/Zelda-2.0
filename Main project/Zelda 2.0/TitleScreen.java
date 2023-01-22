@@ -25,7 +25,7 @@ public class TitleScreen extends World
          
         addObject(titleFont,340,240);
         addObject(playButton,240,355);
-        addObject(creditsButton,240,375);
+        addObject(creditsButton,240,385);
         
     }
     
