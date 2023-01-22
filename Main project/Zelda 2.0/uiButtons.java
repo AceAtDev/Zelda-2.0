@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class uiButtons extends Actor
 {
-    private World screenChange;
+    public World screenChange;
     
     public uiButtons(String Image, World screenChange){
         setImage(new GreenfootImage(Image));

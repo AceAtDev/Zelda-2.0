@@ -20,8 +20,8 @@ public class CreditScreen extends World
     }
     public void prepareCreditScreen(){
     CreditScreenLetters creditFont = new CreditScreenLetters();
-    addObject(creditFont,340,240);
-    addObject(menuButton,90,440);
+    //addObject(creditFont,340,240);
+    //addObject(menuButton,90,440);
     }
     public void act(){
     }

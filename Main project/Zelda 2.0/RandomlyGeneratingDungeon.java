@@ -17,10 +17,10 @@ public class RandomlyGeneratingDungeon extends World
 
         addObject(new Link(),getWidth()/2,getHeight()/2+20);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
-        addObject(new Enemy(12,2,2), getWidth()/2, getHeight()/2 - 50);
         paintOrder();
         generateDungeon();
         dungeonObjects();
+        generateDungeonEnemies();
         //clearDungeonRoom();
         
 
@@ -131,21 +131,43 @@ public class RandomlyGeneratingDungeon extends World
     
     public void dungeonObjects(){
         // Room One Objects
-        block(4,6,true,-1);
-        block(13,7,true,1,2);
-        block(5,6,true,-1);
-        block(4,7,true,-1);
-        block(4,5,true,-1);
+        block(8,4,true,-1);
+        block(7,3,true,-1);
+        block(9,3,true,-1);
+        block(8,2,true,-1);
+        
+        block(1,7);
+        block(2,7);
+        block(3,7);
+        block(4,7);
+        block(5,7);
+        block(6,7);
+        block(7,7);
+        block(8,7);
+        block(9,7);
+        block(10,7);
+        block(11,7);
+        block(12,7);
+        block(13,7);
+        block(14,7);
+        block(15,7);
+        
+        lava(1,5);
+        lava(2,5);
+        lava(1,4);
+        lava(2,4);
+        
+        water(1,2);
+        water(2,2);
+        water(1,1);
+        water(2,1);
+        
         
         
     
         
         
-        lava(12,9);
-        lava(14,10);
-        lava(13,10);
-        lava(13,8);
-        lava(14,8);
+        
         
        
         
@@ -201,7 +223,7 @@ public class RandomlyGeneratingDungeon extends World
         }
     }
     public void generateDungeonEnemies(){
-        
+        addObject(new Enemy(12,2,2), 550, 340);
     }
     
     //Dungeon Tile Methods

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Animation
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Animation\ here.\r\n\ \r\n\ \r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Animation\ here.\r\n\ \r\n\ requires\ files\ to\ be\ named\ Something_UP2.png\ (name_directionFRAME.png)\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Animation()
 comment2.params=baseString\ nDirs\ nFrames
