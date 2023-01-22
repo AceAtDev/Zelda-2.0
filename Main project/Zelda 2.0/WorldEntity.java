@@ -99,7 +99,7 @@ public class WorldEntity extends Actor
     {
         for(Class checker: blockers)
         {
-            Actor object = getOneObjectAtOffset(0, getImage().getHeight()/2 + 3, checker);
+            Actor object = getOneObjectAtOffset(0, getImage().getHeight()/2 + 9, checker);
             if(object != null)
             {
                 return true;
@@ -193,6 +193,8 @@ public class WorldEntity extends Actor
          {
              isAlive = false;
          }
+         
+         
     }
     
     public boolean getIsAlive()

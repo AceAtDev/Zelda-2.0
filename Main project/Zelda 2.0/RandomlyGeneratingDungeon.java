@@ -16,9 +16,10 @@ public class RandomlyGeneratingDungeon extends World
         super(680, 480, 1, false); 
         
 
-        addObject(player,getWidth()/2,getHeight()/2+20);
+        addObject(player,getWidth()/2,getHeight()/2+90);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
         //addObject(new HealthUI(0,0, player),getWidth()/2,getHeight()/2);
+        addObject(new Animation(player),player.getX(),player.getY());
         paintOrder();
         generateDungeon();
         dungeonObjects();
@@ -118,7 +119,7 @@ public class RandomlyGeneratingDungeon extends World
         addObject(new Wall(40,getHeight()-40),2700,-260);
     }
     public void paintOrder(){ // Order of displaying classes ( Makes the Transition from room to room smoother
-        setPaintOrder(HealthUI.class ,Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
+        setPaintOrder(Animation.class ,Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
     }
 
     public void act(){

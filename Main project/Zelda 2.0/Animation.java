@@ -11,7 +11,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Animation extends Actor
 {
     private GreenfootImage[][] basicMan;
-    private GreenfootImage[][] bonesMan;
+    private GreenfootImage[][] attackMan;
 
     private GreenfootImage[][] playerImage;
 
@@ -32,14 +32,17 @@ public class Animation extends Actor
     private int runAnimSpeed;
     
     private boolean idle;
+    
+    private Link player = null;
 
-    public Animation (){
+    public Animation (Link player){
         // 4 directions, 9 frames per direction
         //basicMan = new GreenfootImage[4][9];
+        this.player = player;
         direction = Direction.RIGHT;
 
         walkSpeed = 20;
-        walkAnimSpeed = 15;
+        walkAnimSpeed = 10;
 
         runSpeed = 40;
         runAnimSpeed = 30;
@@ -53,8 +56,8 @@ public class Animation extends Actor
         frame = 0;
         idle = false;
 
-        basicMan = importSprites ("W_", Direction.size, 9);
-        bonesMan = importSprites ("S_", Direction.size, 9);
+        basicMan = importSprites ("W_", Direction.size, 3);
+        attackMan = importSprites ("S_", Direction.size, 1);
 
         playerImage = basicMan;
 
@@ -107,7 +110,7 @@ public class Animation extends Actor
 
         if (key != null){
             if (key.equals("b")){
-                playerImage = bonesMan;
+                playerImage = attackMan;
             }
             if (key.equals("n")){
                 playerImage = basicMan;
@@ -115,26 +118,26 @@ public class Animation extends Actor
         }
 
         // Keyboard input for held-down movement keys
-        if (Greenfoot.isKeyDown("shift")){  // run
-            framesPerSecond = runAnimSpeed;
-            moveSpeed = runSpeed;
-        } else {                            // walk
+        //if (Greenfoot.isKeyDown("shift")){  // run
+            //framesPerSecond = runAnimSpeed;
+            //moveSpeed = runSpeed;
+        //} //else {                            // walk
             framesPerSecond = walkAnimSpeed;
             moveSpeed = walkSpeed;                   
-        }
+        //}
 
         // Recalculate animation speed, in case run/walk has changed
         secondsPerFrame = 1.0 / framesPerSecond;
 
         // For each key...
-        if (Greenfoot.isKeyDown("right")){
+        if (Greenfoot.isKeyDown("d")){
             moveX = 1; // set direction
             if (direction != direction.RIGHT){ // if I wasn't already moving this direction...
                 frame = 1; // start again at frame 1
                 direction = direction.RIGHT; // set direction to the newly specified direction
             }
         }
-        if (Greenfoot.isKeyDown("left")){
+        if (Greenfoot.isKeyDown("a")){
             moveX = -1;
             if (direction != direction.LEFT){
                 frame = 1;
@@ -142,14 +145,14 @@ public class Animation extends Actor
             }
         }
         if (moveX == 0){ // prevent diagonal movement - only check for Y if nothing is moving on X
-            if (Greenfoot.isKeyDown("up")){
+            if (Greenfoot.isKeyDown("w")){
                 moveY = -1;
                 if(direction != direction.UP){
                     frame = 1;
                     direction = direction.UP;
                 }
             }
-            if (Greenfoot.isKeyDown("down")){
+            if (Greenfoot.isKeyDown("s")){
                 moveY = 1;
                 if (direction != direction.DOWN){
                     frame = 1; 
@@ -157,7 +160,18 @@ public class Animation extends Actor
                 }
             }
         }
-
+        
+        if(Greenfoot.isKeyDown("e") && !player.canMove)
+        {
+            // Do attack animation
+            
+        }
+        
+        if(player.canMove == false)
+        {
+            direction = direction.RIGHT;
+        }
+        
         if (moveX == 0 && moveY == 0){ // if not moving, switch to idle
             idle = true;
             lastFrame = current;    // reset animation timer so it always starts fresh in next frame if
@@ -198,7 +212,7 @@ public class Animation extends Actor
         }
 
         //setImage (playerImage[direction.getDirection()][frame]);
-        //setLocation ((int)Math.round(xx), (int)Math.round(yy));
+        setLocation (player.getX(), player.getY());
 
     }    
 
@@ -210,7 +224,8 @@ public class Animation extends Actor
         RIGHT(0), 
         LEFT(1), 
         UP(2), 
-        DOWN(3);
+        DOWN(3),
+        RIGHTATTACK(4);
 
         private final int dirCode;
         private Direction (int dirCode){
