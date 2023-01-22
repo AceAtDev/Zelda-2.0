@@ -2,6 +2,10 @@
 comment0.target=Link
 comment1.params=
 comment1.target=Link()
+comment10.params=
+comment10.target=void\ inBattle()
+comment11.params=
+comment11.target=void\ endedBattle()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
@@ -13,9 +17,10 @@ comment5.target=void\ graphics()
 comment6.params=
 comment6.target=void\ preBattleEffects()
 comment7.params=
-comment7.target=Enemy\ getHitEnemy()
+comment7.target=void\ defendingAttack()
 comment8.params=
-comment8.target=void\ inBattle()
+comment8.target=void\ hpDisplayer()
+comment8.text=\r\n\ \ \ \ protected\ Vector2D\ pointOnCircle()\ {\r\n\r\n\ \ \ \ double\ rads\ \=\ Math.toRadians(orbitAngle\ -\ 180);\ //\ Make\ 0\ point\ out\ to\ the\ right...\r\n\ \ \ \ int\ fullLength\ \=\ Math.round((outterRadius));\r\n\r\n\ \ \ \ //\ Calculate\ the\ outter\ point\ of\ the\ line\r\n\ \ \ \ int\ xPosy\ \=\ Math.round((float)\ (Math.cos(rads)\ *\ fullLength));\r\n\ \ \ \ int\ yPosy\ \=\ Math.round((float)\ (Math.sin(rads)\ *\ fullLength));\r\n\r\n\ \ \ \ return\ new\ Vector2D(xPosy,\ yPosy);\r\n\ \ \ \ }\r\n
 comment9.params=
-comment9.target=void\ endedBattle()
-numComments=10
+comment9.target=Enemy\ getHitEnemy()
+numComments=12

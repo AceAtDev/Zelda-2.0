@@ -8,6 +8,7 @@ public class RandomlyGeneratingDungeon extends World
      * 
      */
     //final int DistanceBetweenBlocks = 40;
+    Link player = new Link();
     public RandomlyGeneratingDungeon()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -15,8 +16,9 @@ public class RandomlyGeneratingDungeon extends World
         super(680, 480, 1, false); 
         
 
-        addObject(new Link(),getWidth()/2,getHeight()/2+20);
+        addObject(player,getWidth()/2,getHeight()/2+20);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
+        //addObject(new HealthUI(0,0, player),getWidth()/2,getHeight()/2);
         paintOrder();
         generateDungeon();
         dungeonObjects();
@@ -116,7 +118,7 @@ public class RandomlyGeneratingDungeon extends World
         addObject(new Wall(40,getHeight()-40),2700,-260);
     }
     public void paintOrder(){ // Order of displaying classes ( Makes the Transition from room to room smoother
-        setPaintOrder(Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
+        setPaintOrder(HealthUI.class ,Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
     }
 
     public void act(){

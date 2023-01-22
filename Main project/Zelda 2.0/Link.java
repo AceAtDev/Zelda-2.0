@@ -12,7 +12,7 @@ public class Link extends WorldEntity
     int ymove2=0;
     int scroll=0;
     int scrollTimer=0;
-    
+
     
     private static Class[] blockers = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
     private static Class toBattle = Enemy.class;
@@ -20,15 +20,17 @@ public class Link extends WorldEntity
     public Actor enemyTofight = null;
     
     private BattleManager battleManager = null;
+    private HealthUI hpUI= null;
     
     private int firstFade = 3;
     private int secondFade = 3; // used to determine the durtion of the fade once the player make 
-                                        // make contact with the enemy
+                                    // make contact with the enemy
     
     
     public Link()
     {
-        super(40,40, 9, 2, blockers, true, toBattle);
+        super(40,40, 5, 2, blockers, true, toBattle);
+
     }
     
     public void act() // Void Update
@@ -37,7 +39,7 @@ public class Link extends WorldEntity
         {
             this.getWorld().removeObject(this); // destory this object
         }
-        
+        //hpDisplayer();
         //System.out.println(firstFade + " " + getCollidingWithEnemy());
         //Methods
         /*
@@ -162,12 +164,50 @@ public class Link extends WorldEntity
     
     private void preBattleEffects()
     {   
-        
+        Greenfoot.playSound("Encounter Full-HQ.wav");
+        Greenfoot.delay(20);
         
     }
     
+    public void defendingAttack()
+    {
+        /*
+        int currentX = 0;
+        int currentY = 0;
+        
+        getWorld().addObject(new Sowrd(), getX() + 35, getY());
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        
+        if(mouse!=null){
+           currentX = mouse.getX();
+           currentY = mouse.getY();
+        }
+        */
+    }
+    
+    /*
+    protected Vector2D pointOnCircle() {
+
+    double rads = Math.toRadians(orbitAngle - 180); // Make 0 point out to the right...
+    int fullLength = Math.round((outterRadius));
+
+    // Calculate the outter point of the line
+    int xPosy = Math.round((float) (Math.cos(rads) * fullLength));
+    int yPosy = Math.round((float) (Math.sin(rads) * fullLength));
+
+    return new Vector2D(xPosy, yPosy);
+    }
+    */
     
     
+    //boolean hpCreated = false;
+    public void hpDisplayer()
+    {
+        hpUI = ((HealthUI)getWorld().getObjects(HealthUI.class).get(0));
+        hpUI.positionUpdater();
+        //hpUI.updateUi(currentHp);
+    }
+
     public Enemy getHitEnemy()
     {
         return hitEnemy;

@@ -61,7 +61,6 @@ public class BattleManager extends Actor
         //Greenfoot.playSound("");
         
         //battleBackgroundMusic.playLoop();
-        
         if(playerTurn)
         {
             if(Greenfoot.isKeyDown("e"))
@@ -75,6 +74,10 @@ public class BattleManager extends Actor
         }
         else if(enemyTurn)
         {
+            //Greenfoot.delay(10);
+            //((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).focusFade();
+
+            player.defendingAttack();
             
             enemyTurn = false;
             playerTurn = true;
