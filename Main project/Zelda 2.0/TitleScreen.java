@@ -10,8 +10,8 @@ public class TitleScreen extends World
 
 {
     TitleLetters titleFont = new TitleLetters();
-    uiButtons playButton = new uiButtons("Button Image.png", new RandomlyGeneratingDungeon());
-    uiButtons creditsButton = new uiButtons("Button Image.png", new CreditScreen());
+    uiButtons playButton = new uiButtons("Button Image.png", 2);
+    uiButtons creditsButton = new uiButtons("Button Image.png", 3);
     public TitleScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -24,8 +24,8 @@ public class TitleScreen extends World
     private void prepareTitleScreen(){
          
         addObject(titleFont,340,240);
-        //addObject(playButton,240,355);
-        //addObject(creditsButton,240,375);
+        addObject(playButton,240,355);
+        addObject(creditsButton,240,375);
         
     }
     

@@ -8,17 +8,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class uiButtons extends Actor
 {
-    public World screenChange;
+    public int screenChange;
     
-    public uiButtons(String Image, World screenChange){
+    public uiButtons(String Image, int screenChange){
         setImage(new GreenfootImage(Image));
         this.screenChange = screenChange;
     }
     
     public void act()
     {
-        if(Greenfoot.mouseClicked(this)){ // If Object Clicked, Will 
-            Greenfoot.setWorld(this.screenChange);
+        switch(screenChange){
+            case 1:
+        if(Greenfoot.mouseClicked(this)){ 
+            Greenfoot.setWorld(new TitleScreen());
+        }
+            break;
+            case 2:
+            if(Greenfoot.mouseClicked(this)){ 
+            Greenfoot.setWorld(new RandomlyGeneratingDungeon());
+        }
+            break;
+            case 3:
+            if(Greenfoot.mouseClicked(this)){ 
+            Greenfoot.setWorld( new CreditScreen());
+        }
         }
     }
 }

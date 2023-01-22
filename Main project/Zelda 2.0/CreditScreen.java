@@ -9,7 +9,7 @@ import greenfoot.*;
 public class CreditScreen extends World
 
 {
- uiButtons menuButton = new uiButtons("Button Image.png",new TitleScreen());
+ uiButtons menuButton = new uiButtons("Button Image.png",1);
     /**
      * Constructor for objects of class CreditScreen
      */
@@ -20,8 +20,8 @@ public class CreditScreen extends World
     }
     public void prepareCreditScreen(){
     CreditScreenLetters creditFont = new CreditScreenLetters();
-    //addObject(creditFont,340,240);
-    //addObject(menuButton,90,440);
+    addObject(creditFont,340,240);
+    addObject(menuButton,90,440);
     }
     public void act(){
     }
