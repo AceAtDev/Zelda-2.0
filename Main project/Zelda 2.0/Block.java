@@ -40,7 +40,25 @@ public class Block extends Actor
             if (event==1){key();
             
                 }if(event == 2){openDoor();}
+                
+                // Collision for Blocks and Water/Lava
+
+         
+                Actor lavaCollideBlock = getOneObjectAtOffset(0,0,Lava.class);
+                Actor waterCollideBlock = getOneObjectAtOffset(0,0,Water.class);
+                 if(lavaCollideBlock!= null){ // Collision for the Lava and Block
+                getWorld().removeObject(this);
+                negateMoving();
+                 return;
+                }if(waterCollideBlock!=null){ // Collision for the Water and Block
+                getWorld().removeObject(this);
+                negateMoving();
+                 return;
+                }
         }
+            
+         
+       
     }
     public void collisionDetection()
     {
@@ -68,7 +86,7 @@ public class Block extends Actor
         /**This checks if there is an object in the blocks way when it moves*/
         
         Class[] blocks = {Link.class,Wall.class,Block.class,Enemy.class}; //All classes in this array can prevent the block from moving
-        Class[] specialBlocks = {Lava.class,Water.class}; // These Classes can interact With Blocks or are special in Some Way
+        
       
           while (collisionAmount<blocks.length){
             //Down check
@@ -91,22 +109,14 @@ public class Block extends Actor
                 Actor object = getOneObjectAtOffset(getImage().getWidth()/2+20, i,blocks[collisionAmount]);
                 if (object!=null&&xmove>0){negateMoving();}
             }
+            
             collisionAmount++;
         }
+        
+               
          
-         // Collision for Blocks and Water/Lava
-                Actor lavaCollideBlock = getOneObjectAtOffset(0,0,Lava.class);
-                Actor waterCollideBlock = getOneObjectAtOffset(0,0,Water.class);
-                 if(lavaCollideBlock!= null){ // Collision for the Lava and Block
-                getWorld().removeObject(this);
-                getWorld().removeObject(lavaCollideBlock);
-                 return;
-                }if(waterCollideBlock!=null){ // Collision for the Water and Block
-                getWorld().removeObject(this);
-                getWorld().removeObject(waterCollideBlock);
-                 return;
-                }
                 
+       
                
        
         if (xmove!=0||ymove!=0){move=false; moves=20;} //Moves is the amount of times the block will move before stopping

@@ -155,14 +155,12 @@ public class RandomlyGeneratingDungeon extends World
         block(15,7);
         
         lava(1,5);
-        lava(2,5);
         lava(1,4);
-        lava(2,4);
+        
         
         water(1,2);
-        water(2,2);
         water(1,1);
-        water(2,1);
+        
         
         // Room 2 Objects
         

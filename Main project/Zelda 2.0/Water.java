@@ -14,6 +14,11 @@ public class Water extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+       Actor block = getOneObjectAtOffset(0,0,Block.class); 
+       if(block != null){
+           getWorld().removeObject(this);
+           return;
+       }
+        
     }    
 }
