@@ -68,14 +68,14 @@ public class BattleManager extends Actor
             {
                 Greenfoot.playSound("Normal Attack-HQ.wav");
                 caughtEnemy.takeDamage(player.attack());
-                System.out.println(caughtEnemy.getCurrentHp());
+                Greenfoot.delay(10);
                 playerTurn = false;
                 enemyTurn = true;
             }
         }
         else if(enemyTurn)
         {
-            Greenfoot.delay(10);
+            
             enemyTurn = false;
             playerTurn = true;
         }

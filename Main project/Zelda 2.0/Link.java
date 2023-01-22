@@ -116,10 +116,10 @@ public class Link extends WorldEntity
         }
         
         
-        if (Greenfoot.isKeyDown("a")){currentHori = -speed; setRotation(270);}
-        if (Greenfoot.isKeyDown("d")){currentHori = speed; setRotation(90);}
-        if (Greenfoot.isKeyDown("w")){currentVert = -speed; setRotation(0);}
-        if (Greenfoot.isKeyDown("s")){currentVert = speed; setRotation(180);}
+        if (Greenfoot.isKeyDown("a")){currentHori = -speed; }
+        if (Greenfoot.isKeyDown("d")){currentHori = speed; }
+        if (Greenfoot.isKeyDown("w")){currentVert = -speed;}
+        if (Greenfoot.isKeyDown("s")){currentVert = speed;}
         if (! Greenfoot.isKeyDown("a")&&! Greenfoot.isKeyDown("d")){currentHori = 0;}
         if (! Greenfoot.isKeyDown("w")&&! Greenfoot.isKeyDown("s")){currentVert = 0;}
         collisions();
@@ -145,7 +145,7 @@ public class Link extends WorldEntity
             }
             
             // Do effects
-            //preBattleEffects();
+            preBattleEffects();
             //if(scroll != 0){return;}
             battleManager.battleStart();// Call out the battle
         }
@@ -159,35 +159,13 @@ public class Link extends WorldEntity
         
     }
     
-    /*
+    
     private void preBattleEffects()
     {   
-        scroll = 5;
-        
-        if(firstFade >= 0)
-        {
-            System.out.println(firstFade + " " + getCollidingWithEnemy());
-            firstFade -= 0.2;
-            if(firstFade <= 0)
-            {
-                ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeOut();
-            }
-        }
-        else if(secondFade >= 0)
-        {
-            secondFade -= 0.2;
-            if(secondFade <= 0)
-            {
-                ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeIn();
-                firstFade = 3;
-                secondFade = 3;
-                scroll = 0;
-            }
-        }
         
         
     }
-    */
+    
     
     
     public Enemy getHitEnemy()
