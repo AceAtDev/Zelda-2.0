@@ -21,7 +21,6 @@ public class RandomlyGeneratingDungeon extends World
         generateDungeon();
         dungeonObjects();
         generateDungeonEnemies();
-        //clearDungeonRoom();
         
 
     }
@@ -162,7 +161,51 @@ public class RandomlyGeneratingDungeon extends World
         water(1,1);
         water(2,1);
         
+        // Room 2 Objects
         
+        block(18,7);
+        block(19,7,true,-1);
+        block(20,7);
+        block(21,7);
+        block(22,7);
+        block(23,7);
+        block(23,8);
+        block(23,9);
+        block(23,10,true,-1);
+        block(27,10);
+        block(27,9);
+        block(27,8,true,-1);
+        block(27,7);
+        block(28,7,true,-1);
+        block(29,7);
+        block(30,7,true,-1);
+        block(31,7);
+        block(32,7,true,-1);
+        block(33,7);
+        block(18,4);
+        block(19,4);
+        block(20,4,true,-1);
+        block(21,4);
+        block(22,4,true,-1);
+        block(23,4);
+        block(27,4);
+        block(28,4);
+        block(29,4);
+        block(30,4);
+        block(31,4,true,-1);
+        block(32,4,true,-1);
+        block(23,3);
+        block(23,2,true,-1);
+        block(23,1);
+        block(27,3,true,-1);
+        block(27,2,true,-1);
+        block(27,1,true,-1);
+        
+        water(18,10);
+        water(32,10);
+        water(18,1);
+        water(32,1);
+        // Room 3 Objects
         
     
         
@@ -229,40 +272,28 @@ public class RandomlyGeneratingDungeon extends World
     //Dungeon Tile Methods
     
     public void block(int x, int y, boolean movable, int event, int keypos){
-        if (x*40+20<0||x*40+20>getWidth()||getHeight()-y*40-20<0||getHeight()-y*40-20>getHeight()){
-            System.out.println("ERROR: BLOCK AT ("+x+","+y+") IS OUT OF WORLD RANGE"); return;
-        }
+        
         addObject(new Block(movable,event,keypos),x*40+20,getHeight()-y*40-20);
     }
     public void block(int x, int y, boolean movable, int event){
-        if (x*40+20<0||x*40+20>getWidth()||getHeight()-y*40-20<0||getHeight()-y*40-20>getHeight()){
-            System.out.println("ERROR: BLOCK AT ("+x+","+y+") IS OUT OF WORLD RANGE"); return;
-        }
+        
         addObject(new Block(movable,event,-1),x*40+20,getHeight()-y*40-20);
     }
     public void block(int x, int y, boolean movable){
-        if (x*40+20<0||x*40+20>getWidth()||getHeight()-y*40-20<0||getHeight()-y*40-20>getHeight()){
-            System.out.println("ERROR: BLOCK AT ("+x+","+y+") IS OUT OF WORLD RANGE"); return;
-        }
+        
         addObject(new Block(movable,0,-1),x*40+20,getHeight()-y*40-20);
     }
     public void block(int x, int y){
-        if (x*40+20<0||x*40+20>getWidth()||getHeight()-y*40-20<0||getHeight()-y*40-20>getHeight()){
-            System.out.println("ERROR: BLOCK AT ("+x+","+y+") IS OUT OF WORLD RANGE"); return;
-        }
+       
         addObject(new Block(false,0,-1),x*40+20,getHeight()-y*40-20);
     }
     //Liquids
     public void lava(int x, int y){
-        if (x*40+20<0||x*40+20>getWidth()||getHeight()-y*40-20<0||getHeight()-y*40-20>getHeight()){
-            System.out.println("ERROR: LAVA AT ("+x+","+y+") IS OUT OF WORLD RANGE"); return;
-        }
+        
         addObject(new Lava(),x*40+20,getHeight()-y*40-20);
     }
     public void water(int x, int y){
-        if (x*40+20<0||x*40+20>getWidth()||getHeight()-y*40-20<0||getHeight()-y*40-20>getHeight()){
-            System.out.println("ERROR: WATER AT ("+x+","+y+") IS OUT OF WORLD RANGE"); return;
-        }
+        
         addObject(new Water(),x*40+20,getHeight()-y*40-20);
     }
 }
