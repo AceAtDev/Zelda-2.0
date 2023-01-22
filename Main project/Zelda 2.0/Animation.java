@@ -57,7 +57,7 @@ public class Animation extends Actor
         idle = false;
 
         basicMan = importSprites ("W_", Direction.size, 3);
-        attackMan = importSprites ("S_", Direction.size, 1);
+        //attackMan = importSprites ("S_", Direction.size, 1);
 
         playerImage = basicMan;
 
