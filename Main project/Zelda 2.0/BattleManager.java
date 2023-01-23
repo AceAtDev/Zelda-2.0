@@ -60,7 +60,7 @@ public class BattleManager extends Actor
         // Start battle music
         //Greenfoot.playSound("");
         
-        //battleBackgroundMusic.playLoop();
+        battleBackgroundMusic.playLoop();
         if(playerTurn)
         {
             player.getOverlay().resetFocus();
