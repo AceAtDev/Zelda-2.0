@@ -421,9 +421,9 @@ public class RandomlyGeneratingDungeon extends World
         // Room one tutorial Enemy
         addObject(new Enemy(3,1,2, 0.3, false), 550, 340);
         // Room 3 Enemy Gauntlet
-        addObject(new Enemy(3,3,2,0.25, true),1020,-220);
-        addObject(new Enemy(5,5,0,0.1, false),750,-240);
-        addObject(new Enemy(2,3,2,0.19, true),1240,-220);
+        addObject(new Enemy(3,3,2,0.25, true),1520,-220);
+        addObject(new Enemy(5,5,0,0.1, false),1250,-240);
+        addObject(new Enemy(2,3,2,0.19, true),640,-220);
         
     }
     
