@@ -140,21 +140,21 @@ public class RandomlyGeneratingDungeon extends World
         block(9,3,true,-1);
         block(8,2,true,-1);
         
-        block(1,7);
-        block(2,7);
-        block(3,7);
-        block(4,7);
-        block(5,7);
-        block(6,7);
-        block(7,7);
-        block(8,7);
-        block(9,7);
-        block(10,7);
-        block(11,7);
-        block(12,7);
-        block(13,7);
-        block(14,7);
-        block(15,7);
+        block(1,9);
+        block(2,9);
+        block(3,9);
+        block(4,9);
+        block(5,9);
+        block(6,9);
+        block(7,9);
+        block(8,9);
+        block(9,9);
+        block(10,9);
+        block(11,9);
+        block(12,9);
+        block(13,9);
+        block(14,9);
+        block(15,9);
         
         lava(1,5);
         lava(1,4);

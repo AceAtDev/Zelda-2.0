@@ -29,7 +29,7 @@ public class Link extends WorldEntity
     
     public Link()
     {
-        super(40,40, 5, 2, blockers, true, toBattle);
+        super(40,40, 1, 2, blockers, true, toBattle);
 
     }
     
@@ -206,6 +206,11 @@ public class Link extends WorldEntity
         hpUI = ((HealthUI)getWorld().getObjects(HealthUI.class).get(0));
         hpUI.positionUpdater();
         //hpUI.updateUi(currentHp);
+    }
+    
+    public FadeOverlay getOverlay()
+    {
+        return ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0));
     }
 
     public Enemy getHitEnemy()

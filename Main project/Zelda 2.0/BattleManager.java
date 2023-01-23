@@ -63,6 +63,7 @@ public class BattleManager extends Actor
         //battleBackgroundMusic.playLoop();
         if(playerTurn)
         {
+            player.getOverlay().resetBooleans();
             if(Greenfoot.isKeyDown("e"))
             {
                 Greenfoot.playSound("Normal Attack-HQ.wav");
@@ -74,13 +75,30 @@ public class BattleManager extends Actor
         }
         else if(enemyTurn)
         {
-            //Greenfoot.delay(10);
+            Greenfoot.delay(10);
             //((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).focusFade();
-
+            
+            if(!caughtEnemy.isTrapped)
+            {
+                
+                
+                
+                caughtEnemy.enemyAttack(player);
+                Greenfoot.delay(30);
+                
+                player.getOverlay().focusFade();
+                caughtEnemy.isTrapped = true;
+                return;
+            }
+            else if(caughtEnemy.isTrapped)
+            {
+                player.canMove = true;
+            }
             
             
-            enemyTurn = false;
-            playerTurn = true;
+            
+            //enemyTurn = false;
+            //playerTurn = true;
         }
         
         
@@ -141,6 +159,12 @@ public class BattleManager extends Actor
         
         
     }
+    
+    public void resetPlayerBattlePos()
+    {
+        player.setLocation(playerBattlePos.x(),playerBattlePos.y());
+    }
+    
     
     public boolean playerAttacked()
     {

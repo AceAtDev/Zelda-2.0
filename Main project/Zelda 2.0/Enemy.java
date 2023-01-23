@@ -69,23 +69,37 @@ public class Enemy extends WorldEntity
     }
 
     // Looking for the player
+    private double chaseDelay = 3;
+    private boolean playedSound = false;
     public void patrol() 
     {   
         
-        if(isPlayerInRange) // Move to catch the player
-        {
-            inRange();
-            //System.out.println("player is in range of the enemy");
-            return;
-        }
-        else
+        if(isPlayerInRange && chaseDelay <= 0) // Move to catch the player
         {
             
+                inRange();
+                //System.out.println("player is in range of the enemy");
+                return;
+            
+        }
+        else if(isPlayerInRange)
+        {
+            if(!playedSound)
+            {
+                
+                playedSound = true;
+            }
+            
+            chaseDelay -= 0.06;
+            preChessing();
+            return;
         }
         
         if(movingTimer <= 0)
         {
             speed = -speed;
+            
+            setRotation(180 + getRotation());
             changedDir = true;
             dirTimer += rand.nextInt(6);
             movingTimer += 2;
@@ -113,14 +127,33 @@ public class Enemy extends WorldEntity
     }
     
     
-   // Call this when 
-    public void inRange()
+    public void preChessing()
     {
-        
-            turnTowards(
+        turnTowards(
                     ((Link)getWorld().getObjects(Link.class).get(0)).getX(),
                     ((Link)getWorld().getObjects(Link.class).get(0)).getY()
                     );
+    }
+    
+    
+    int followingSpeed = 5;
+    public void inRange()
+    {
+        turnTowards(
+                    ((Link)getWorld().getObjects(Link.class).get(0)).getX(),
+                    ((Link)getWorld().getObjects(Link.class).get(0)).getY()
+                    ); // look at the player
+                    
+        int deltaX = ((Link)getWorld().getObjects(Link.class).get(0)).getX() - getX();
+        int deltaY = ((Link)getWorld().getObjects(Link.class).get(0)).getY() - getY();
+        int angle = (int) Math.atan2( deltaY, deltaX );
+        
+        
+        int currentX = (int) (followingSpeed * Math.cos(angle));
+        int currentY = (int) (followingSpeed * Math.sin(angle));
+        
+        setLocation(getX()+ currentX, getY()+ currentY);
+        
         
         
         
@@ -143,6 +176,35 @@ public class Enemy extends WorldEntity
 
 
     }
+    
+    private int xOffset = 40;
+    private int yOffset = 40;
+    private int startingTopBlock;
+    public boolean isTrapped = false;
+    public boolean finishedAttacking = false;
+    //private
+    public void enemyAttack(Link player)
+    {
+        //getWorld().addObject(new Block(false, 0,0), player.getX() + xOffset, player.getY());
+        startingTopBlock = player.getY() - 120;
+        
+        getWorld().addObject(new Block(false, 0,1), player.getX(), startingTopBlock);
+        Greenfoot.playSound("bumpelsnake__bump3.wav");
+        Greenfoot.delay(25);
+        for(int i = 0; i < 7; i++)
+        {
+            getWorld().addObject(new Block(false, 0,1), player.getX() + xOffset, startingTopBlock + (yOffset * i));
+            getWorld().addObject(new Block(false, 0,1), player.getX() - xOffset, startingTopBlock + (yOffset * i));
+            Greenfoot.playSound("bumpelsnake__bump3.wav");
+            Greenfoot.delay(25);
+        }
+        getWorld().addObject(new Block(false, 0,1), player.getX(), startingTopBlock + (yOffset * 6));
+        isTrapped = true;
+        Greenfoot.playSound("bumpelsnake__bump3.wav");
+
+    }
+    
+    
     
     
     public void battleStarted()

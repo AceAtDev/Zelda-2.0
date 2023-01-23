@@ -7,6 +7,8 @@ public class Block extends Actor
     int moves=0;
     int event=0;//Determinds which event activate apon moving.
     int keypos=-1;
+    
+    private boolean canWalkabove = false;
     /**
     -1 means the block is infinitely movable
     0 means no event is triggered
@@ -24,7 +26,7 @@ public class Block extends Actor
     }
     public void act(){
         if (movable==false){move=false;}
-        if (move==true){collisionDetection();}
+        if (move==true && !canWalkabove){collisionDetection();}
         
         if (event==-1&&moves==0){move=true;}
         
@@ -49,11 +51,13 @@ public class Block extends Actor
                  if(lavaCollideBlock!= null){ // Collision for the Lava and Block
                 getWorld().removeObject(this);
                 negateMoving();
+                canWalkabove = true;
                  return;
                 }if(waterCollideBlock!=null){ // Collision for the Water and Block
                 getWorld().removeObject(this);
                 negateMoving();
-                 return;
+                canWalkabove = true;
+                return;
                 }
         }
             
