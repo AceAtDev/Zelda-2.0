@@ -69,6 +69,7 @@ public class WorldEntity extends Actor
         
         
         hitEnemy = checkForHitEnemy();
+        checkDie();
         
         
         // Horizontal movement
@@ -166,6 +167,27 @@ public class WorldEntity extends Actor
 
 
         return null;
+    }
+    
+    private void checkDie()
+    {
+        if(!canBattle){return;} // don't check for the enemy
+        
+        
+        List<projectile> enemies = getObjectsInRange(13, projectile.class);
+
+        if(enemies.size() > 0)
+        {
+            //isCollWithEnemy = isTouching(Enemy.class);
+            //System.out.println(enemies.get(0));
+            currentHp = 0;
+
+        }else
+        {
+            
+        }
+
+
     }
     
     

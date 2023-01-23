@@ -29,7 +29,7 @@ public class Link extends WorldEntity
     
     public Link()
     {
-        super(40,40, 1, 2, blockers, true, toBattle);
+        super(40,40, 1, 99, blockers, true, toBattle);
 
     }
     
@@ -37,7 +37,7 @@ public class Link extends WorldEntity
     {
         if(currentHp <= 0)
         {
-            this.getWorld().removeObject(this); // destory this object
+             // destory this object
         }
         //hpDisplayer();
         //System.out.println(firstFade + " " + getCollidingWithEnemy());
