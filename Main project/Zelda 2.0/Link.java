@@ -12,7 +12,7 @@ public class Link extends WorldEntity
     int ymove2=0;
     int scroll=0;
     int scrollTimer=0;
-
+    GreenfootSound backgroundMusic = new GreenfootSound("Zelda & Chill.mp3");
     
     private static Class[] blockers = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
     private static Class toBattle = Enemy.class;
@@ -29,7 +29,7 @@ public class Link extends WorldEntity
     
     public Link()
     {
-        super(40,40, 1, 2, blockers, true, toBattle);
+        super(40,40, 1, 99, blockers, true, toBattle);
 
     }
     
@@ -37,7 +37,7 @@ public class Link extends WorldEntity
     {
         if(currentHp <= 0)
         {
-            this.getWorld().removeObject(this); // destory this object
+             // destory this object
         }
         //hpDisplayer();
         //System.out.println(firstFade + " " + getCollidingWithEnemy());
@@ -137,7 +137,7 @@ public class Link extends WorldEntity
         
         //System.out.println(getCollidingWithEnemy());
 
-        
+        backgroundMusic.playLoop();
         if(getCollidingWithEnemy()){// stop the player from moving
             currentHori = 0; 
             currentVert = 0;
@@ -152,7 +152,7 @@ public class Link extends WorldEntity
                                                 this
                                                 );
             }
-            
+            backgroundMusic.stop();
             // Do effects
             preBattleEffects();
             //if(scroll != 0){return;}
