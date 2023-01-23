@@ -19,7 +19,7 @@ public class projectile extends Actor
     private int deltaY;
     private int angle;
     
-    private double focusingTime = 0.21;
+    private double focusingTime = 0.2;
     private double lifeTime = 7;
     
     /**
@@ -29,7 +29,7 @@ public class projectile extends Actor
     public void act()
     {
         // Add your action code here.
-        speed = rand.nextInt(21);
+        speed = (rand.nextInt(26) - rand.nextInt(10));
         
         if(lifeTime < 0)
         {
@@ -77,5 +77,6 @@ public class projectile extends Actor
        //System.out.println(xPos + " " + yPos);
        
        xPos -= 20;
+       Greenfoot.playSound("Soul Damaged-HQ.wav");
     }
 }

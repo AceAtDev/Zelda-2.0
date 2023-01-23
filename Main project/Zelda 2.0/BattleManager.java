@@ -70,17 +70,18 @@ public class BattleManager extends Actor
             {
                 Greenfoot.playSound("Normal Attack-HQ.wav");
                 caughtEnemy.takeDamage(player.attack());
-                Greenfoot.delay(10);
+                
+                //Greenfoot.delay(10);
                 playerTurn = false;
                 enemyTurn = true;
-                //Greenfoot.delay(50);
+                Greenfoot.delay(50);
             }
         }
         else if(enemyTurn)
         {
             //Greenfoot.delay(10);
             //((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).focusFade();
-            
+            System.out.println(caughtEnemy.getCurrentHp());
             if(!caughtEnemy.isTrapped)
             {
                 

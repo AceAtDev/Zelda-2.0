@@ -16,4 +16,11 @@ public class GameOverLetters extends Actor
     {
         // Add your action code here.
     }
+    
+    public GameOverLetters()
+    {
+        Greenfoot.playSound("lose sound start.wav");
+        Greenfoot.playSound("lose sound 2.wav");
+
+    }
 }

@@ -88,7 +88,7 @@ public class Enemy extends WorldEntity
         {
             if(!playedSound)
             {
-                
+                Greenfoot.playSound("epic-sword-clang-2.wav");
                 playedSound = true;
             }
             
@@ -249,10 +249,10 @@ public class Enemy extends WorldEntity
         {
             delayer += 2;
             amountOfBees -= 1;
-            getWorld().addObject(new projectile(player.getX(), player.getY()), getX()+ rand.nextInt(100), (getY() + 150) - rand.nextInt(300));
+            getWorld().addObject(new projectile(player.getX(), player.getY()), (getX() - 100)+ rand.nextInt(300), (getY() + 150) - rand.nextInt(340));
             if(canDoubleSwarm)
             {
-                getWorld().addObject(new projectile(player.getX(), player.getY()), getX()+ rand.nextInt(100), (getY() + 150) - rand.nextInt(300));
+                getWorld().addObject(new projectile(player.getX(), player.getY()), (getX() - 100)+ rand.nextInt(300), (getY() + 150) - rand.nextInt(340));
             }
         }else
         {

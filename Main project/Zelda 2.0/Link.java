@@ -38,6 +38,7 @@ public class Link extends WorldEntity
         if(currentHp <= 0)
         {
              // destory this object
+             Greenfoot.setWorld( new GameOverScreen());
         }
         //hpDisplayer();
         //System.out.println(firstFade + " " + getCollidingWithEnemy());
@@ -113,7 +114,6 @@ public class Link extends WorldEntity
         if (scroll!=0)return;
          //Rate of cells that will be traveled; Player speed
         //Change movement
-        //System.out.println("X: " + xmove + ", Y: " + ymove);
         if(isInBattle){ 
             //System.out.println("Update Battle in action");
 
@@ -134,9 +134,6 @@ public class Link extends WorldEntity
         collisions();
         
         
-        
-        //System.out.println(getCollidingWithEnemy());
-
         backgroundMusic.playLoop();
         if(getCollidingWithEnemy()){// stop the player from moving
             currentHori = 0; 
@@ -175,36 +172,6 @@ public class Link extends WorldEntity
         Greenfoot.delay(20);
         
     }
-    
-    public void defendingAttack()
-    {
-        /*
-        int currentX = 0;
-        int currentY = 0;
-        
-        getWorld().addObject(new Sowrd(), getX() + 35, getY());
-        MouseInfo mouse = Greenfoot.getMouseInfo();
-        
-        if(mouse!=null){
-           currentX = mouse.getX();
-           currentY = mouse.getY();
-        }
-        */
-    }
-    
-    /*
-    protected Vector2D pointOnCircle() {
-
-    double rads = Math.toRadians(orbitAngle - 180); // Make 0 point out to the right...
-    int fullLength = Math.round((outterRadius));
-
-    // Calculate the outter point of the line
-    int xPosy = Math.round((float) (Math.cos(rads) * fullLength));
-    int yPosy = Math.round((float) (Math.sin(rads) * fullLength));
-
-    return new Vector2D(xPosy, yPosy);
-    }
-    */
     
     
     //boolean hpCreated = false;

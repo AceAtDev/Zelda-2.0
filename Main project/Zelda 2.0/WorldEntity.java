@@ -50,7 +50,7 @@ public class WorldEntity extends Actor
         this.width = width;
         this.height = height;
         this.hp = hp;
-        currentHp = hp;
+        this.currentHp = hp;
         this.damage = damage;
         this.blockers = blockers;
     }

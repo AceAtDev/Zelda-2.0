@@ -16,4 +16,10 @@ public class WinScreenLetters extends Actor
     {
         // Add your action code here.
     }
+    
+    public WinScreenLetters()
+    {
+        Greenfoot.playSound("victory.wav");
+
+    }
 }
