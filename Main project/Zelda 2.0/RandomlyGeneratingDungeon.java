@@ -270,12 +270,12 @@ public class RandomlyGeneratingDungeon extends World
     }
     public void generateDungeonEnemies(){
         // Room one tutorial Enemy
-        addObject(new Enemy(5,1,2), 550, 340);
+        addObject(new Enemy(5,1,2, 0.3, true), 550, 340);
         // Room 3 Enemy Gauntlet
-        addObject(new Enemy(8,3,2),1020,-220);
-        addObject(new Enemy(10,5,0),750,-240);
-        addObject(new Enemy(8,3,2),1240,-220);
-        addObject(new Enemy(6,6,3),1100,-400);
+        addObject(new Enemy(8,3,2,0.25, true),1020,-220);
+        addObject(new Enemy(10,5,0,0.1, false),750,-240);
+        addObject(new Enemy(8,3,2,0.19, true),1240,-220);
+        addObject(new Enemy(6,6,3,0.13, false),1100,-400);
     }
     
     //Dungeon Tile Methods

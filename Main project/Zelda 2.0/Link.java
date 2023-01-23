@@ -110,11 +110,14 @@ public class Link extends WorldEntity
          //Rate of cells that will be traveled; Player speed
         //Change movement
         //System.out.println("X: " + xmove + ", Y: " + ymove);
-        if(!canMove){ 
+        if(isInBattle){ 
             //System.out.println("Update Battle in action");
 
             battleManager.battleUpdater();
-            return;
+            if(!canMove)
+            {
+                return;
+            }
         }
         
         
@@ -218,13 +221,14 @@ public class Link extends WorldEntity
         return hitEnemy;
     }
     
-    
+    public boolean isInBattle = false;
     boolean canMove = true;
     public void inBattle()
     {
         if(canMove)
         {
             canMove = false;
+            isInBattle = true;
         }
     }
     
@@ -232,6 +236,7 @@ public class Link extends WorldEntity
     {
         if(!canMove)
         {
+            isInBattle = false;
             canMove = true;
         }
     }

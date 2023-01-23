@@ -23,7 +23,7 @@ public class Enemy extends WorldEntity
     private int ymove = 1;
     
     private boolean inBattle = false; 
-    
+    private boolean canDoubleSwarm = false;
     
     
     boolean ispatrolling = true;
@@ -43,9 +43,11 @@ public class Enemy extends WorldEntity
     static Class[] blocks = new Class[]{Wall.class,Block.class,Lava.class,Water.class};
     //static Class opponent = Link.class;
 
-    public Enemy(int hp, int damage, int speed)
+    public Enemy(int hp, int damage, int speed, double rate, boolean canDoubleSwarm) // The less the rate the faster
     {
         super(10,10, hp, damage, blocks);
+        this.canDoubleSwarm = canDoubleSwarm;
+        this.delayer = rate;
         this.speed = speed;
     }
     
@@ -181,38 +183,98 @@ public class Enemy extends WorldEntity
     private int yOffset = 40;
     private int startingTopBlock;
     public boolean isTrapped = false;
-    public boolean finishedAttacking = false;
+    private Block[] cage = new Block[16];
+    private int index = 0;
     //private
     public void enemyCage(Link player)
     {
         //getWorld().addObject(new Block(false, 0,0), player.getX() + xOffset, player.getY());
+        for(int i = 0; i < 16; i++)
+        {
+            cage[i] = new Block(false,0,1);
+        }
         startingTopBlock = player.getY() - 120;
         
-        getWorld().addObject(new Block(false, 0,1), player.getX(), startingTopBlock);
+        getWorld().addObject(cage[0], player.getX(), startingTopBlock);
         Greenfoot.playSound("bumpelsnake__bump3.wav");
-        Greenfoot.delay(25);
-        for(int i = 0; i < 7; i++)
+        Greenfoot.delay(10);
+        for(int i = 1; i < 15; i++)
         {
-            getWorld().addObject(new Block(false, 0,1), player.getX() + xOffset, startingTopBlock + (yOffset * i));
-            getWorld().addObject(new Block(false, 0,1), player.getX() - xOffset, startingTopBlock + (yOffset * i));
+            
+            
+            if(i < 8)
+            {
+            getWorld().addObject(cage[i], player.getX() + xOffset, startingTopBlock + (yOffset * (i-1)));
+            }
+            else{
+            getWorld().addObject(cage[(i)], player.getX() - xOffset, startingTopBlock + (yOffset * index));
+            index++;
+            }
+            //index++;
             Greenfoot.playSound("bumpelsnake__bump3.wav");
-            Greenfoot.delay(25);
+            Greenfoot.delay(10);
         }
-        getWorld().addObject(new Block(false, 0,1), player.getX(), startingTopBlock + (yOffset * 6));
+        index = 0;
+        getWorld().addObject(cage[15], player.getX(), startingTopBlock + (yOffset * 6));
         isTrapped = true;
         Greenfoot.playSound("bumpelsnake__bump3.wav");
 
     }
     
+    public boolean finishedAttacking = false;
+    private double delayer = 0.3;
+    private int amountOfBees = 13;
+    private double finishingDelay = 0.9;
+    
+    
     public void EnemyAttack(Link player)
     {
-        for(int i = 0; i < 30; i++)
+        if(amountOfBees <= 0)
         {
-            getWorld().addObject(new projectile(player.getX(), player.getY()), getX(), getY());
-            //Greenfoot.delay(39);
+            
+            if(finishingDelay <= 0)
+            {
+                delayer = 0.3;
+                amountOfBees = 13;
+                finishingDelay = 0.9;
+                finishedAttacking = true;
+                //System.out.println("finished");
+            }else
+            {
+                finishingDelay -= 0.01;
+            }
+             
+        }
+        else if(delayer <= 0 && amountOfBees > 0)
+        {
+            delayer += 2;
+            amountOfBees -= 1;
+            getWorld().addObject(new projectile(player.getX(), player.getY()), getX()+ rand.nextInt(100), (getY() + 150) - rand.nextInt(300));
+            if(canDoubleSwarm)
+            {
+                getWorld().addObject(new projectile(player.getX(), player.getY()), getX()+ rand.nextInt(100), (getY() + 150) - rand.nextInt(300));
+            }
+        }else
+        {
+            delayer -= 0.07;
+            //System.out.println(delayer);    
         }
         
     
+    }
+    
+    public void removeCage()
+    {
+        for(Block block : cage)
+        {
+            getWorld().removeObject(block);
+        }
+    }
+    
+    public void resetBooleans()
+    {
+        finishedAttacking = false;
+        isTrapped = false;
     }
     
     

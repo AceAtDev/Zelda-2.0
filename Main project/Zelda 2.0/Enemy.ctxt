@@ -1,8 +1,12 @@
 #BlueJ class context
 comment0.target=Enemy
 comment0.text=\r\n\ The\ idea\ of\ this\ is\ that\ the\ enemy\ will\ move\ around\ the\ wrold\ to\ try\ and\ find\ the\ player.\r\n\ Once\ the\ player\ in\ range,\ the\ enemy\ will\ start\ chessing\ him.\r\n\ When\ the\ enemy\ catchs\ the\ player,\ the\ enemy\ and\ the\ player\ to\ get\ transformed\ to\ another\ room\ to\ fight\ with\r\n\ an\ RPG\ style\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=hp\ damage\ speed
-comment1.target=Enemy(int,\ int,\ int)
+comment1.params=hp\ damage\ speed\ rate\ canDoubleSwarm
+comment1.target=Enemy(int,\ int,\ int,\ double,\ boolean)
+comment10.params=
+comment10.target=void\ resetBooleans()
+comment11.params=
+comment11.target=void\ battleStarted()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
@@ -18,5 +22,5 @@ comment7.target=void\ enemyCage(Link)
 comment8.params=player
 comment8.target=void\ EnemyAttack(Link)
 comment9.params=
-comment9.target=void\ battleStarted()
-numComments=10
+comment9.target=void\ removeCage()
+numComments=12

@@ -63,7 +63,9 @@ public class BattleManager extends Actor
         //battleBackgroundMusic.playLoop();
         if(playerTurn)
         {
-            player.getOverlay().resetBooleans();
+            player.getOverlay().resetFocus();
+            player.canMove = false;
+            resetPlayerBattlePos();
             if(Greenfoot.isKeyDown("e"))
             {
                 Greenfoot.playSound("Normal Attack-HQ.wav");
@@ -71,12 +73,12 @@ public class BattleManager extends Actor
                 Greenfoot.delay(10);
                 playerTurn = false;
                 enemyTurn = true;
-                Greenfoot.delay(50);
+                //Greenfoot.delay(50);
             }
         }
         else if(enemyTurn)
         {
-            Greenfoot.delay(10);
+            //Greenfoot.delay(10);
             //((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).focusFade();
             
             if(!caughtEnemy.isTrapped)
@@ -85,24 +87,30 @@ public class BattleManager extends Actor
                 
                 
                 caughtEnemy.enemyCage(player);
-                Greenfoot.delay(30);
+                //Greenfoot.delay(30);
                 
                 player.getOverlay().focusFade();
                 caughtEnemy.isTrapped = true;
                 return;
             }
-            else if(caughtEnemy.isTrapped)
+            else if(!caughtEnemy.finishedAttacking)
             {
                 player.canMove = true;
-                Greenfoot.delay(60);
-
+                //Greenfoot.delay(60);
+                //System.out.println("Working");
                 caughtEnemy.EnemyAttack(player);
+            }
+            if(caughtEnemy.finishedAttacking)
+            {
+                caughtEnemy.removeCage();
+                caughtEnemy.resetBooleans();
+                enemyTurn = false;
+                playerTurn = true;
             }
             
             
             
-            //enemyTurn = false;
-            //playerTurn = true;
+            
         }
         
         

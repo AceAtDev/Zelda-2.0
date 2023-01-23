@@ -51,7 +51,7 @@ public class FadeOverlay extends Actor
     }
     public void resetFocus()
     {
-        resetBooleans();
+        opacity = 75;
     }
     
     public void fadeOut()

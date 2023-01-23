@@ -19,7 +19,7 @@ public class projectile extends Actor
     private int deltaY;
     private int angle;
     
-    private double focusingTime = 0.41;
+    private double focusingTime = 0.21;
     private double lifeTime = 7;
     
     /**
@@ -29,7 +29,7 @@ public class projectile extends Actor
     public void act()
     {
         // Add your action code here.
-        speed = rand.nextInt(6);
+        speed = rand.nextInt(21);
         
         if(lifeTime < 0)
         {
@@ -46,7 +46,7 @@ public class projectile extends Actor
         if(focusingTime >= 0)
         {
             focusingTime -= 0.01;
-            xPos = ((Link)getWorld().getObjects(Link.class).get(0)).getX() - 120;
+            xPos = ((Link)getWorld().getObjects(Link.class).get(0)).getX() - 180;
             yPos = ((Link)getWorld().getObjects(Link.class).get(0)).getY();
             deltaX = ((Link)getWorld().getObjects(Link.class).get(0)).getX() - getX();
             deltaY = ((Link)getWorld().getObjects(Link.class).get(0)).getY() - getY();
@@ -74,7 +74,7 @@ public class projectile extends Actor
        this.xPos = xPos;
        this.xPos = xPos;
        
-       System.out.println(xPos + " " + yPos);
+       //System.out.println(xPos + " " + yPos);
        
        xPos -= 20;
     }
