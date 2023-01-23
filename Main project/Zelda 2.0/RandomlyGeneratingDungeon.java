@@ -23,7 +23,7 @@ public class RandomlyGeneratingDungeon extends World
         paintOrder();
         generateDungeon();
         dungeonObjects();
-        generateDungeonEnemies();
+        //generateDungeonEnemies();
         
 
     }
@@ -241,10 +241,132 @@ public class RandomlyGeneratingDungeon extends World
         lava(30,13);
         lava(30,14);
         
+        // Room 4 Objects
         
-       
+        block(15,16);
+        block(14,16);
+        block(13,16);
+        block(12,16);
+        block(11,16);
+        block(10,16);
+        block(9,16); 
+        block(8,16);
+        block(7,16);
+        block(6,16);
+        block(5,15);
+        block(4,15);
+        block(3,15);
+        block(2,15);
+        block(1,15);
         
-        
+        block(15,19);
+        block(14,19);
+        block(13,19);
+        block(12,19);
+        block(11,19);
+        block(10,19);
+        block(9,19); 
+        block(8,19);
+        block(7,19);
+        block(6,19);
+        block(5,20);
+        block(4,20);
+        block(3,20);
+        block(2,20);
+        block(1,20);
+
+      water(1,14);
+      water(1,13);
+      water(2,13);
+      water(2,14);
+      water(3,13);
+      water(3,14);
+      water(4,13);
+      water(4,14);
+      water(5,13);
+      water(5,14);
+      water(6,13);
+      water(6,14);
+      water(6,15);
+      water(7,13);
+      water(7,14);
+      water(7,15);
+      water(8,13);
+      water(8,14);
+      water(8,15);
+      water(9,13);
+      water(9,14);
+      water(9,15);
+      water(10,13);
+      water(10,14);
+      water(10,15);
+      water(11,13);
+      water(11,14);
+      water(11,15);
+      water(12,13);
+      water(12,14);
+      water(12,15);
+      water(13,13);
+      water(13,14);
+      water(13,15);
+      water(14,13);
+      water(14,14);
+      water(14,15);
+      water(15,13);
+      water(15,14);
+      water(15,15);
+
+      
+      water(1,21);
+      water(1,22);
+      water(2,21);
+      water(2,22);
+      water(3,21);
+      water(3,22);
+      water(4,21);
+      water(4,22);
+      water(5,21);
+      water(5,22);
+      water(6,21);
+      water(6,22);
+      water(6,20);
+      water(7,22);
+      water(7,21);
+      water(7,20);
+      water(8,20);
+      water(8,21);
+      water(8,22);
+      water(9,20);
+      water(9,21);
+      water(9,22);
+      water(10,20);
+      water(10,21);
+      water(10,22);
+      water(11,20);
+      water(11,21);
+      water(11,22);
+      water(12,20);
+      water(12,21);
+      water(12,22);
+      water(13,20);
+      water(13,21);
+      water(13,22);
+      water(14,20);
+      water(14,21);
+      water(14,22);
+      water(15,20);
+      water(15,21);
+      water(15,22);
+
+
+
+
+
+
+
+
+
+    
     }
     
     
@@ -302,7 +424,7 @@ public class RandomlyGeneratingDungeon extends World
         addObject(new Enemy(8,3,2,0.25, true),1020,-220);
         addObject(new Enemy(10,5,0,0.1, false),750,-240);
         addObject(new Enemy(8,3,2,0.19, true),1240,-220);
-        addObject(new Enemy(6,6,3,0.13, false),1100,-400);
+        
     }
     
     //Dungeon Tile Methods

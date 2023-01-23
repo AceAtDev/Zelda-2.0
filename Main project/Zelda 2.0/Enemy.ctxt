@@ -22,5 +22,5 @@ comment7.target=void\ enemyCage(Link)
 comment8.params=player
 comment8.target=void\ EnemyAttack(Link)
 comment9.params=
-comment9.target=void\ battleStarted()
-numComments=10
+comment9.target=void\ removeCage()
+numComments=12
