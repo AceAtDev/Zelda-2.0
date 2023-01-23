@@ -157,7 +157,7 @@ public class Enemy extends WorldEntity
         
         
         
-        System.out.println("facing");
+        //System.out.println("facing");
     }
     
     private void checkIfPlayerInRange()
@@ -183,7 +183,7 @@ public class Enemy extends WorldEntity
     public boolean isTrapped = false;
     public boolean finishedAttacking = false;
     //private
-    public void enemyAttack(Link player)
+    public void enemyCage(Link player)
     {
         //getWorld().addObject(new Block(false, 0,0), player.getX() + xOffset, player.getY());
         startingTopBlock = player.getY() - 120;
@@ -202,6 +202,17 @@ public class Enemy extends WorldEntity
         isTrapped = true;
         Greenfoot.playSound("bumpelsnake__bump3.wav");
 
+    }
+    
+    public void EnemyAttack(Link player)
+    {
+        for(int i = 0; i < 30; i++)
+        {
+            getWorld().addObject(new projectile(player.getX(), player.getY()), getX(), getY());
+            //Greenfoot.delay(39);
+        }
+        
+    
     }
     
     

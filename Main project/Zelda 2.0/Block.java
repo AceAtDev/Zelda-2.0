@@ -48,7 +48,7 @@ public class Block extends Actor
          
                 Actor lavaCollideBlock = getOneObjectAtOffset(0,0,Lava.class);
                 Actor waterCollideBlock = getOneObjectAtOffset(0,0,Water.class);
-                 if(lavaCollideBlock!= null){ // Collision for the Lava and Block
+                if(lavaCollideBlock!= null){ // Collision for the Lava and Block
                 getWorld().removeObject(this);
                 negateMoving();
                 canWalkabove = true;

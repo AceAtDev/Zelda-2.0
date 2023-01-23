@@ -119,7 +119,7 @@ public class RandomlyGeneratingDungeon extends World
         addObject(new Wall(40,getHeight()-40),2700,-260);
     }
     public void paintOrder(){ // Order of displaying classes ( Makes the Transition from room to room smoother
-        setPaintOrder(Animation.class ,Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
+        setPaintOrder(projectile.class ,Animation.class,Link.class,FadeOverlay.class,Wall.class,Key.class,Block.class,Lava.class,Water.class);
     }
 
     public void act(){

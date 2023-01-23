@@ -71,6 +71,7 @@ public class BattleManager extends Actor
                 Greenfoot.delay(10);
                 playerTurn = false;
                 enemyTurn = true;
+                Greenfoot.delay(50);
             }
         }
         else if(enemyTurn)
@@ -83,7 +84,7 @@ public class BattleManager extends Actor
                 
                 
                 
-                caughtEnemy.enemyAttack(player);
+                caughtEnemy.enemyCage(player);
                 Greenfoot.delay(30);
                 
                 player.getOverlay().focusFade();
@@ -93,6 +94,9 @@ public class BattleManager extends Actor
             else if(caughtEnemy.isTrapped)
             {
                 player.canMove = true;
+                Greenfoot.delay(60);
+
+                caughtEnemy.EnemyAttack(player);
             }
             
             

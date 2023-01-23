@@ -188,6 +188,7 @@ public class WorldEntity extends Actor
     
     public void takeDamage(int damage)
     {
+         Greenfoot.playSound("Soul Damaged-HQ.wav");
          currentHp -= damage;
          if(currentHp <= 0)
          {
