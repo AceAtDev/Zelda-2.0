@@ -130,7 +130,8 @@ public class RandomlyGeneratingDungeon extends World
         if (tileset==3)setBackground(new GreenfootImage("YellowTile.png"));
         if (tileset==4)setBackground(new GreenfootImage("GreyTile.png"));
         
-        
+       System.out.println(player.getX());
+       System.out.println(player.getY());
     }
     
     public void dungeonObjects(){
@@ -209,10 +210,36 @@ public class RandomlyGeneratingDungeon extends World
         water(18,1);
         water(32,1);
         
+        // Room 3 Objects
         
+        water(18,14);
+        water(19,14);
+        water(18,13);
+        water(19,13);
+        water(20,14);
+        water(20,13);
+        
+        water(32,22);
+        water(32,21);
+        water(31,22);
+        water(31,21);
+        water(30,21);
+        water(30,22);
     
         
+        lava(18,22);
+        lava(18,21);
+        lava(19,22);
+        lava(19,21);
+        lava(20,21);
+        lava(20,22);
         
+        lava(32,13);
+        lava(32,14);
+        lava(31,14);
+        lava(31,13);
+        lava(30,13);
+        lava(30,14);
         
         
        
@@ -239,8 +266,8 @@ public class RandomlyGeneratingDungeon extends World
     3 = Yellow
     4 = Grey
     */
-    int tileset = 0;
-    public void changeTileSet(int i){
+    static int  tileset = 0;
+    public static void changeTileSet(int i){
         tileset=i;
     }
     
@@ -283,6 +310,7 @@ public class RandomlyGeneratingDungeon extends World
     public void block(int x, int y, boolean movable, int event, int keypos){
         
         addObject(new Block(movable,event,keypos),x*40+20,getHeight()-y*40-20);
+       
     }
     public void block(int x, int y, boolean movable, int event){
         
